@@ -1,0 +1,3 @@
+#!/bin/bash
+# Script "launcherBrainfuck"
+java -cp brainfuck.jar brainfuck.launcher.Launcher $@
