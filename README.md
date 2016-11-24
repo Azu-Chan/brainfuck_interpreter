@@ -70,9 +70,9 @@ V. EXCEPTIONS
 -------------
 
 Arrêt du programme si une des erreures suivantes est déclanchée :
-* ERREUR (1) : Une case mémoire contient une valeur en dehors de \[0,255\] (pour l'utilisateur).
-* ERREUR (2) : Le pointeur de la mémoire se trouve à une valeur incorrecte (en dehors de [0;29999]).
-* ERREUR (3) : Si le fichier d'entrée est spécifié mais impossible à ouvrir ou inexistant (option -i).
+* ERREUR (1) : Une case mémoire contient une valeur en dehors de \[0;255\] (pour l'utilisateur).
+* ERREUR (2) : Le pointeur de la mémoire se trouve à une valeur incorrecte (en dehors de \[0;29999\]).
+* ERREUR (3) : Si le fichier d'entrée est spécifié mais impossible à ouvrir ou inexistant (option '-i').
 * ERREUR (4) : Le programme brainfuck a un souci de syntaxe vis-à-vis des instructions JUMP et BACK (problème de sémantique).
 * ERREUR (5) : La même option est saisie plusieurs fois au lancement du programme.
 * ERREUR (6) : Une option obligatoire n'est pas saisie au lancement.

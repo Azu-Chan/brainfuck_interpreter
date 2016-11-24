@@ -6,6 +6,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Stack;
+
 import brainfuck.Metrics;
 
 import brainfuck.exceptions.InputMissingFileException;
@@ -22,7 +24,7 @@ import brainfuck.exceptions.OverflowException;
  * @author Yijie Wang
  * @author Mohd Nijab
  * 
- * @version 4.0
+ * @version 4.1
  */
 public class Executor{
 	private DataCompute memory;
@@ -90,7 +92,7 @@ public class Executor{
 	 * @throws OverflowException 
 	 */
 	public void executeProg() throws IOException, OverflowException, OutOfMemoryException{
-		fillJumpTableInit();
+		fillJumpTable();
 		
 		if(traceLog != null){
 			traceLog.createTableLog();
@@ -168,35 +170,19 @@ public class Executor{
 	
 	/**
 	 * Pour lancer la procédure de remplissage de la jumpTable
-	 */
-	private void fillJumpTableInit(){
-		execPointer = 0;
-		
-		while(execPointer < prog.length()){
-			if(prog.charAt(execPointer) == '['){
-				fillJumpTable();
-			}
-			execPointer++;
-		}
-	}
-	
-	/**
-	 * Remplit la jumpTable...
-	 * En récursif.
-	 * 
-	 * @param execPointerCurrentValue
+	 * PASSAGE en complexité N au lieu de N^n
 	 */
 	private void fillJumpTable(){
-		int oldValue = execPointer;
-		execPointer++;
+		Stack<Integer> stockageTemp = new Stack<Integer>();
 		
-		while(prog.charAt(execPointer) != ']'){
+		for(execPointer = 0; execPointer < prog.length(); execPointer++){
 			if(prog.charAt(execPointer) == '['){
-				fillJumpTable();
+				stockageTemp.push(new Integer(execPointer));
 			}
-			execPointer++;
+			if(prog.charAt(execPointer) == ']'){
+				jumpTable.createBridge(stockageTemp.pop(), execPointer);
+			}
 		}
-		jumpTable.createBridge(oldValue, execPointer);
 	}
 	
 	/**
