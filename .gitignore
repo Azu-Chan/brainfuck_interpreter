@@ -19,3 +19,4 @@ doc
 .classpath
 .idea
 brainfuck_interpreter.iml
+.metadata
