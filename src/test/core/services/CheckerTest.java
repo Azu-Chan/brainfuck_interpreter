@@ -37,15 +37,7 @@ public class CheckerTest {
             assertTrue(syn.getErrorCode()==4);
         }
     }
-    /*
-        @Test
-        public void wellFormed1()throws Exception{
-            String wF1=null;
-            checker=new Checker(wF1);
-            checker.verify();
-            assertTrue(checker.isWellFormed());
-        }
-    */
+
     @Test
     public void wellFormed2()throws Exception{
         String wF2="++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++.>+.+++++++..+++.>++.<<+++++++++++++++.>.+++.------.--------.>+.>.";
