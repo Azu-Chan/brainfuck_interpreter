@@ -59,46 +59,36 @@ public class DataComputeTest {
 
     }
 
-    @Test
+    @Test(expected = OverflowException.class)
     public void incrementOverflow() throws Exception {
-        try{
-            for (int i = 0; i < 256; i++)
-                dataCompute.increment();
-        }catch (OverflowException over){
-            assertEquals(over.getErrorCode(), 1);
-        }
+        dataCompute.increment();
+        for (int i = 0; i < 256; i++)
+            dataCompute.increment();
 
     }
 
-    @Test
+    @Test (expected = OverflowException.class)
     public void decrementOverflow() throws Exception {
         dataCompute.increment();
-        try{
-            dataCompute.decrement();
-            dataCompute.decrement();
-        }catch (OverflowException over){
-            assertEquals(over.getErrorCode(), 1);
-        }
+        dataCompute.decrement();
+        dataCompute.decrement();
+
     }
 
-    @Test
+    @Test (expected = OutOfMemoryException.class)
     public void pointerRightOut() throws Exception {
-        try {
-            for (int i = 2; i < 30000; i++)
-                dataCompute.pointerRight();
-        }catch (OutOfMemoryException out){
-            assertEquals(out.getErrorCode(), 2);
-        }
+        dataCompute.pointerRight();
+        dataCompute.pointerRight();
+        for (int i = 2; i < 30000; i++)
+            dataCompute.pointerRight();
+
     }
 
-    @Test
+    @Test (expected = OutOfMemoryException.class)
     public void pointerLeftOut() throws Exception {
         dataCompute.pointerRight();
-        try{
-            dataCompute.pointerLeft();
-            dataCompute.pointerLeft();
-        }catch (OutOfMemoryException out){
-            assertEquals(out.getErrorCode(), 2);
-        }
+        dataCompute.pointerLeft();
+        dataCompute.pointerLeft();
+
     }
 }
