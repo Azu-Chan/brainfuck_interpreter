@@ -1,10 +1,7 @@
 package brainfuck.core.services;
 
-import brainfuck.Metrics;
-
 import java.io.*;
 import java.util.Calendar;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Classe permettant la génération d'un fichier log
@@ -13,7 +10,7 @@ import java.util.concurrent.TimeUnit;
  * @author Yijie Wang
  * @author Mohd Nijab
  * 
- * @version 2.0
+ * @version 2.1
  */
 public class TraceLog {
 	private File logFile;
@@ -70,16 +67,10 @@ public class TraceLog {
 		logBuff.write(line);
 	}
 	
-	public void writeMetrics() throws IOException{
+	public void writeMetrics(String metrics) throws IOException{
 		String line;
 		
-		line = "\r\n\r\n\r\nPROGRAM METRICS ARE: \r\n" +
-				"PROG_SIZE  = " + Metrics.getProgSize() + "\r\n" +
-				"EXEC_TIME  = " + TimeUnit.MILLISECONDS.convert(Metrics.getExecTime(), TimeUnit.NANOSECONDS) + " milliseconds\r\n" +
-				"EXEC_MOVE  = " + Metrics.getExecMove() + "\r\n" +
-				"DATA_MOVE  = " + Metrics.getDataMove() + "\r\n" +
-				"DATA_WRITE = " + Metrics.getDataWrite() + "\r\n" +
-				"DATA_READ  = " + Metrics.getDataRead() + "\r\n";
+		line = metrics.replace("\n", "\r\n");
 
 		logBuff.write(line);
 	}

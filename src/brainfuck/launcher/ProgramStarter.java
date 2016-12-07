@@ -90,11 +90,12 @@ public class ProgramStarter implements OptionInclude {
 					
 					if(t != null){
 						t.writeSnapMemory(pr.consolePrintCellForLog());
-						t.writeMetrics();
+						t.writeMetrics(pr.getMetricsFormated());
 						t.writeEndOfLog();
 					}
 					
 					pr.consolePrintCell();
+					System.out.println(pr.getMetricsFormated().toString());
 				}
 			}
 			else{

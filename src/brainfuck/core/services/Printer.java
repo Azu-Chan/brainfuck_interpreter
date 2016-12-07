@@ -1,5 +1,9 @@
 package brainfuck.core.services;
 
+import java.util.concurrent.TimeUnit;
+
+import brainfuck.Metrics;
+
 /**
  * Printer est la classe nécessaire pour afficher l'êtat de la grille
  * sur la sortie standard selon plusieurs modes de vue.
@@ -8,7 +12,7 @@ package brainfuck.core.services;
  * @author Yijie Wang
  * @author Mohd Nijab
  * 
- * @version 1.2
+ * @version 1.3
  */
 public class Printer {
 	private byte[] grille;
@@ -73,7 +77,22 @@ public class Printer {
 	}
 	
 	/**
-	 * Construit le snapshot de la rille pour le logFile.
+	 * Rend un joli String pour les metrics
+	 * 
+	 * @return les metrics formatées
+	 */
+	public String getMetricsFormated(){	
+		return "\n\nPROGRAM METRICS ARE: \n" +
+				"PROG_SIZE  = " + Metrics.getProgSize() + "\n" +
+				"EXEC_TIME  = " + TimeUnit.MILLISECONDS.convert(Metrics.getExecTime(), TimeUnit.NANOSECONDS) + " milliseconds\n" +
+				"EXEC_MOVE  = " + Metrics.getExecMove() + "\n" +
+				"DATA_MOVE  = " + Metrics.getDataMove() + "\n" +
+				"DATA_WRITE = " + Metrics.getDataWrite() + "\n" +
+				"DATA_READ  = " + Metrics.getDataRead() + "\n";
+	}
+	
+	/**
+	 * Construit le snapshot de la grille pour le logFile.
 	 */
 	public String consolePrintCellForLog(){
 		String s = "";
