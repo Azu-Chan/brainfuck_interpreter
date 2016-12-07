@@ -8,9 +8,11 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Stack;
 
+import brainfuck.Instructions;
 import brainfuck.Metrics;
 
 import brainfuck.exceptions.InputMissingFileException;
+import brainfuck.exceptions.IsNotBrainfuckInstructionException;
 import brainfuck.exceptions.OutOfMemoryException;
 import brainfuck.exceptions.OverflowException;
 
@@ -90,8 +92,9 @@ public class Executor{
 	 * @throws IOException 
 	 * @throws OutOfMemoryException 
 	 * @throws OverflowException 
+	 * @throws IsNotBrainfuckInstructionException 
 	 */
-	public void executeProg() throws IOException, OverflowException, OutOfMemoryException{
+	public void executeProg() throws IOException, OverflowException, OutOfMemoryException, IsNotBrainfuckInstructionException{
 		fillJumpTable();
 		
 		if(traceLog != null){
@@ -121,51 +124,58 @@ public class Executor{
 	}
 
 	/**
-	 * Cette méthode va executer l'instruction passée en paramètre TODO
+	 * Cette méthode va executer l'instruction passée en paramètre
 	 *
 	 * @param instr
 	 * 
 	 * @throws IOException 
 	 * @throws OverflowException 
 	 * @throws OutOfMemoryException 
+	 * @throws IsNotBrainfuckInstructionException 
 	 */
 
-	private void executeInstruction(char instr) throws IOException, OverflowException, OutOfMemoryException {
-		switch(instr){
-			case '+' :
-				Metrics.incrementDataWrite(); // UPDATE METRIC
-				memory.increment();
-				break;
-			case '-' :
-				Metrics.incrementDataWrite(); // UPDATE METRIC
-				memory.decrement();
-				break;
-			case '<' :
-				Metrics.incrementDataMove(); // UPDATE METRIC
-				memory.pointerLeft();
-				break;
-			case '>' :
-				Metrics.incrementDataMove(); // UPDATE METRIC
-				memory.pointerRight();
-				break;
-			case '.' :
-				Metrics.incrementDataRead(); // UPDATE METRIC
-				memory.output(out);
-				break;
-			case ',' :
-				Metrics.incrementDataWrite(); // UPDATE METRIC
-				memory.input(in);
-				break;
-			case '[' :
-				Metrics.incrementDataRead(); // UPDATE METRIC
-				bound('[');
-				break;
-			case ']' :
-				Metrics.incrementDataRead(); // UPDATE METRIC
-				bound(']');
-				break;
-			default : ;
+	private void executeInstruction(char instr) throws IOException, OverflowException, OutOfMemoryException, IsNotBrainfuckInstructionException {
+		if(instr == Instructions.INCR.getShortSyntax()){
+			Metrics.incrementDataWrite(); // UPDATE METRIC
+			memory.increment();
+			return ;
 		}
+		if(instr == Instructions.DECR.getShortSyntax()){
+			Metrics.incrementDataWrite(); // UPDATE METRIC
+			memory.decrement();
+			return ;
+		}
+		if(instr == Instructions.LEFT.getShortSyntax()){
+			Metrics.incrementDataMove(); // UPDATE METRIC
+			memory.pointerLeft();
+			return ;
+		}
+		if(instr == Instructions.RIGHT.getShortSyntax()){
+			Metrics.incrementDataMove(); // UPDATE METRIC
+			memory.pointerRight();
+			return ;
+		}
+		if(instr == Instructions.OUT.getShortSyntax()){
+			Metrics.incrementDataRead(); // UPDATE METRIC
+			memory.output(out);
+			return ;
+		}
+		if(instr == Instructions.IN.getShortSyntax()){
+			Metrics.incrementDataWrite(); // UPDATE METRIC
+			memory.input(in);
+			return ;
+		}
+		if(instr == Instructions.JUMP.getShortSyntax()){
+			Metrics.incrementDataRead(); // UPDATE METRIC
+			bound('[');
+			return ;
+		}
+		if(instr == Instructions.BACK.getShortSyntax()){
+			Metrics.incrementDataRead(); // UPDATE METRIC
+			bound(']');
+			return ;
+		}
+		throw new IsNotBrainfuckInstructionException(""+instr);
 	}
 	
 	/**

@@ -17,10 +17,20 @@ public class TraceLog {
 	private long nbStep = 0;
 	private BufferedWriter logBuff;
 	
+	/**
+	 * Constructeur...
+	 * 
+	 * @param logFile
+	 */
 	public TraceLog(File logFile){
 		this.logFile = logFile;
 	}
 	
+	/**
+	 * Initialise le fichier de log
+	 * 
+	 * @throw IOException
+	 */
 	public void initializeLogFile() throws IOException {
 		if(logFile.exists()) logFile.delete();
 
@@ -38,6 +48,11 @@ public class TraceLog {
         // FIN...
     }
 	
+	/**
+	 * Créé la table de traçage de l'execution 
+	 * 
+	 * @throw IOException
+	 */
 	public void createTableLog() throws IOException{
 		String line;
 		
@@ -48,6 +63,15 @@ public class TraceLog {
         logBuff.write(line);
 	}
 	
+	/**
+	 * Remplis la table de traçage de l'execution 
+	 * 
+	 * @param execPointer
+	 * @param dataPointer
+	 * @param dataVal
+	 * 
+	 * @throw IOException
+	 */
 	public void writeLineTableLog(int execPointer, int dataPointer, byte dataVal) throws IOException{
 		String line;
 		
@@ -59,6 +83,13 @@ public class TraceLog {
         nbStep++;
 	}
 	
+	/**
+	 * Ecrit le snap de la mémoire dans le log
+	 * 
+	 * @param snapMem
+	 * 
+	 * @throw IOException
+	 */
 	public void writeSnapMemory(String snapMem) throws IOException{
 		String line;
 		
@@ -67,6 +98,13 @@ public class TraceLog {
 		logBuff.write(line);
 	}
 	
+	/**
+	 * Ecrit le snap ds métriques dans le log
+	 * 
+	 * @param metrics
+	 * 
+	 * @throw IOException
+	 */
 	public void writeMetrics(String metrics) throws IOException{
 		String line;
 		
@@ -75,6 +113,11 @@ public class TraceLog {
 		logBuff.write(line);
 	}
 	
+	/**
+	 * Ecrit la fin du log log
+	 * 
+	 * @throw IOException
+	 */
 	public void writeEndOfLog() throws IOException{
 		String line;
 		
