@@ -11,11 +11,17 @@ bfck......................Script bash d'exécution du JAR brainfuck.jar
 
 brainfuck.jar.........Dernière version fonctionnelle du projet
 
+creation\_du\_jar..... Etapes en images expliquant comment créer l'ARchive Java à l'aide des fichiers ici présents
+
+creation\_du\_script... Etapes en images expliquant comment créer le script de lancement à l'aide des fichiers ici présents
+
 demos..................Démos disponibles pour tester le programme
 
 README.md.......Ce fichier
 
 src/brainfuck........Répertoire contenant les fichiers source du projet
+
+src/test...........Répertoire contenant les fichiers de test du projet
 
 
 II. Utilisation 
@@ -88,4 +94,4 @@ Arrêt du programme si une des erreures suivantes est déclanchée :
 VI. DIVERS
 ----------
 
-Ce programme est un projet réalisé dans le cadre du SI3 de Polytech Nice Sophia-Antipolis, année 2016 par l'équipe Triplot, composée de Yijie Wang, Mohd Nijab et Dylan Ritrovato. Il y a une possibilité que des bugs non détectés soient présents, si tel est le cas, vous pouvez les signaler par mail à dylan.xanto@gmail.com. Merci de votre compréhension.
+Ce programme est un projet réalisé dans le cadre du SI3 de Polytech Nice Sophia-Antipolis, année 2016 par l'équipe Triplot, composée de Yijie Wang, Mohd Najib et Dylan Ritrovato. Il y a une possibilité que des bugs non détectés soient présents, si tel est le cas, vous pouvez les signaler par mail à dylan.xanto@gmail.com. Merci de votre compréhension.
