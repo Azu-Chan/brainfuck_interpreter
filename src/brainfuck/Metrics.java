@@ -9,7 +9,7 @@ package brainfuck;
  * 
  * @version 1.0
  */
-public abstract class Metrics {
+public abstract class Metrics{
     private static long PROG_SIZE = 0;
     private static long EXEC_TIME = 0;
     private static long EXEC_MOVE = 0;

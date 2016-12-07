@@ -121,7 +121,7 @@ public class Executor{
 	}
 
 	/**
-	 * Cette méthode va executer l'instruction passée en paramètre
+	 * Cette méthode va executer l'instruction passée en paramètre TODO
 	 *
 	 * @param instr
 	 * 

@@ -7,6 +7,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import brainfuck.ImageInclude;
+import brainfuck.Instructions;
 import brainfuck.exceptions.ImageInterpretationErrorException;
 import brainfuck.exceptions.IsNotBrainfuckInstructionException;
 
@@ -22,7 +23,7 @@ import brainfuck.exceptions.IsNotBrainfuckInstructionException;
  * @author Yijie Wang
  * @author Mohd Nijab
  * 
- * @version 1.3
+ * @version 1.4
  */
 public class ReaderImage extends ReaderBF implements ImageInclude{
 	private BufferedImage prog;
@@ -109,37 +110,11 @@ public class ReaderImage extends ReaderBF implements ImageInclude{
 	 * @throws IsNotBrainfuckInstructionException
 	 */
 	private void constructionWithPix(int rgb) throws IsNotBrainfuckInstructionException{
-		if(rgb == COLOR_INCR){
-			constructionWithShortcut("+");
-			return ;
-		}
-		if(rgb == COLOR_DECR){
-			constructionWithShortcut("-");
-			return ;
-		}
-		if(rgb == COLOR_LEFT){
-			constructionWithShortcut("<");
-			return ;
-		}
-		if(rgb == COLOR_RIGHT){
-			constructionWithShortcut(">");
-			return ;
-		}
-		if(rgb == COLOR_OUT){
-			constructionWithShortcut(".");
-			return ;
-		}
-		if(rgb == COLOR_IN){
-			constructionWithShortcut(",");
-			return ;
-		}
-		if(rgb == COLOR_JUMP){
-			constructionWithShortcut("[");
-			return ;
-		}
-		if(rgb == COLOR_BACK){
-			constructionWithShortcut("]");
-			return ;
+		for(Instructions i : Instructions.values()){
+			if(rgb == i.getRGB()){
+				constructionWithShortcut(""+i.getShortSyntax());
+				return ;
+			}
 		}
 		if(rgb == COLOR_MISSING){
 			return ;

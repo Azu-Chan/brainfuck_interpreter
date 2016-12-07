@@ -1,5 +1,6 @@
 package brainfuck.core.services;
 
+import brainfuck.Instructions;
 import brainfuck.exceptions.SyntaxErrorException;
 
 /**
@@ -35,10 +36,10 @@ private boolean isWellFormed;
 	 */
     public void verify() {
     	for(int i = 0; i < prog.length(); i++){
-    		if(prog.charAt(i) == '['){
+    		if(prog.charAt(i) == Instructions.JUMP.getShortSyntax()){
     			nbOfParenthese++;
     		}
-    		if(prog.charAt(i) == ']'){
+    		if(prog.charAt(i) == Instructions.BACK.getShortSyntax()){
     			nbOfParenthese--;
     			if(nbOfParenthese < 0){
     				isWellFormed = false;

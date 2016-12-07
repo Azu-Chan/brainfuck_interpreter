@@ -7,6 +7,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import brainfuck.ImageInclude;
+import brainfuck.Instructions;
 
 /**
  * Classe qui va transformer un programme brainfuck textuel
@@ -16,7 +17,7 @@ import brainfuck.ImageInclude;
  * @author Yijie Wang
  * @author Mohd Nijab
  * 
- * @version 1.3
+ * @version 1.4
  */
 public class ImageTranslator implements ImageInclude{	
 	private String prog;
@@ -48,7 +49,7 @@ public class ImageTranslator implements ImageInclude{
 	 */
 	public void createImageProg(){
 		if(prog.length() <= 0){
-			img.setRGB(0, 0, intRGBinstr(' '));
+			img.setRGB(0, 0, COLOR_MISSING);
 			return ;
 		}
 		
@@ -80,6 +81,15 @@ public class ImageTranslator implements ImageInclude{
 	}
 	
 	/**
+	 * Getter le l'image créée
+	 * 
+	 * @return l'image
+	 */
+	public BufferedImage getImg(){
+		return img;
+	}
+	
+	/**
 	 * Renvoie un code RGB interprétable par {@link ImageTranslator#createImageProg()}
 	 * pour pouvoir invoquer {@link BufferedImage#setRGB(int, int, int)}
 	 * 
@@ -88,37 +98,12 @@ public class ImageTranslator implements ImageInclude{
 	 * @return le code RGB en int
 	 */
 	private int intRGBinstr(char instr){
-		int instrColor;
-		
-		switch(instr){
-			case '+' :
-				instrColor = COLOR_INCR;
-				break;
-			case '-' :
-				instrColor = COLOR_DECR;
-				break;
-			case '<' :
-				instrColor = COLOR_LEFT;
-				break;
-			case '>' :
-				instrColor =COLOR_RIGHT;
-				break;
-			case '.' :
-				instrColor = COLOR_OUT;
-				break;
-			case ',' :
-				instrColor = COLOR_IN;
-				break;
-			case '[' :
-				instrColor = COLOR_JUMP;
-				break;
-			case ']' :
-				instrColor = COLOR_BACK;
-				break;
-			default : instrColor = COLOR_MISSING;
+		for(Instructions i : Instructions.values()){
+			if(instr == i.getShortSyntax()){
+				return i.getRGB();
+			}
 		}
-		
-		return instrColor;
+		return COLOR_MISSING;
 	}
 	
 	/**

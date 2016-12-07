@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import brainfuck.Instructions;
 import brainfuck.exceptions.IsNotBrainfuckInstructionException;
 
 /**
@@ -20,7 +21,7 @@ import brainfuck.exceptions.IsNotBrainfuckInstructionException;
  * @author Yijie Wang
  * @author Mohd Nijab
  * 
- * @version 2.2
+ * @version 2.3
  */
 public class ReaderText extends ReaderBF{
 	private FileInputStream prog;
@@ -93,35 +94,15 @@ public class ReaderText extends ReaderBF{
 	 * @throws IsNotBrainfuckInstructionException
 	 */
 	private void constructionWithInstr(String instr) throws IsNotBrainfuckInstructionException{
-		switch(instr){
-			case "INCR" :
-				constructionWithShortcut("+");
-				break;
-			case "DECR" :
-				constructionWithShortcut("-");
-				break;
-			case "LEFT" :
-				constructionWithShortcut("<");
-				break;
-			case "RIGHT" :
-				constructionWithShortcut(">");
-				break;
-			case "OUT" :
-				constructionWithShortcut(".");
-				break;
-			case "IN" :
-				constructionWithShortcut(",");
-				break;
-			case "JUMP" :
-				constructionWithShortcut("[");
-				break;
-			case "BACK" :
-				constructionWithShortcut("]");
-				break;
-			case "" :
-				break;
-			default : 
-				throw new IsNotBrainfuckInstructionException(instr);
+		if(isInstruction(instr)){
+			for(Instructions i : Instructions.values()){
+				if(i.getLongSyntax().equals(instr)){
+					constructionWithShortcut(""+i.getShortSyntax());
+				}
+			}
+		}
+		else{
+			throw new IsNotBrainfuckInstructionException(instr);
 		}
 	}
 	
@@ -133,7 +114,28 @@ public class ReaderText extends ReaderBF{
 	 * @return booleen
 	 */
 	private boolean isShortcut(char c){
-		return c == '+' || c == '-' || c == '<' || c == '>' || c == ',' || c == '.' || c == '[' || c == ']';
+		for(Instructions i : Instructions.values()){
+			if(i.getShortSyntax() == c){
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * indique si la chaîne passée en paramètre est unne instruction longue
+	 * 
+	 * @param s
+	 * 
+	 * @return booleen
+	 */
+	private boolean isInstruction(String s){
+		for(Instructions i : Instructions.values()){
+			if(i.getLongSyntax().equals(s)){
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	/**
