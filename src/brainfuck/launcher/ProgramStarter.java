@@ -45,7 +45,9 @@ public class ProgramStarter implements OptionInclude {
 				r = new ReaderImage(f.getProgFile());
 			}
 			else{
-				r = new ReaderText(f.getProgFile());
+				r = new MacroReplacer(f.getProgFile());
+				r.readFile();
+				r = new ReaderText(((MacroReplacer) r).getProgTmpFile());
 			}
 			r.readFile();
 			

@@ -38,13 +38,48 @@ III. DESCRIPTION
 Brainfuck est un langage de programmation exotique, inventé par Urban Müller en 1993. Il tire son nom de l’union de deux mots anglais, brain (« cerveau ») et fuck (« baiser »), et joue sur les mots, puisque ce langage est volontairement simpliste, et parce que l'expression Brain Fuck évoque, en argot, ce qui met le cerveau dans un état de confusion par sa complexité apparente. Ce vocabulaire peu flatteur lui a d'ailleurs valu d'être écrit sous d'autres orthographes plus prudes, telles que Brainf*ck, Brainf*** ou encore BF.
 
 Pour plus d'informations sur le fonctionnement du brainfuck et les instructions disponibles : https://fr.wikipedia.org/wiki/Brainfuck
-Cette version de brainfuck travaille avec des données qui sont des octés non signés [0,255].
+
+Cette version de brainfuck travaille avec des données qui sont des octets non signés [0,255].
 
 bfck est un script utilisant une archive Java (brainfuck.jar) afin de pouvoir interpréter et exécuter des programmes brainfuck écrits en instructions, en shortcuts, un mix des deux ou stocké en image (.bmp uniquement et doit aussi respecter un format particulier). Le programme accepte diverses options permettant divers services en plus de la simple exécution du fichier brainfuck.
+
 Des commentaires peuvent être ajoutés sur une ligne en les précédant du caractère '#', l'intentation sous forme d'espaces et de tabulation est aussi supportée.
 
+Les instructions disponibles sont :
+* INCR  '+'
+* DECR  '-'
+* LEFT  '<'
+* RIGHT '>'
+* IN    ','
+* OUT   '.'
+* JUMP  '['
+* BACK  ']'
 
-IV. OPTIONS 
+
+IV. MACROS
+----------
+
+Les programmes brainfuck sous forme de texte peuvent désormais être intégrés de macros, on distingue 3 types de macros :
+
+Macros sans paramètres :
+* TO_DIGIT -> est interprétée comme 48 fois l'instruction DECR (doit être utilisée SANS autres instructions ou macros sur la même ligne, la ligne peut toutefois être indentée et posséder un commentaire)
+* FROM_DIGIT -> est interprétée comme 48 fois l'instruction INCR (doit être utilisée SANS autres instructions ou macros sur la même ligne, la ligne peut toutefois être indentée et posséder un commentaire)
+* TO_ALPHA -> est interprétée comme 97 fois l'instruction DECR (doit être utilisée SANS autres instructions ou macros sur la même ligne, la ligne peut toutefois être indentée et posséder un commentaire)
+* FROM_ALPHA -> est interprétée comme 97 fois l'instruction INCR (doit être utilisée SANS autres instructions ou macros sur la même ligne, la ligne peut toutefois être indentée et posséder un commentaire)
+* TO\_ALPHA\_CAP -> est interprétée comme 65 fois l'instruction DECR (doit être utilisée SANS autres instructions ou macros sur la même ligne, la ligne peut toutefois être indentée et posséder un commentaire)
+* FROM\_ALPHA\_CAP -> est interprétée comme 65 fois l'instruction INCR (doit être utilisée SANS autres instructions ou macros sur la même ligne, la ligne peut toutefois être indentée et posséder un commentaire)
+
+Macros avec paramètre :
+* MULTI_INCR \[N\] -> est interprétée comme N fois l'instruction INCR (doit être utilisée SANS autres instructions ou macros sur la même ligne, la ligne peut toutefois être indentée et posséder un commentaire)
+* MULTI_DECR \[N\] -> est interprétée comme N fois l'instruction DECR (doit être utilisée SANS autres instructions ou macros sur la même ligne, la ligne peut toutefois être indentée et posséder un commentaire)
+* MULTI_LEFT \[N\] -> est interprétée comme N fois l'instruction LEFT (doit être utilisée SANS autres instructions ou macros sur la même ligne, la ligne peut toutefois être indentée et posséder un commentaire)
+* MULTI_RIGHT \[N\] -> est interprétée comme N fois l'instruction RIGHT (doit être utilisée SANS autres instructions ou macros sur la même ligne, la ligne peut toutefois être indentée et posséder un commentaire)
+
+Macros DEFINE :
+* DEFINE \[P1\] \[P2\] -> à partir du moment de sa déclaration, à chaque fois que la séquence de caractères P1 sera rencontrée dans la SUITE du fichier (où qu'elle se trouve), cette séquence sera remplacée par P2. DEFINE est interprétée en priorité des autres macros, les DEFINE sont aussi exécutés dans leur ordre de déclaration. (doit être utilisée SANS autres instructions, macros et commentaires sur la même ligne)
+
+
+V. OPTIONS 
 -----------
 
 --check
@@ -72,7 +107,7 @@ Cette option permet de renvoyer sur la sorte standard le programme brainfuck pas
 Cette options permet de transformer le programme brainfuck passé en paramètre en une représentation image au format bmp de celui-ci. Le fichier de sortie est crée dans le répertoire courant et se nomme 'translated_nomFichier.bmp'.
 
 
-V. EXCEPTIONS
+VI. EXCEPTIONS
 -------------
 
 Arrêt du programme si une des erreures suivantes est déclanchée :
@@ -91,7 +126,7 @@ Arrêt du programme si une des erreures suivantes est déclanchée :
 * AVERTISEMENT si : Un argument est mal placé (lié à aucune option), mais pas d'arrêt du programme.
 
 
-VI. DIVERS
+VII. DIVERS
 ----------
 
 Ce programme est un projet réalisé dans le cadre du SI3 de Polytech Nice Sophia-Antipolis, année 2016 par l'équipe Triplot, composée de Yijie Wang, Mohd Najib et Dylan Ritrovato. Il y a une possibilité que des bugs non détectés soient présents, si tel est le cas, vous pouvez les signaler par mail à dylan.xanto@gmail.com. Merci de votre compréhension.

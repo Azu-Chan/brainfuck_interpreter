@@ -11,7 +11,7 @@ import brainfuck.Instructions;
 import brainfuck.exceptions.IsNotBrainfuckInstructionException;
 
 /**
- * ReaderText est la classe qui va lire le fichier brainfuck passé avec "-p"
+ * ReaderText est la classe qui va lire le fichier brainfuck passé avec "-p" après application des macros
  * et le transformer en une chaine de caractères uniquement constituée de shortcuts.
  * 
  * Cette chaine est ensuite utilisée pour tous les traitements disponibles dans
