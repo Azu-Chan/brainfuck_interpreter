@@ -61,22 +61,22 @@ public enum MacrosSimple implements Macros {
 				}
 			break;
 			case "TO_ALPHA" :
-				for(int i = 0; i < 97; i++){
+				for(int i = 0; i < 96; i++){
 					response += Instructions.DECR.getLongSyntax() + "\r\n";
 				}
 			break;
 			case "FROM_ALPHA" :
-				for(int i = 0; i < 97; i++){
+				for(int i = 0; i < 96; i++){
 					response += Instructions.INCR.getLongSyntax() + "\r\n";
 				}
 			break;
 			case "TO_ALPHA_CAP" :
-				for(int i = 0; i < 65; i++){
+				for(int i = 0; i < 64; i++){
 					response += Instructions.DECR.getLongSyntax() + "\r\n";
 				}
 			break;
 			case "FROM_ALPHA_CAP" :
-				for(int i = 0; i < 65; i++){
+				for(int i = 0; i < 64; i++){
 					response += Instructions.INCR.getLongSyntax() + "\r\n";
 				}
 			break;
