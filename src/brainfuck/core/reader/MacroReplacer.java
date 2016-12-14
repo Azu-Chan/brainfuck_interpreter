@@ -83,7 +83,7 @@ public class MacroReplacer extends ReaderBF {
 	 */
 	protected void traitementLigne(String ligne) throws IOException {
 		
-		String tLigne = ligne.split("#")[0].replaceAll("\t", " ");
+		String tLigne = ligne.replaceAll("\t", " ");
 		String[] explodeLigne = tLigne.split(" ");
 		
 		// Mise en mémoire des define
@@ -94,7 +94,7 @@ public class MacroReplacer extends ReaderBF {
 			return ;
 		}
 		
-		tLigne = ligne.split("#")[0].replaceAll("\t", "");
+		tLigne = ligne.replaceAll("\t", "");
 		explodeLigne = tLigne.split(" ");
 		
 		// traitement des define en memoire
