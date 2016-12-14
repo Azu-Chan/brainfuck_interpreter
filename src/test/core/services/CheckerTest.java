@@ -39,4 +39,16 @@ public class CheckerTest {
         assertTrue(checker.isWellFormed());
     }
 
+    @Test
+    public void getErrorCodeTest() throws Exception {
+        String nwF2="++[++]-]++[++]";
+        checker=new Checker(nwF2);
+        try {
+            checker.verify();
+            checker.isWellFormed();
+        }catch (SyntaxErrorException syn){
+            assertTrue(syn.getErrorCode()==4);
+        }
+    }
+
 }
