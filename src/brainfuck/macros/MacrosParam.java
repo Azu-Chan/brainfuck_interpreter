@@ -40,6 +40,15 @@ public enum MacrosParam implements Macros {
 	}
 
 	/**
+	 * Getter sur le paramètre
+	 * 
+	 * @return le paramètre
+	 */
+	public String getParam() {
+		return param;
+	}
+	
+	/**
 	 * Getter sur le nom
 	 * 
 	 * @return le nom
@@ -74,7 +83,7 @@ public enum MacrosParam implements Macros {
 					response += Instructions.LEFT.getLongSyntax() + "\r\n";
 				}
 			break;
-			case "FROM_RIGHT" :
+			case "MULTI_RIGHT" :
 				for(int i = 0; i < n; i++){
 					response += Instructions.RIGHT.getLongSyntax() + "\r\n";
 				}
