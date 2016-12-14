@@ -91,4 +91,23 @@ public class DataComputeTest {
         dataCompute.pointerLeft();
 
     }
+
+    @Test
+    public void getErrorOutCodeTest() throws Exception {
+        try{
+            dataCompute.pointerLeft();
+        }catch (OutOfMemoryException out){
+            assertEquals(out.getErrorCode(), 2);
+        }
+    }
+
+    @Test
+    public void getErrorOverCodeTest() throws Exception {
+        try{
+            dataCompute.decrement();
+            dataCompute.decrement();
+        }catch (OverflowException over){
+            assertEquals(over.getErrorCode(), 1);
+        }
+    }
 }

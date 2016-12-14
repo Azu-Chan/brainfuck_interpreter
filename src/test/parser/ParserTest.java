@@ -2,6 +2,8 @@ package test.parser;
 
 import static org.junit.Assert.*;
 
+import brainfuck.core.services.DataCompute;
+import org.junit.Before;
 import org.junit.Test;
 
 import brainfuck.OptionInclude;
@@ -14,25 +16,38 @@ public class ParserTest {
 	Parser parser;
 
 
-	@Test(expected = DuplicateOptionException.class)
+	@Test
 	public void testDoubleArgumentException() throws DuplicateOptionException, ObligatoryOptionMissingException, WrongNumberArgumentsException{
-		String[] argsMain={"-p", "-p", "test.bf"};
-		parser = new Parser(argsMain);
-		parser.parser();
+		try{
+		    String[] argsMain={"-p", "-p", "test.bf"};
+            parser = new Parser(argsMain);
+            parser.parser();
+        }catch (DuplicateOptionException du){
+            assertEquals(du.getErrorCode(),5);
+        }
+
 	}
 	
-	@Test(expected = ObligatoryOptionMissingException.class)
+	@Test
 	public void testObligatoryOptionMissingException() throws DuplicateOptionException, ObligatoryOptionMissingException, WrongNumberArgumentsException{
-		String[] argsMain={"-i", "test.bf"};
-		parser = new Parser(argsMain);
-		parser.parser();
+		try{
+		    String[] argsMain={"-i", "test.bf"};
+            parser = new Parser(argsMain);
+		    parser.parser();
+        }catch (ObligatoryOptionMissingException ob){
+            assertEquals(ob.getErrorCode(),6);
+        }
 	}
 	
-	@Test(expected = WrongNumberArgumentsException.class)
+	@Test
 	public void testWrongNumberArgumentsExceptionn() throws DuplicateOptionException, ObligatoryOptionMissingException, WrongNumberArgumentsException{
-		String[] argsMain={ "test.bf", "-p"};
-		parser = new Parser(argsMain);
-		parser.parser();
+		try {
+            String[] argsMain = {"test.bf", "-p"};
+            parser = new Parser(argsMain);
+            parser.parser();
+        }catch (WrongNumberArgumentsException wr){
+            assertEquals(wr.getErrorCode(),7);
+        }
 	}
 
 }
