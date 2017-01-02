@@ -6,10 +6,13 @@ import brainfuck.OptionInclude;
 import brainfuck.core.reader.*;
 import brainfuck.files.FileCreator;
 import brainfuck.parser.Parser;
+
+import java.util.Scanner;
+
 import brainfuck.Metrics;
 
 /**
- * Classe dont le but est de faire se dérouler le programme
+ * Classe dont le but est de faire se dï¿½rouler le programme
  * 
  * @author Dylan Ritrovato
  * @author Yijie Wang
@@ -30,7 +33,7 @@ public class ProgramStarter implements OptionInclude {
 	}
 	
 	/**
-	 * Lance l'exécution du prtogramme principal
+	 * Lance l'exï¿½cution du prtogramme principal
 	 */
 	public void start(){
 		try{
@@ -62,9 +65,9 @@ public class ProgramStarter implements OptionInclude {
 	}
 	
 	/**
-	 * Exécute les différents services en fonction des arguments
-	 * la shortSyntax passée en argument est FORCEMENT correcte
-	 * suite à sa vérification plus tôt (readFile)
+	 * Exï¿½cute les diffï¿½rents services en fonction des arguments
+	 * la shortSyntax passï¿½e en argument est FORCEMENT correcte
+	 * suite ï¿½ sa vï¿½rification plus tï¿½t (readFile)
 	 * 
 	 * @param p
 	 * @param f
@@ -72,7 +75,8 @@ public class ProgramStarter implements OptionInclude {
 	 */
 	public void executeServices(Parser p, FileCreator f, String shortSyntax){
 		try{
-			if(!p.getOption(nomOptRewrite).getPresent() && !p.getOption(nomOptCheck).getPresent() && !p.getOption(nomOptTranslate).getPresent()){
+			if(!p.getOption(nomOptRewrite).getPresent() && !p.getOption(nomOptCheck).getPresent() && !p.getOption(nomOptTranslate).getPresent()
+					&& !p.getOption(nomOptConvert).getPresent()){
 				Checker c = new Checker(shortSyntax);
 				c.verify();
 				if(c.isWellFormed()){
@@ -117,6 +121,28 @@ public class ProgramStarter implements OptionInclude {
 					i.createImageProg();
 					
 					i.createImage("translated_" + f.getProgFile().getName());
+				}
+				if(p.getOption(nomOptConvert).getPresent()){
+					Converter c;
+					
+					@SuppressWarnings("resource")
+					Scanner scan = new Scanner(System.in);
+					// Invite de saisie
+		            System.out.print("\nSaisir le langage voulu (C PHP)\n> ");
+		            String word;
+		            do{
+		            	word = scan.next();
+		            	scan.nextLine();
+		            }while (word == null || (!word.equals(languageC) && !word.equals(languagePHP)));
+		            
+		            if(word.equals(languageC)){
+		            	c = new CConverter(shortSyntax, p.getOption(nomOptP).getArgument());
+		            	c.launchProcedure();
+		            }
+		            if(word.equals(languagePHP)){
+		            	c = new PHPConverter(shortSyntax, p.getOption(nomOptP).getArgument());
+		            	c.launchProcedure();
+		            }
 				}
 			}
 		}

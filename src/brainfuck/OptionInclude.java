@@ -8,7 +8,7 @@ package brainfuck;
  * @author Yijie Wang
  * @author Mohd Nijab
  * 
- * @version 1.0
+ * @version 1.1
  */
 public interface OptionInclude {
 	public static final String nomOptP = "-p";
@@ -19,4 +19,10 @@ public interface OptionInclude {
 	public static final String nomOptCheck = "--check";
 	public static final String nomOptTranslate = "--translate";
 	public static final String nomOptTrace = "--trace";
+	
+	public static final String nomOptConvert = "--convert";
+	
+	//public static final String languageJava = "JAVA";
+	public static final String languageC = "C";
+	public static final String languagePHP = "PHP";
 }

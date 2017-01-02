@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.Calendar;
 
 /**
- * Classe permettant la génération d'un fichier log
+ * Classe permettant la gÃ©nÃ©ration d'un fichier log
  * 
  * @author Dylan Ritrovato
  * @author Yijie Wang
@@ -49,7 +49,7 @@ public class TraceLog {
     }
 	
 	/**
-	 * Créé la table de traçage de l'execution 
+	 * CrÃ©Ã© la table de traÃ§age de l'execution 
 	 * 
 	 * @throw IOException
 	 */
@@ -64,7 +64,7 @@ public class TraceLog {
 	}
 	
 	/**
-	 * Remplis la table de traçage de l'execution 
+	 * Remplis la table de traï¿½age de l'execution 
 	 * 
 	 * @param execPointer
 	 * @param dataPointer
@@ -84,7 +84,7 @@ public class TraceLog {
 	}
 	
 	/**
-	 * Ecrit le snap de la mémoire dans le log
+	 * Ecrit le snap de la mï¿½moire dans le log
 	 * 
 	 * @param snapMem
 	 * 
@@ -99,7 +99,7 @@ public class TraceLog {
 	}
 	
 	/**
-	 * Ecrit le snap ds métriques dans le log
+	 * Ecrit le snap ds mï¿½triques dans le log
 	 * 
 	 * @param metrics
 	 * 

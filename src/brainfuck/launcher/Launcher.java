@@ -1,7 +1,7 @@
 package brainfuck.launcher;
 
 /**
- * Launcher contenant la méthode main
+ * Launcher contenant la mÃ©thode main
  * 
  * @author Dylan Ritrovato
  * @author Yijie Wang

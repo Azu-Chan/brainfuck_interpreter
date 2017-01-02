@@ -11,13 +11,13 @@ import brainfuck.exceptions.WrongNumberArgumentsException;
 
 /**
  * Parseur pour les arguments de la ligne de commande, les options
- * sont ajoutées au constructeur au fur et à mesure de l'avancée du projet.
+ * sont ajoutï¿½es au constructeur au fur et ï¿½ mesure de l'avancï¿½e du projet.
  * 
  * @author Dylan Ritrovato
  * @author Yijie Wang
  * @author Mohd Nijab
  * 
- * @version 2.0
+ * @version 2.1
  */
 public class Parser implements OptionInclude{
 	private List<Option> options = new ArrayList<Option>();
@@ -25,7 +25,7 @@ public class Parser implements OptionInclude{
 	
 	/**
 	 * Constructeur, la liste des options est
-	 * crée statiquement ici.
+	 * crï¿½e statiquement ici.
 	 * 
 	 * @param args
 	 */
@@ -39,11 +39,12 @@ public class Parser implements OptionInclude{
 		options.add(new Option(nomOptCheck, false, false));
 		options.add(new Option(nomOptTranslate, false, false));
 		options.add(new Option(nomOptTrace, false, false));
+		options.add(new Option(nomOptConvert, false, false));
 	}
 	
 	/**
 	 * Parse la ligne de commande et stock dans la liste d'options
-	 * les commandes reconnues avec les arguments, les différents 
+	 * les commandes reconnues avec les arguments, les diffï¿½rents 
 	 * tests coupent le programme si les arguments et options sont incorrects
 	 * 
 	 * @throws DuplicateOptionException 
@@ -94,7 +95,7 @@ public class Parser implements OptionInclude{
 	private void testArguments() throws WrongNumberArgumentsException{
 		for(int i = 0; i < argsMain.size(); i++){
 			if(!contiensOption(argsMain.get(i))){
-				System.out.println("Attention : L'argument " + argsMain.get(i) +" est mal placé, il sera donc ignoré.");
+				System.out.println("Attention : L'argument " + argsMain.get(i) +" est mal placï¿½, il sera donc ignorï¿½.");
 			}
 			else{
 				Option op = getOption(argsMain.get(i));
@@ -131,7 +132,7 @@ public class Parser implements OptionInclude{
 	}
 	
 	/**
-	 * Teste si les arguments obligatoires sont présentes
+	 * Teste si les arguments obligatoires sont prï¿½sentes
 	 * 
 	 * @throws ObligatoryOptionMissingException 
 	 */
@@ -146,7 +147,7 @@ public class Parser implements OptionInclude{
 	}
 	
 	/**
-	 * Indique si le nom en paramètre est une option existante
+	 * Indique si le nom en paramï¿½tre est une option existante
 	 * 
 	 * @param nom
 	 * 
@@ -163,7 +164,7 @@ public class Parser implements OptionInclude{
 	}
 	
 	/**
-	 * Retourne une référence sur l'option si elle existe.
+	 * Retourne une rï¿½fï¿½rence sur l'option si elle existe.
 	 * 
 	 * @param nom
 	 * 
