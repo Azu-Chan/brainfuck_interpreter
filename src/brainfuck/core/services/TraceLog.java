@@ -121,7 +121,7 @@ public class TraceLog {
 	public void writeEndOfLog() throws IOException{
 		String line;
 		
-		line = "\r\n\r\n\r\nEND OF LOG FILE";
+		line = "\r\n\r\n\r\nEND OF LOG FILE\r\n";
 
 		logBuff.write(line);
 		

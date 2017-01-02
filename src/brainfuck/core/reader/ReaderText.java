@@ -69,10 +69,10 @@ public class ReaderText extends ReaderBF{
 	 * @throws IsNotBrainfuckInstructionException
 	 */
 	protected void traitementLigne(String ligne) throws IsNotBrainfuckInstructionException{
-		//         On vire le com   // On vire l'indentation
 		if(ligne.equals("#")){
 			ligne = " "; // pour éviter un split qui ne marcherait pas...
 		}
+		//         On vire le com   // On vire l'indentation
 		String l = ligne.split("#")[0].replaceAll("\t| ", "");
 		
 		if(isLigneShortcut(l)){

@@ -20,3 +20,6 @@ doc
 .idea
 brainfuck_interpreter.iml
 .metadata
+brainfuck.sublime-project
+brainfuck.sublime-workspace
+
