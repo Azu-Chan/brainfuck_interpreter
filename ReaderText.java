@@ -1,0 +1,181 @@
+package brainfuck.core.reader;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+
+import brainfuck.Instructions;
+import brainfuck.exceptions.IsNotBrainfuckInstructionException;
+
+/**
+ * ReaderText est la classe qui va lire le fichier brainfuck passé avec "-p" après application des macros
+ * et le transformer en une chaine de caractères uniquement constituée de shortcuts.
+ * 
+ * Cette chaine est ensuite utilisée pour tous les traitements disponibles dans
+ * cet interpréteur de brainfuck.
+ * 
+ * @author Dylan Ritrovato
+ * @author Yijie Wang
+ * @author Mohd Nijab
+ * 
+ * @version 2.3
+ */
+public class ReaderText extends ReaderBF{
+	private FileInputStream prog;
+	private ArrayList<String> function = new ArrayList<String>();
+	private ArrayList<String> contents = new ArrayList<String>();
+
+	/**
+	 * Constructeur d'un ReaderBF.
+	 * 
+	 * @param streamProg
+	 * @throws FileNotFoundException 
+	 */
+	public ReaderText(File streamProg) throws FileNotFoundException {
+		super();
+		prog = new FileInputStream(streamProg);
+	}
+	
+	/**
+	 * cette methode va lire les lignes du programme par le biais
+	 * du BufferReader, chaque ligne sera ensuite traitée séparément
+	 * d'abord par le préprocesseur puis par le traducteur.
+	 * 
+	 * @throws IOException 
+	 * @throws IsNotBrainfuckInstructionException 
+	 */
+	@Override
+	public void readFile() throws IOException, IsNotBrainfuckInstructionException{
+		BufferedReader buffer = new BufferedReader(new InputStreamReader(prog));
+		String line = buffer.readLine();
+		
+		while(line != null){
+			traitementLigne(line);
+			line = buffer.readLine();
+		}
+		
+		buffer.close();
+		prog.close();
+	}
+
+	/**
+	 * cette methode va transformer un raccourci de la ligne passée en paramètre.
+	 * si un shortcut est détecté, la ligne est simplement ajoutée sur la chaîne finale.
+	 * Gère désormais l'indentation et les commentaires (++++ #Ceci est un com)
+	 * 
+	 * @param ligne
+	 * 
+	 * @throws IsNotBrainfuckInstructionException
+	 */
+	protected void traitementLigne(String ligne) throws IsNotBrainfuckInstructionException{
+		//quand il détecte "function_nomFunction(){"
+		if(ligne.contains("{")){
+			String instr = "";
+			//mettre le nom de la fonction dans la liste function
+			function.add(ligne.substring(0, ligne.indexOf('{')));
+			String l = ligne.split("{")[0].replaceAll("\t| ", "");
+			//mettre le contenu de la fonction dans la liste contents
+			contents.add(ligne.substring(0, ligne.indexOf('}')));
+		} 
+		//quand il détecte "function_nomFunction()"
+		if(ligne.contains("function_")){
+			String line = ligne.substring(0, ligne.indexOf('(')-1);
+			if(function.contains(line)){
+				for(int i=0; i<function.length; i++){
+					if(function[i] == line){
+						
+					}
+				}
+			}
+		}
+		
+		//         On vire le com   // On vire l'indentation
+		if(ligne.equals("#")){
+			ligne = " "; // pour éviter un split qui ne marcherait pas...
+		}
+		String l = ligne.split("#")[0].replaceAll("\t| ", "");
+		
+		if(isLigneShortcut(l)){
+			String instr = "";
+			for(int i = 0; i < l.length(); i++){
+				instr += (l.charAt(i));
+				constructionWithShortcut(instr);
+				instr = "";
+			}
+		}
+		else{
+			constructionWithInstr(l);
+		}
+	}
+	
+	/**
+	 * cette methode va transformer l'instruction en raccourci puis
+	 * l'injecter dans la chaîne à l'aide de constructionWithShortcut(String s)
+	 * 
+	 * @param instr
+	 * 
+	 * @throws IsNotBrainfuckInstructionException
+	 */
+	private void constructionWithInstr(String instr) throws IsNotBrainfuckInstructionException{
+		if(isInstruction(instr)){
+			for(Instructions i : Instructions.values()){
+				if(i.getLongSyntax().equals(instr)){
+					constructionWithShortcut(""+i.getShortSyntax());
+				}
+			}
+		}
+		else{
+			throw new IsNotBrainfuckInstructionException(instr);
+		}
+	}
+	
+	/**
+	 * indique si le caractère passé en paramètre est un raccourci
+	 * 
+	 * @param c
+	 * 
+	 * @return booleen
+	 */
+	private boolean isShortcut(char c){
+		for(Instructions i : Instructions.values()){
+			if(i.getShortSyntax() == c){
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * indique si la chaîne passée en paramètre est unne instruction longue
+	 * 
+	 * @param s
+	 * 
+	 * @return booleen
+	 */
+	private boolean isInstruction(String s){
+		for(Instructions i : Instructions.values()){
+			if(i.getLongSyntax().equals(s)){
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * indique si la ligne passée en paramètre est une ligne de shortcut
+	 * 
+	 * @param l
+	 * 
+	 * @return booleen
+	 */
+	private boolean isLigneShortcut(String l){
+		for(int i = 0; i < l.length(); i++){
+			if(!(isShortcut(l.charAt(i)) || l.charAt(i) == ' ' || l.charAt(i) == '\t')) return false;
+		}
+		return true;
+	}
+}
