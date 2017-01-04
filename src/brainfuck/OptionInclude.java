@@ -22,7 +22,7 @@ public interface OptionInclude {
 	
 	public static final String nomOptConvert = "--convert";
 	
-	//public static final String languageJava = "JAVA";
 	public static final String languageC = "C";
 	public static final String languagePHP = "PHP";
+	public static final String annul = "ANNULER";
 }

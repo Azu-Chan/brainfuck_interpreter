@@ -98,6 +98,7 @@ public class ProgramStarter implements OptionInclude {
 						t.writeSnapMemory(pr.consolePrintCellForLog());
 						t.writeMetrics(pr.getMetricsFormated());
 						t.writeEndOfLog();
+		            	System.out.println("Log généré : " + f.getLogFile().getName());
 					}
 					
 					pr.consolePrintCell();
@@ -120,7 +121,8 @@ public class ProgramStarter implements OptionInclude {
 					ImageTranslator i = new ImageTranslator(shortSyntax);
 					i.createImageProg();
 					
-					i.createImage("translated_" + f.getProgFile().getName());
+					i.createImage(f.getProgFile().getName());
+					System.out.println("Fichier d'image programme généré : " + f.getProgFile().getName() + ".bmp");
 				}
 				if(p.getOption(nomOptConvert).getPresent()){
 					Converter c;
@@ -128,20 +130,22 @@ public class ProgramStarter implements OptionInclude {
 					@SuppressWarnings("resource")
 					Scanner scan = new Scanner(System.in);
 					// Invite de saisie
-		            System.out.print("\nSaisir le langage voulu (C PHP)\n> ");
+		            System.out.print("\nSaisir le langage voulu (" + languageC + " " + languagePHP + ") ou " + annul + " pour annuler\n> ");
 		            String word;
 		            do{
 		            	word = scan.next();
 		            	scan.nextLine();
-		            }while (word == null || (!word.equals(languageC) && !word.equals(languagePHP)));
+		            }while (word == null || (!word.equals(languageC) && !word.equals(languagePHP) && !word.equals(annul)));
 		            
 		            if(word.equals(languageC)){
 		            	c = new CConverter(shortSyntax, p.getOption(nomOptP).getArgument());
 		            	c.launchProcedure();
+		            	System.out.println("Fichier converti généré (C) : " + f.getProgFile().getName() + ".c");
 		            }
 		            if(word.equals(languagePHP)){
 		            	c = new PHPConverter(shortSyntax, p.getOption(nomOptP).getArgument());
 		            	c.launchProcedure();
+		            	System.out.println("Fichier converti généré (PHP) : " + f.getProgFile().getName() + ".php");
 		            }
 				}
 			}

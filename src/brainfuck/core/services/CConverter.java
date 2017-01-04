@@ -8,14 +8,32 @@ import java.io.IOException;
 import brainfuck.Instructions;
 import brainfuck.exceptions.IsNotBrainfuckInstructionException;
 
+/**
+ * Transforme du code brainfuck en C
+ * 
+ * @author Dylan Ritrovato
+ * @author Yijie Wang
+ * @author Mohd Nijab
+ * 
+ * @version 1.0
+ */
 public class CConverter extends Converter {
 	private File CFile;
 	private BufferedWriter CBuff;
 
+	/**
+	 * Constructeur...
+	 * 
+	 * @param prog
+	 * @param name
+	 */
 	public CConverter(String prog, String name) {
 		super(prog, name);
 	}
 
+	/**
+	 * Création et initialisation du fichier C
+	 */
 	@Override
 	protected void initialize() throws IOException {
 		CFile = new File(nameProg + ".c");
@@ -25,6 +43,9 @@ public class CConverter extends Converter {
 		CBuff = new BufferedWriter(new FileWriter(CFile, true));
 	}
 
+	/**
+	 * Ecriture de l'entête du fichier C
+	 */
 	@Override
 	protected void writeEntete() throws IOException {
 		String line;
@@ -35,6 +56,9 @@ public class CConverter extends Converter {
         CBuff.write(line);
 	}
 
+	/**
+	 * Ecriture du corps du fichier C
+	 */
 	@Override
 	protected void writeCorpse() throws IOException, IsNotBrainfuckInstructionException {
 		String line;
@@ -72,6 +96,14 @@ public class CConverter extends Converter {
 		CBuff.write(line);
 	}
 	
+	/**
+	 * transformation de l'instruction brainfuck en C
+	 * 
+	 * @param currentInstr
+	 * @param nbOcc
+	 * 
+	 * @return ligne de C à écrire dans le fichier
+	 */
 	private String getLine(char currentInstr, int nbOcc) throws IsNotBrainfuckInstructionException{
 		if(currentInstr == Instructions.INCR.getShortSyntax()){
 			return "\tmem[pointer] += " + nbOcc + "; \r\n";
@@ -100,6 +132,9 @@ public class CConverter extends Converter {
 		throw new IsNotBrainfuckInstructionException(""+currentInstr);
 	}
 
+	/**
+	 * Ecriture de la fin du fichier C
+	 */
 	@Override
 	protected void writeEnd() throws IOException {
 		String line;

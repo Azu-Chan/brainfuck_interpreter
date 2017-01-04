@@ -8,14 +8,32 @@ import java.io.IOException;
 import brainfuck.Instructions;
 import brainfuck.exceptions.IsNotBrainfuckInstructionException;
 
+/**
+ * Transforme du code brainfuck en PHP
+ * 
+ * @author Dylan Ritrovato
+ * @author Yijie Wang
+ * @author Mohd Nijab
+ * 
+ * @version 1.0
+ */
 public class PHPConverter extends Converter {
 	private File PHPFile;
 	private BufferedWriter PHPBuff;
 
+	/**
+	 * Constructeur...
+	 * 
+	 * @param prog
+	 * @param name
+	 */
 	public PHPConverter(String prog, String name) {
 		super(prog, name);
 	}
 
+	/**
+	 * Création et initialisation du fichier C
+	 */
 	@Override
 	protected void initialize() throws IOException {
 		PHPFile = new File(nameProg + ".php");
@@ -25,6 +43,9 @@ public class PHPConverter extends Converter {
 		PHPBuff = new BufferedWriter(new FileWriter(PHPFile, true));
 	}
 
+	/**
+	 * Ecriture de l'entête du fichier C
+	 */
 	@Override
 	protected void writeEntete() throws IOException {
 		String line;
@@ -36,6 +57,9 @@ public class PHPConverter extends Converter {
         PHPBuff.write(line);
 	}
 
+	/**
+	 * Ecriture du corps du fichier PHP
+	 */
 	@Override
 	protected void writeCorpse() throws IOException, IsNotBrainfuckInstructionException {
 		String line;
@@ -73,6 +97,14 @@ public class PHPConverter extends Converter {
 		PHPBuff.write(line);
 	}
 	
+	/**
+	 * transformation de l'instruction brainfuck en PHP
+	 * 
+	 * @param currentInstr
+	 * @param nbOcc
+	 * 
+	 * @return ligne de PHP à écrire dans le fichier
+	 */
 	private String getLine(char currentInstr, int nbOcc) throws IsNotBrainfuckInstructionException{
 		if(currentInstr == Instructions.INCR.getShortSyntax()){
 			return "\t$mem[$pointer] += " + nbOcc + "; \r\n";
@@ -101,6 +133,9 @@ public class PHPConverter extends Converter {
 		throw new IsNotBrainfuckInstructionException(""+currentInstr);
 	}
 
+	/**
+	 * Ecriture de la fin du fichier PHP
+	 */
 	@Override
 	protected void writeEnd() throws IOException {
 		String line;
