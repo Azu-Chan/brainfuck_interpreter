@@ -12,12 +12,12 @@ import brainfuck.exceptions.ImageInterpretationErrorException;
 import brainfuck.exceptions.IsNotBrainfuckInstructionException;
 
 /**
- * ReaderImage est la classe qui va lire le fichier brainfuck passé avec "-p"
- * et le transformer en une chaine de caractères uniquement constituée de shortcuts.
+ * ReaderImage est la classe qui va lire le fichier brainfuck passÃ© avec "-p"
+ * et le transformer en une chaine de caractÃ¨res uniquement constituÃ©e de shortcuts.
  * UNIQUEMENT SI CE FICHIER EST UN fICHIER .bmp !
  * 
- * Cette chaine est ensuite utilisée pour tous les traitements disponibles dans
- * cet interpréteur de brainfuck.
+ * Cette chaine est ensuite utilisÃ©e pour tous les traitements disponibles dans
+ * cet interprÃ©teur de brainfuck.
  * 
  * @author Dylan Ritrovato
  * @author Yijie Wang
@@ -64,7 +64,7 @@ public class ReaderImage extends ReaderBF implements ImageInclude{
 		int[] rgbArray;
 		int i = 0;
 		
-		// pour chaque instruction présumée du programme
+		// pour chaque instruction prÃ©sumÃ©e du programme
 		while(yDeb < longueur){
 			if(xDeb + PIXEL_LENGTH > largeur || yDeb + PIXEL_LENGTH > longueur){
 				throw new ImageInterpretationErrorException();
@@ -88,10 +88,10 @@ public class ReaderImage extends ReaderBF implements ImageInclude{
 			
 			constructionWithPix(rgbArray[0]);
 			
-			// on passe à la colonne suivante
+			// on passe Ã  la colonne suivante
 			xDeb += PIXEL_LENGTH;
 			
-			// si la ligne est complète, on passe à la ligne suivante et on revient à la première colonne
+			// si la ligne est complÃ©te, on passe Ã  la ligne suivante et on revient Ã  la premiÃ¨re colonne
 			if(xDeb >= largeur){
 				xDeb = 0;
 				yDeb += PIXEL_LENGTH;
@@ -102,8 +102,8 @@ public class ReaderImage extends ReaderBF implements ImageInclude{
 	}
 	
 	/**
-	 * cette methode va transformer la couleur récupérée en raccourci puis
-	 * l'injecter dans la chaîne à l'aide de constructionWithShortcut(String s)
+	 * cette methode va transformer la couleur rÃ©cupÃ©rÃ©e en raccourci puis
+	 * l'injecter dans la chaÃ®ne Ã  l'aide de constructionWithShortcut(String s)
 	 * 
 	 * @param rgb
 	 * 

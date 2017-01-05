@@ -14,10 +14,10 @@ import brainfuck.exceptions.IsNotBrainfuckInstructionException;
 import brainfuck.macros.*;
 
 /**
- * MacroReplacer est la classe qui va lire le fichier brainfuck passé avec "-p"
- * et uniquement remplacer les macros détectées par leurs valeurs respectives.
+ * MacroReplacer est la classe qui va lire le fichier brainfuck passÃ© avec "-p"
+ * et uniquement remplacer les macros dÃ©tectÃ©es par leurs valeurs respectives.
  * 
- * Un fichier temporaire assaini est créé à la fin du traitement. Ce fichier sera ensuite utilisé par le readerText.
+ * Un fichier temporaire assaini est crÃ©Ã© Ã  la fin du traitement. Ce fichier sera ensuite utilisÃ© par le readerText.
  * 
  * @author Dylan Ritrovato
  * @author Yijie Wang
@@ -29,7 +29,7 @@ public class MacroReplacer extends ReaderBF {
 	private FileInputStream prog; // prog bf
 	private File progTmp; // prog bf sans macros
 	
-	private BufferedWriter bufOutTmp; // pour écrire sur le tmp
+	private BufferedWriter bufOutTmp; // pour Ã©crire sur le tmp
 	
 	private ArrayList<MacroDefine> diesDefine = new ArrayList<MacroDefine>(); // les define
 	
@@ -47,7 +47,7 @@ public class MacroReplacer extends ReaderBF {
 		
 		bufOutTmp = new BufferedWriter(new FileWriter(progTmp, true));
 		
-		// Supprimer le fichier à la fin du programme
+		// Supprimer le fichier Ã  la fin du programme
 	    progTmp.deleteOnExit();
 	}
 
@@ -75,7 +75,7 @@ public class MacroReplacer extends ReaderBF {
 	}
 	
 	/**
-	 * Traite la ligne actuellement lue et écris le résultat sur le fichier temporaire
+	 * Traite la ligne actuellement lue et Ã©cris le rÃ©sultat sur le fichier temporaire
 	 * 
 	 * @param ligne
 	 * 
@@ -86,7 +86,7 @@ public class MacroReplacer extends ReaderBF {
 		String tLigne = ligne.replaceAll("\t", " ");
 		String[] explodeLigne = tLigne.split(" ");
 		
-		// Mise en mémoire des define
+		// Mise en mÃ©moire des define
 		if(explodeLigne[0].equals(MacroDefine.NAME_MACRO)){
 			if(explodeLigne.length == 3){
 				diesDefine.add(new MacroDefine(explodeLigne[1], explodeLigne[2]));

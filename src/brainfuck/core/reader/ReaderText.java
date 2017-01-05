@@ -11,11 +11,11 @@ import brainfuck.Instructions;
 import brainfuck.exceptions.IsNotBrainfuckInstructionException;
 
 /**
- * ReaderText est la classe qui va lire le fichier brainfuck passé avec "-p" après application des macros
- * et le transformer en une chaine de caractères uniquement constituée de shortcuts.
+ * ReaderText est la classe qui va lire le fichier brainfuck passÃ© avec "-p" aprÃ¨s application des macros
+ * et le transformer en une chaine de caractÃ¨res uniquement constituÃ©e de shortcuts.
  * 
- * Cette chaine est ensuite utilisée pour tous les traitements disponibles dans
- * cet interpréteur de brainfuck.
+ * Cette chaine est ensuite utilisÃ©e pour tous les traitements disponibles dans
+ * cet interprÃ©teur de brainfuck.
  * 
  * @author Dylan Ritrovato
  * @author Yijie Wang
@@ -39,8 +39,8 @@ public class ReaderText extends ReaderBF{
 	
 	/**
 	 * cette methode va lire les lignes du programme par le biais
-	 * du BufferReader, chaque ligne sera ensuite traitée séparément
-	 * d'abord par le préprocesseur puis par le traducteur.
+	 * du BufferReader, chaque ligne sera ensuite traitÃ©e sÃ©parÃ©ment
+	 * d'abord par le prÃ©processeur puis par le traducteur.
 	 * 
 	 * @throws IOException 
 	 * @throws IsNotBrainfuckInstructionException 
@@ -60,9 +60,9 @@ public class ReaderText extends ReaderBF{
 	}
 
 	/**
-	 * cette methode va transformer un raccourci de la ligne passée en paramètre.
-	 * si un shortcut est détecté, la ligne est simplement ajoutée sur la chaîne finale.
-	 * Gère désormais l'indentation et les commentaires (++++ #Ceci est un com)
+	 * cette methode va transformer un raccourci de la ligne passÃ©e en paramÃ¨tre.
+	 * si un shortcut est dÃ©tectÃ©, la ligne est simplement ajoutÃ©e sur la chaÃ®ne finale.
+	 * GÃ©re dÃ©sormais l'indentation et les commentaires (++++ #Ceci est un com)
 	 * 
 	 * @param ligne
 	 * 
@@ -70,7 +70,7 @@ public class ReaderText extends ReaderBF{
 	 */
 	protected void traitementLigne(String ligne) throws IsNotBrainfuckInstructionException{
 		if(ligne.equals("#")){
-			ligne = " "; // pour éviter un split qui ne marcherait pas...
+			ligne = " "; // pour Ã©viter un split qui ne marcherait pas...
 		}
 		//         On vire le com   // On vire l'indentation
 		String l = ligne.split("#")[0].replaceAll("\t| ", "");
@@ -90,7 +90,7 @@ public class ReaderText extends ReaderBF{
 	
 	/**
 	 * cette methode va transformer l'instruction en raccourci puis
-	 * l'injecter dans la chaîne à l'aide de constructionWithShortcut(String s)
+	 * l'injecter dans la chaÃ©ne Ã  l'aide de constructionWithShortcut(String s)
 	 * 
 	 * @param instr
 	 * 
@@ -110,7 +110,7 @@ public class ReaderText extends ReaderBF{
 	}
 	
 	/**
-	 * indique si le caractère passé en paramètre est un raccourci
+	 * indique si le caractÃ¨re passÃ© en paramÃ¨tre est un raccourci
 	 * 
 	 * @param c
 	 * 
@@ -126,7 +126,7 @@ public class ReaderText extends ReaderBF{
 	}
 	
 	/**
-	 * indique si la chaîne passée en paramètre est unne instruction longue
+	 * indique si la chaÃ®ne passÃ©e en paramÃ¨tre est unne instruction longue
 	 * 
 	 * @param s
 	 * 
@@ -142,7 +142,7 @@ public class ReaderText extends ReaderBF{
 	}
 	
 	/**
-	 * indique si la ligne passée en paramètre est une ligne de shortcut
+	 * indique si la ligne passÃ©e en paramÃ¨tre est une ligne de shortcut
 	 * 
 	 * @param l
 	 * 
