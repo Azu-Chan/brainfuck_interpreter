@@ -9,7 +9,7 @@ import brainfuck.exceptions.OutOfMemoryException;
 import brainfuck.exceptions.OverflowException;
 
 /**
- * DataCompute est la classe nécessaire à l'exécution
+ * DataCompute est la classe nÃ©cessaire Ã  l'exÃ©cution
  * d'un programme brainfuck (grille + pointeur) 
  * 
  * @author Dylan Ritrovato
@@ -24,10 +24,10 @@ public class DataCompute {
 
 	/**
 	 * Constructeur
-	 * Le tableau de mémoire a 30000 cases mémoires
+	 * Le tableau de mÃ©moire a 30000 cases mÃ©moires
 	 * Chaque case contient un byte [-128,127] et commence par -128 car byte 
-	 * est comme ça en java, il est passé en excédent
-	 * 128 à la sortie comme à l'entrée afin de simuler un environnement 
+	 * est comme Ã§a en java, il est passÃ© en excÃ©dent
+	 * 128 Ã  la sortie comme Ã  l'entrÃ©e afin de simuler un environnement 
 	 * [0,255]
 	 */
 	public DataCompute(){
@@ -39,9 +39,9 @@ public class DataCompute {
 	}
 
 	/**
-	 * getter de la grille en mémoire
+	 * getter de la grille en mÃ©moire
 	 * 
-	 * @return La mémoire brainfuck.
+	 * @return La mÃ©moire brainfuck.
 	 */
 	public byte[] getGrille(){
 		return grille;
@@ -57,16 +57,16 @@ public class DataCompute {
 	}
 	
 	/**
-	 * getter de la valeur pointée par le pointeur
+	 * getter de la valeur pointÃ©e par le pointeur
 	 * 
-	 * @return La valeur de la case pointée par le pointeur.
+	 * @return La valeur de la case pointÃ©e par le pointeur.
 	 */
 	public byte getPointedValue(){
 		return grille[pointer];
 	}
 
 	/**
-	 * Augmente la valeur de la case mémoire actuellement ciblée
+	 * Augmente la valeur de la case mÃ©moire actuellement ciblÃ©e
 	 * par le pointeur de 1
 	 * 
 	 * @throws OverflowException
@@ -79,7 +79,7 @@ public class DataCompute {
 	}
 
 	/**
-	 * Diminue la valeur de la case mémoire actuellement ciblée
+	 * Diminue la valeur de la case mÃ©moire actuellement ciblÃ©e
 	 * par le pointeur de 1
 	 * 
 	 * @throws OverflowException
@@ -92,7 +92,7 @@ public class DataCompute {
 	}
 
 	/**
-	 * Fait avancer le pointeur à la case mémoire suivante
+	 * Fait avancer le pointeur Ã  la case mÃ©moire suivante
 	 * 
 	 * @throws OutOfMemoryException
 	 */
@@ -104,7 +104,7 @@ public class DataCompute {
 	}
 
 	/**
-	 * Fait reculer le pointeur à la case mémoire précédente
+	 * Fait reculer le pointeur Ã  la case mÃ©moire prÃ©cÃ©dente
 	 * 
 	 * @throws OutOfMemoryException
 	 */
@@ -116,8 +116,8 @@ public class DataCompute {
 	}
 
 	/**
-	 * Ecrit sur la sortie utilisée le caractère correspondant au
-	 * code ascii de la valeur de la case actuellement pointée.
+	 * Ecrit sur la sortie utilisÃ©e le caractÃ©re correspondant au
+	 * code ascii de la valeur de la case actuellement pointÃ©e.
 	 * 
 	 * @param out
 	 * 
@@ -135,21 +135,21 @@ public class DataCompute {
 	}
 	
 	/**
-	 * Injecte dans la case mémoire actuellement pointée la valeur
-	 * numérique du prochain caractère saisi sur l'entrée utilisée
+	 * Injecte dans la case mÃ©moire actuellement pointÃ©e la valeur
+	 * numÃ©rique du prochain caractÃ©re saisi sur l'entrÃ©e utilisÃ©e
 	 * 
 	 * @param in
 	 * 
 	 * @throws IOException 
 	 */
 	public void input(FileInputStream in) throws IOException{
-		// Si in null, entrée standard
+		// Si in null, entrÃ©e standard
 		if(in == null) {
 			char c;
 			@SuppressWarnings("resource")
 			Scanner scan = new Scanner(System.in);
 			// Invite de saisie
-            System.out.print("\nSaisir un caractère pour la case mémoire c" + pointer + "\n> ");
+            System.out.print("\nSaisir un caractÃ¨re pour la case mÃ©moire c" + pointer + "\n> ");
             String word;
             do{
             	word = scan.next();

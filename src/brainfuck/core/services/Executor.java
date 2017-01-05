@@ -19,8 +19,8 @@ import brainfuck.exceptions.OverflowException;
 @SuppressWarnings("unused")
 
 /**
- * Classe qui va interprÈter et exÈcuter le programme brainfuck
- * dÈj‡ traduit en syntaxe courte.
+ * Classe qui va interpr√©ter et ex√©cuter le programme brainfuck
+ * d√©j√† traduit en syntaxe courte.
  * 
  * @author Dylan Ritrovato
  * @author Yijie Wang
@@ -55,7 +55,7 @@ public class Executor{
 		prog = p;
 		if(streamIn != null){
 			try {
-				in = new FileInputStream(streamIn); // null si entrÈe standart
+				in = new FileInputStream(streamIn); // null si entr√©e standart
 			} catch (FileNotFoundException e) {
 				throw new InputMissingFileException(streamIn.getName());
 			} 
@@ -86,7 +86,7 @@ public class Executor{
 	}
 	
 	/**
-	 * cette methode va exÈcuter la chaÓne de caractËres contenant
+	 * cette methode va ex√©cuter la cha√Æne de caract√®res contenant
 	 * le programme brainfuck
 	 * 
 	 * @throws IOException 
@@ -124,7 +124,7 @@ public class Executor{
 	}
 
 	/**
-	 * Cette mÈthode va executer l'instruction passÈe en paramËtre
+	 * Cette m√©thode va executer l'instruction pass√©e en param√®tre
 	 *
 	 * @param instr
 	 * 
@@ -179,8 +179,8 @@ public class Executor{
 	}
 	
 	/**
-	 * Pour lancer la procÈdure de remplissage de la jumpTable
-	 * PASSAGE en complexitÈ N au lieu de N^n
+	 * Pour lancer la proc√©dure de remplissage de la jumpTable
+	 * PASSAGE en complexit√© N au lieu de N^n
 	 */
 	private void fillJumpTable(){
 		Stack<Integer> stockageTemp = new Stack<Integer>();
@@ -242,7 +242,7 @@ public class Executor{
 	}
 	
 	/**
-	 * Permet d'effectuer un saut gÈnÈral d'instruction
+	 * Permet d'effectuer un saut g√©n√©ral d'instruction
 	 * (combine le jump et le back)
 	 * 
 	 * @param instr
@@ -254,18 +254,18 @@ public class Executor{
 	}
 	
 	/**
-	 * Renvoie une rÈfÈrence sur la grille, utilisÈ ‡ des fins
+	 * Renvoie une r√©f√©rence sur la grille, utilis√© √† des fins
 	 * d'affichage.
 	 * 
-	 * @return RÈfÈrence sur la mÈmoire brainfuck de l'exÈcution courante.
+	 * @return R√©f√©rence sur la m√©moire brainfuck de l'ex√©cution courante.
 	 */
 	public byte[] getMemory(){
 		return memory.getGrille();
 	}
 	
 	/**
-	 * Classe interne Bridge qui a pour nÈcessitÈ de reprÈsenter les sauts
-	 * effectuÈs via les JUMP et les BACK
+	 * Classe interne Bridge qui a pour n√©cessit√© de repr√©senter les sauts
+	 * effectu√©s via les JUMP et les BACK
 	 * 
 	 * @author Dylan Ritrovato
 	 * @author Yijie Wang
@@ -284,7 +284,7 @@ public class Executor{
 		}
 		
 		/**
-		 * CrÈÈ un bridge pour sauter des instructions
+		 * Cr√©√© un bridge pour sauter des instructions
 		 * 
 		 * @param positionJump
 		 * @param positionBack
@@ -295,11 +295,11 @@ public class Executor{
 		}
 		
 		/**
-		 * Renvoie la nouvelle valeur de l'execPointer suite ‡ son saut
+		 * Renvoie la nouvelle valeur de l'execPointer suite √† son saut
 		 * 
 		 * @param currentPos
 		 * 
-		 * @return la position ‡ atteindre
+		 * @return la position √† atteindre
 		 */
 		private int getNewExecPointerValue(int currentPos){
 			return bridgeAgregat.get(currentPos);
