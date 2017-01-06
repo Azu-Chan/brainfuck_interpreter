@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import brainfuck.exceptions.UnknowProcedureException;
+import brainfuck.procedure.Function;
+import brainfuck.procedure.Procedure;
 
 public class ProgramStructure {
 	private String mainInstructions;
@@ -34,40 +36,18 @@ public class ProgramStructure {
 	
 	public Procedure getSpecificProcedure(String name) throws UnknowProcedureException{
 		for(Procedure p : procedures){
-			if(p.getNom().equals(name)){
+			if(p.getName().equals(name)){
 				return p;
 			}
 		}
 		throw new UnknowProcedureException(name);
 	}
 	
-	public void addProcedure(String name, String corps, List<String> arguments){
+	public void addProcedure(String name, String corps, List<Integer> arguments){
 		procedures.add(new Procedure(name, corps, arguments));
 	}
 	
-	public void addFunction(String name, String corps, List<String> arguments){
+	public void addFunction(String name, String corps, List<Integer> arguments){
 		procedures.add(new Function(name, corps, arguments));
 	}
-	
-	///////////////////////////////////////////////////////////////////////////////:
-	private class Procedure{
-
-		public Procedure(String name, String corps, List<String> arguments) {
-			// TODO Auto-generated constructor stub
-		}
-
-		public String getNom() {
-			// TODO Auto-generated method stub
-			return null;
-		}
-	}
-	
-	private class Function extends Procedure{
-
-		public Function(String name, String corps, List<String> arguments) {
-			super(name, corps, arguments);
-			// TODO Auto-generated constructor stub
-		}
-	}
-	/////////////////////////////////////////////////////////////////////////////////////
 }
