@@ -6,8 +6,8 @@ import brainfuck.OptionInclude;
 import brainfuck.parser.Parser;
 
 /**
- * Classe dont le but est de créer les références 
- * vers les différents fichiers qui seront utilisés
+ * Classe dont le but est de crÃ©er les rÃ©fÃ©rences 
+ * vers les diffÃ©rents fichiers qui seront utilisÃ©s
  * 
  * @author Dylan Ritrovato
  * @author Yijie Wang
@@ -33,7 +33,7 @@ public class FileCreator implements OptionInclude {
 	}
 	
 	/**
-	 * Crée/ouvre les fichiers spécifiés
+	 * CrÃ©e/ouvre les fichiers spÃ©cifiÃ©s
 	 */
 	public void openFiles(){
 		openProgFile();
@@ -50,7 +50,7 @@ public class FileCreator implements OptionInclude {
 	}
 	
 	/**
-	 * Ouvre le fichier d'entrée si indiqué
+	 * Ouvre le fichier d'entrÃ©e si indiquÃ©
 	 */
 	private void openInFile(){
 		if(parser.getOption(nomOptI).getPresent()){
@@ -59,7 +59,7 @@ public class FileCreator implements OptionInclude {
 	}
 	
 	/**
-	 * Ouvre le fichier de sortie si indiqué
+	 * Ouvre le fichier de sortie si indiquÃ©
 	 */
 	private void openOutFile(){
 		if(parser.getOption(nomOptO).getPresent()){
@@ -68,7 +68,7 @@ public class FileCreator implements OptionInclude {
 	}
 	
 	/**
-	 * Ouvre le fichier log si indiqué
+	 * Ouvre le fichier log si indiquÃ©
 	 */
 	private void openLogFile(){
 		if(parser.getOption(nomOptTrace).getPresent()){

@@ -5,9 +5,9 @@ import brainfuck.ProgramStructure;
 import brainfuck.exceptions.SyntaxErrorException;
 
 /**
- * Checker est la classe n�cessaire lorsque le mot cl� '--check'
+ * Checker est la classe nécessaire lorsque le mot clé '--check'
  * est lu dans les arguments du 'main' ou que le programme doit 
- * �tre ex�cut�. Elle indique si les instructions JUMP et BACK 
+ * être exécuté. Elle indique si les instructions JUMP et BACK 
  * d'un programme sont valides syntaxiquement.
  * 
  * @author Dylan Ritrovato
@@ -33,7 +33,7 @@ private boolean isWellFormed;
     }
 
     /**
-	 * Effectue la v�rification des parenth�ses
+	* Effectue la vérification des parenthèses
 	 */
     public void verify() {
     	for(int i = 0; i < prog.getProgram().length(); i++){
@@ -61,7 +61,7 @@ private boolean isWellFormed;
     }
     
     /**
-	 * Indique si le programme est bien form�.
+	 * Indique si le programme est bien formé.
 	 * 
      * @throws SyntaxErrorException 
 	 */
