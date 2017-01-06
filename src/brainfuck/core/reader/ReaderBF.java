@@ -2,6 +2,7 @@ package brainfuck.core.reader;
 
 import java.io.IOException;
 
+import brainfuck.ProgramStructure;
 import brainfuck.exceptions.ImageInterpretationErrorException;
 import brainfuck.exceptions.IsNotBrainfuckInstructionException;
 
@@ -12,35 +13,25 @@ import brainfuck.exceptions.IsNotBrainfuckInstructionException;
  * @author Yijie Wang
  * @author Mohd Nijab
  * 
- * @version 1.1
+ * @version 1.2
  */
 public abstract class ReaderBF{
-	private String shortSyntax;
+	protected ProgramStructure memProg;
 
 	/**
 	 * Constructeur d'un ReaderBF non instanciable
 	 */
 	public ReaderBF() {
-		shortSyntax = "";
+		memProg = new ProgramStructure();
 	}
 	
 	/**
-	 * Simple getteur de la chaine de caractères contanant la syntaxe courte.
+	 * Simple getteur pour le programme et les fonctions
 	 * 
-	 * @return Une chaine de caractères étant la forme raccourcie du programme
-	 * brainfuck écrit dans le fichier passé en paramètre.
+	 * @return La structure comprenant le programme et les éventuelles fonctions
 	 */
-	public String getShortSyntax(){
-		return shortSyntax;
-	}
-	
-	/**
-	 * cette methode va recopier le raccourci dans la chaîne finale
-	 * 
-	 * @param instr
-	 */
-	protected void constructionWithShortcut(String instr){
-		shortSyntax += instr;
+	public ProgramStructure getProgStruct(){
+		return memProg;
 	}
 	
 	/**

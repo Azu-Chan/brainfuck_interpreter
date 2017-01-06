@@ -23,7 +23,7 @@ import brainfuck.exceptions.IsNotBrainfuckInstructionException;
  * @author Yijie Wang
  * @author Mohd Nijab
  * 
- * @version 1.4
+ * @version 1.5
  */
 public class ReaderImage extends ReaderBF implements ImageInclude{
 	private BufferedImage prog;
@@ -112,7 +112,7 @@ public class ReaderImage extends ReaderBF implements ImageInclude{
 	private void constructionWithPix(int rgb) throws IsNotBrainfuckInstructionException{
 		for(Instructions i : Instructions.values()){
 			if(rgb == i.getRGB()){
-				constructionWithShortcut(""+i.getShortSyntax());
+				memProg.addInstruction(""+i.getShortSyntax());
 				return ;
 			}
 		}

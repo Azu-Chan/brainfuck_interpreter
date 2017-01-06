@@ -3,6 +3,7 @@ package brainfuck.launcher;
 import brainfuck.core.services.*;
 import brainfuck.exceptions.GestionnaireExceptions;
 import brainfuck.OptionInclude;
+import brainfuck.ProgramStructure;
 import brainfuck.core.reader.*;
 import brainfuck.files.FileCreator;
 import brainfuck.parser.Parser;
@@ -54,9 +55,9 @@ public class ProgramStarter implements OptionInclude {
 			}
 			r.readFile();
 			
-			Metrics.setProgSize(r.getShortSyntax().length()); // UPDATE METRIC
+			Metrics.setProgSize(r.getProgStruct().getProgramLenght()); // UPDATE METRIC
 			
-			executeServices(p, f, r.getShortSyntax());
+			executeServices(p, f, r.getProgStruct());
 		}
 		catch(Exception e){
 			GestionnaireExceptions g = new GestionnaireExceptions(e);
@@ -66,18 +67,18 @@ public class ProgramStarter implements OptionInclude {
 	
 	/**
 	 * Ex�cute les diff�rents services en fonction des arguments
-	 * la shortSyntax pass�e en argument est FORCEMENT correcte
+	 * la structure du programme pass�e en argument est FORCEMENT correcte
 	 * suite � sa v�rification plus t�t (readFile)
 	 * 
 	 * @param p
 	 * @param f
 	 * @param shortSyntax
 	 */
-	public void executeServices(Parser p, FileCreator f, String shortSyntax){
+	public void executeServices(Parser p, FileCreator f, ProgramStructure leProgramme){
 		try{
 			if(!p.getOption(nomOptRewrite).getPresent() && !p.getOption(nomOptCheck).getPresent() && !p.getOption(nomOptTranslate).getPresent()
 					&& !p.getOption(nomOptConvert).getPresent()){
-				Checker c = new Checker(shortSyntax);
+				Checker c = new Checker(leProgramme);
 				c.verify();
 				if(c.isWellFormed()){
 					Executor ex;
@@ -85,10 +86,10 @@ public class ProgramStarter implements OptionInclude {
 					if(p.getOption(nomOptTrace).getPresent()){
 						t = new TraceLog(f.getLogFile());
 						t.initializeLogFile();
-						ex = new Executor(shortSyntax, f.getInFile(), f.getOutFile(), t);
+						ex = new Executor(leProgramme, f.getInFile(), f.getOutFile(), t);
 					}
 					else{
-						ex = new Executor(shortSyntax, f.getInFile(), f.getOutFile());
+						ex = new Executor(leProgramme, f.getInFile(), f.getOutFile());
 					}
 					ex.executeProg();
 					
@@ -107,7 +108,7 @@ public class ProgramStarter implements OptionInclude {
 			}
 			else{
 				if(p.getOption(nomOptCheck).getPresent()){
-					Checker c = new Checker(shortSyntax);
+					Checker c = new Checker(leProgramme);
 					c.verify();
 					
 					if(c.isWellFormed()){
@@ -115,10 +116,10 @@ public class ProgramStarter implements OptionInclude {
 					}
 				}
 				if(p.getOption(nomOptRewrite).getPresent()){
-					System.out.println(shortSyntax.toString());
+					System.out.println(leProgramme.getProgram().toString());
 				}
 				if(p.getOption(nomOptTranslate).getPresent()){
-					ImageTranslator i = new ImageTranslator(shortSyntax);
+					ImageTranslator i = new ImageTranslator(leProgramme);
 					i.createImageProg();
 					
 					i.createImage(f.getProgFile().getName());
@@ -138,12 +139,12 @@ public class ProgramStarter implements OptionInclude {
 		            }while (word == null || (!word.equals(languageC) && !word.equals(languagePHP) && !word.equals(annul)));
 		            
 		            if(word.equals(languageC)){
-		            	c = new CConverter(shortSyntax, p.getOption(nomOptP).getArgument());
+		            	c = new CConverter(leProgramme, p.getOption(nomOptP).getArgument());
 		            	c.launchProcedure();
 		            	System.out.println("Fichier converti généré (C) : " + f.getProgFile().getName() + ".c");
 		            }
 		            if(word.equals(languagePHP)){
-		            	c = new PHPConverter(shortSyntax, p.getOption(nomOptP).getArgument());
+		            	c = new PHPConverter(leProgramme, p.getOption(nomOptP).getArgument());
 		            	c.launchProcedure();
 		            	System.out.println("Fichier converti généré (PHP) : " + f.getProgFile().getName() + ".php");
 		            }

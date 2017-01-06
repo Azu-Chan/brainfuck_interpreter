@@ -1,12 +1,13 @@
 package brainfuck.core.services;
 
 import brainfuck.Instructions;
+import brainfuck.ProgramStructure;
 import brainfuck.exceptions.SyntaxErrorException;
 
 /**
- * Checker est la classe nécessaire lorsque le mot clé '--check'
+ * Checker est la classe nï¿½cessaire lorsque le mot clï¿½ '--check'
  * est lu dans les arguments du 'main' ou que le programme doit 
- * être exécuté. Elle indique si les instructions JUMP et BACK 
+ * ï¿½tre exï¿½cutï¿½. Elle indique si les instructions JUMP et BACK 
  * d'un programme sont valides syntaxiquement.
  * 
  * @author Dylan Ritrovato
@@ -16,7 +17,7 @@ import brainfuck.exceptions.SyntaxErrorException;
  * @version 2.1
  */
 public class Checker {
-private String prog;
+private ProgramStructure prog;
 private int nbOfParenthese;
 private boolean isWellFormed;
 	
@@ -25,21 +26,21 @@ private boolean isWellFormed;
  	* 
  	* @param p
  	*/
-    public Checker(String p){
+    public Checker(ProgramStructure p){
         nbOfParenthese = 0;
         prog = p;
         isWellFormed = true;
     }
 
     /**
-	 * Effectue la vérification des parenthèses
+	 * Effectue la vï¿½rification des parenthï¿½ses
 	 */
     public void verify() {
-    	for(int i = 0; i < prog.length(); i++){
-    		if(prog.charAt(i) == Instructions.JUMP.getShortSyntax()){
+    	for(int i = 0; i < prog.getProgram().length(); i++){
+    		if(prog.getProgram().charAt(i) == Instructions.JUMP.getShortSyntax()){
     			nbOfParenthese++;
     		}
-    		if(prog.charAt(i) == Instructions.BACK.getShortSyntax()){
+    		if(prog.getProgram().charAt(i) == Instructions.BACK.getShortSyntax()){
     			nbOfParenthese--;
     			if(nbOfParenthese < 0){
     				isWellFormed = false;
@@ -50,13 +51,17 @@ private boolean isWellFormed;
     		}
     	}
     	
+    	for(Procedure p : prog.getProcedures()){
+    		
+    	}
+    	
     	if(nbOfParenthese != 0){
     		isWellFormed = false;
     	}
     }
     
     /**
-	 * Indique si le programme est bien formé.
+	 * Indique si le programme est bien formï¿½.
 	 * 
      * @throws SyntaxErrorException 
 	 */
