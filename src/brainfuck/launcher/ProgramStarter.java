@@ -13,7 +13,7 @@ import java.util.Scanner;
 import brainfuck.Metrics;
 
 /**
- * Classe dont le but est de faire se d�rouler le programme
+ * Classe dont le but est de faire se dérouler le programme
  * 
  * @author Dylan Ritrovato
  * @author Yijie Wang
@@ -66,9 +66,9 @@ public class ProgramStarter implements OptionInclude {
 	}
 	
 	/**
-	 * Ex�cute les diff�rents services en fonction des arguments
-	 * la structure du programme pass�e en argument est FORCEMENT correcte
-	 * suite � sa v�rification plus t�t (readFile)
+	 * Exécute les différents services en fonction des arguments
+	 * la structure du programme passée en argument est FORCEMENT correcte
+	 * suite à sa vérification plus tôt (readFile)
 	 * 
 	 * @param p
 	 * @param f
