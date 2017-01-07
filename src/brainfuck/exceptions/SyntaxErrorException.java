@@ -1,8 +1,8 @@
 package brainfuck.exceptions;
 
 /**
- * Exception personnalisée, le programme brainfuck
- * est invalide sémantiquement
+ * Exception personnalisÃ©e, le programme brainfuck
+ * est invalide sÃ©mantiquement
  * 
  * @author Dylan Ritrovato
  * @author Yijie Wang
@@ -16,7 +16,7 @@ public class SyntaxErrorException extends Exception implements ExitException {
      * Constructeur.
      */
 	public SyntaxErrorException(){
-		super("ERREUR (4) : Programme sémantiquement incorrect.");
+		super("ERREUR (4) : Programme sÃ©mantiquement incorrect.");
 	}
 	
 	/**
