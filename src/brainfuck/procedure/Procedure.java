@@ -8,7 +8,7 @@ import brainfuck.core.services.Checker;
 import brainfuck.exceptions.SyntaxErrorException;
 
 /**
- * Classe qui va faire le procéduure comme fonction
+ * Classe qui va faire le procÃ©duure comme fonction
  * 
  * @author Dylan Ritrovato
  * @author Yijie Wang
@@ -53,25 +53,25 @@ public class Procedure {
 	}
 	
 	/**
-	 * Getter sur le paramètre
+	 * Getter sur le paramÃ¨tre
 	 * 
-	 * @return le paramètre
+	 * @return le paramÃ¨tre
 	 */
 	public Integer getParameter(Integer nb) {
 		return parameters.get(nb);
 	}
 
 	/**
-	 * Getter sur le nombre de paramètre
+	 * Getter sur le nombre de paramÃ¨tre
 	 * 
-	 * @return le paramètre
+	 * @return le paramÃ¨tre
 	 */
 	public Integer getNbParameter(Integer nb) {
 		return parameters.size();
 	}
 	
 	/**
-	 * Effectue la vérification de la contenu
+	 * Effectue la vÃ©rification de la contenu
 	 * @throws SyntaxErrorException 
 	 */
 	public boolean verify() throws SyntaxErrorException{

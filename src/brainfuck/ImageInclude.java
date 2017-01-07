@@ -13,7 +13,7 @@ import java.awt.Color;
  * @version 1.1
  */
 public interface ImageInclude {
-	// taille en pixel du coté d'un carré pour représenter une instruction brainfuck 
+	// taille en pixel du cotÃ© d'un carrÃ© pour reprÃ©senter une instruction brainfuck 
 	public static final int PIXEL_LENGTH = 3;
 		
 	// RGB de la couleur manquante (noire) pour le traitement d'images (programmes)
