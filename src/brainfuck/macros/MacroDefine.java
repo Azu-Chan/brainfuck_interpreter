@@ -1,7 +1,7 @@
 package brainfuck.macros;
 
 /**
- * Classe pour la macro spéciale DEFINE
+ * Classe pour la macro spÃ©ciale DEFINE
  * 
  * @author Dylan Ritrovato
  * @author Yijie Wang
@@ -11,7 +11,7 @@ package brainfuck.macros;
  */
 public class MacroDefine implements Macros {
 	private String name;
-	private String param1; // valeur à remplacer
+	private String param1; // valeur Ã  remplacer
 	private String param2; // nouvelle valeur
 	
 	public static final String NAME_MACRO = "DEFINE";
@@ -30,7 +30,7 @@ public class MacroDefine implements Macros {
 	}
 	
 	/**
-	 * Getter sur le paramètre à remplacer
+	 * Getter sur le paramÃ¨tre Ã  remplacer
 	 * 
 	 * @return param1
 	 */

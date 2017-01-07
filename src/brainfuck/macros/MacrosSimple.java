@@ -3,7 +3,7 @@ package brainfuck.macros;
 import brainfuck.Instructions;
 
 /**
- * Enumération pour les macros sans paramètres
+ * EnumÃ©ration pour les macros sans paramÃ¨tres
  * 
  * @author Dylan Ritrovato
  * @author Yijie Wang
