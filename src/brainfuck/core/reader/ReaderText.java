@@ -6,9 +6,11 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 import brainfuck.Instructions;
 import brainfuck.exceptions.IsNotBrainfuckInstructionException;
+import brainfuck.exceptions.WrongProcedureDeclarationException;
 
 /**
  * ReaderText est la classe qui va lire le fichier brainfuck passé avec "-p" après application des macros
@@ -25,6 +27,11 @@ import brainfuck.exceptions.IsNotBrainfuckInstructionException;
  */
 public class ReaderText extends ReaderBF{
 	private FileInputStream prog;
+	private boolean inTheMain = false;
+	private String currentProc = null;
+	private String currentProcContent = "";
+	ArrayList<Integer> currentParams = null;
+	
 
 	/**
 	 * Constructeur d'un ReaderBF.
@@ -44,9 +51,10 @@ public class ReaderText extends ReaderBF{
 	 * 
 	 * @throws IOException 
 	 * @throws IsNotBrainfuckInstructionException 
+	 * @throws WrongProcedureDeclarationException 
 	 */
 	@Override
-	public void readFile() throws IOException, IsNotBrainfuckInstructionException{
+	public void readFile() throws IOException, IsNotBrainfuckInstructionException, WrongProcedureDeclarationException{
 		BufferedReader buffer = new BufferedReader(new InputStreamReader(prog));
 		String line = buffer.readLine();
 		
@@ -67,8 +75,9 @@ public class ReaderText extends ReaderBF{
 	 * @param ligne
 	 * 
 	 * @throws IsNotBrainfuckInstructionException
+	 * @throws WrongProcedureDeclarationException 
 	 */
-	protected void traitementLigne(String ligne) throws IsNotBrainfuckInstructionException{
+	protected void traitementLigne(String ligne) throws IsNotBrainfuckInstructionException, WrongProcedureDeclarationException{
 		if(ligne.equals("#")){
 			ligne = " "; // pour éviter un split qui ne marcherait pas...
 		}
@@ -79,34 +88,143 @@ public class ReaderText extends ReaderBF{
 			String instr = "";
 			for(int i = 0; i < l.length(); i++){
 				instr += (l.charAt(i));
-				constructionWithShortcut(instr);
+				if(currentProc == null){
+					inTheMain = true;
+					memProg.addInstruction(instr);
+				}
+				else{
+					currentProcContent += instr;
+				}
 				instr = "";
 			}
 		}
 		else{
-			constructionWithInstr(l);
+			constructionWithOther(l);
 		}
 	}
 	
 	/**
 	 * cette methode va transformer l'instruction en raccourci puis
-	 * l'injecter dans la chaéne à l'aide de constructionWithShortcut(String s)
+	 * l'injecter dans la chaîne à l'aide de constructionWithShortcut(String s)
+	 * Gere désormais les créations et appels de fonction
 	 * 
 	 * @param instr
 	 * 
 	 * @throws IsNotBrainfuckInstructionException
+	 * @throws WrongProcedureDeclarationException 
 	 */
-	private void constructionWithInstr(String instr) throws IsNotBrainfuckInstructionException{
+	private void constructionWithOther(String instr) throws IsNotBrainfuckInstructionException, WrongProcedureDeclarationException{
+		// Instruction normale
 		if(isInstruction(instr)){
 			for(Instructions i : Instructions.values()){
 				if(i.getLongSyntax().equals(instr)){
-					constructionWithShortcut(""+i.getShortSyntax());
+					if(currentProc == null){
+						inTheMain = true;
+						memProg.addInstruction(""+i.getShortSyntax());
+					}
+					else{
+						currentProcContent += instr;
+					}
 				}
 			}
+			return ;
 		}
-		else{
-			throw new IsNotBrainfuckInstructionException(instr);
+		
+		// Entrée procédure ou déclaration
+		if(instr.charAt(0) == '@'){
+			String tempName = new String();
+			ArrayList<Integer >tempParams = new ArrayList<Integer>();
+			
+			int i = 0;
+				
+			for(i = 1; i < instr.length() || instr.charAt(i) == '('; i++){
+				tempName += instr;
+			}
+			if(instr.charAt(i) != '(' || !validFoncName(tempName)){
+				throw new WrongProcedureDeclarationException(instr);
+			}
+			
+			String tempParam = "";
+			for(/* EMPTY */; i < instr.length() || instr.charAt(i) == ')'; i++){
+				if(instr.charAt(i) == ';'){
+					if(tempParam.equals("")){
+						throw new WrongProcedureDeclarationException(instr);
+					}
+					else{
+						tempParams.add(Integer.valueOf(tempParam));
+						tempParam = "";
+					}
+				}
+				else if(instr.charAt(i) >= '0' && instr.charAt(i) <= '9'){
+					tempParam += instr.charAt(i);
+				}
+				else{
+					throw new WrongProcedureDeclarationException(instr);
+				}
+			}
+			if(instr.charAt(i) != ')' || instr.charAt(i-1) == ';'){
+				throw new WrongProcedureDeclarationException(instr);
+			}
+			
+			boolean declaration = false;
+			if(instr.length() == i+2){
+				if(instr.charAt(i+1) == '{'){
+					declaration = true;
+				}
+			}
+			
+			if(declaration == true){
+				if(inTheMain == false && currentProc == null){
+					currentProc = new String(tempName);
+					currentParams = tempParams;
+				}
+				else{
+					throw new WrongProcedureDeclarationException(tempName);
+				}
+			}
+			else{
+				String tmpDeclar = "";
+				tmpDeclar += "@" + tempName + "(";
+				for(int z = 0; z < tempParams.size(); z++){
+					tmpDeclar += String.valueOf(tempParams.get(i));
+					if(z != tempParams.size()-1){
+						tmpDeclar += ";";
+					}
+				}
+				tmpDeclar += ")";
+				if(currentProc != null){
+					currentProcContent += tmpDeclar;
+				}
+				else{
+					memProg.addInstruction(tmpDeclar);
+					inTheMain = true;
+				}
+			}
+			
+			return ;
 		}
+		
+		// Sortie procedure
+		if(instr.equals("}")){
+			if(currentProcContent.contains("$")){
+				memProg.addFunction(currentProc, currentProcContent, currentParams);
+			}
+			else{
+				memProg.addProcedure(currentProc, currentProcContent, currentParams);
+			}
+			currentProcContent = "";
+			currentProc = null;
+			currentParams = null;
+			return ;
+		}
+		
+		// Procedure to function
+		if(instr.equals("$") && currentProc != null){
+			currentProcContent += instr;
+			return ;
+		}
+			
+		throw new IsNotBrainfuckInstructionException(instr);
 	}
 	
 	/**
@@ -151,6 +269,21 @@ public class ReaderText extends ReaderBF{
 	private boolean isLigneShortcut(String l){
 		for(int i = 0; i < l.length(); i++){
 			if(!(isShortcut(l.charAt(i)) || l.charAt(i) == ' ' || l.charAt(i) == '\t')) return false;
+		}
+		return true;
+	}
+	
+	/**
+	 * indique la chaine de caractères est un nom de fonction valide
+	 * 
+	 * @param s
+	 * 
+	 * @return booleen
+	 */
+	private boolean validFoncName(String s){
+		for(int i = 0; i < s.length(); i++){
+			if(!(s.charAt(i) >= '0' && s.charAt(i) <= '9') && !(s.charAt(i) >= 'a' && s.charAt(i) <= 'z') &&
+					!(s.charAt(i) >= 'A' && s.charAt(i) <= 'Z') && s.charAt(i) != '_') return false;
 		}
 		return true;
 	}

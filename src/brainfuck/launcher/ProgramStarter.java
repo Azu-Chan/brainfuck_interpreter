@@ -78,8 +78,15 @@ public class ProgramStarter implements OptionInclude {
 		try{
 			if(!p.getOption(nomOptRewrite).getPresent() && !p.getOption(nomOptCheck).getPresent() && !p.getOption(nomOptTranslate).getPresent()
 					&& !p.getOption(nomOptConvert).getPresent()){
-				Checker c = new Checker(leProgramme);
+				
+				Checker c = new Checker(leProgramme.getProgram());
 				c.verify();
+				for(int i = 0; i < leProgramme.getProcedures().size(); i++){
+					if(c.isWellFormed()){
+						c = new Checker(leProgramme.getProcedures().get(i).getContents());
+						c.verify();
+					}
+				}
 				if(c.isWellFormed()){
 					Executor ex;
 					TraceLog t = null;
@@ -108,9 +115,14 @@ public class ProgramStarter implements OptionInclude {
 			}
 			else{
 				if(p.getOption(nomOptCheck).getPresent()){
-					Checker c = new Checker(leProgramme);
+					Checker c = new Checker(leProgramme.getProgram());
 					c.verify();
-					
+					for(int i = 0; i < leProgramme.getProcedures().size(); i++){
+						if(c.isWellFormed()){
+							c = new Checker(leProgramme.getProcedures().get(i).getContents());
+							c.verify();
+						}
+					}
 					if(c.isWellFormed()){
 						System.out.println("Programme correct syntaxiquement.");
 					}
@@ -119,7 +131,7 @@ public class ProgramStarter implements OptionInclude {
 					System.out.println(leProgramme.getProgram().toString());
 				}
 				if(p.getOption(nomOptTranslate).getPresent()){
-					ImageTranslator i = new ImageTranslator(leProgramme);
+					ImageTranslator i = new ImageTranslator(leProgramme.getProgram());
 					i.createImageProg();
 					
 					i.createImage(f.getProgFile().getName());

@@ -5,6 +5,7 @@ import java.io.IOException;
 import brainfuck.ProgramStructure;
 import brainfuck.exceptions.ImageInterpretationErrorException;
 import brainfuck.exceptions.IsNotBrainfuckInstructionException;
+import brainfuck.exceptions.WrongProcedureDeclarationException;
 
 /**
  * ReaderBF est la superclasse nécessaire à ReaderImage et ReaderText
@@ -40,7 +41,8 @@ public abstract class ReaderBF{
 	 * @throws IOException 
 	 * @throws IsNotBrainfuckInstructionException 
 	 * @throws ImageInterpretationErrorException 
+	 * @throws WrongProcedureDeclarationException 
 	 */
-	public abstract void readFile() throws IOException, IsNotBrainfuckInstructionException, ImageInterpretationErrorException;
+	public abstract void readFile() throws IOException, IsNotBrainfuckInstructionException, ImageInterpretationErrorException, WrongProcedureDeclarationException;
 
 }

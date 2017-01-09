@@ -1,7 +1,6 @@
 package brainfuck.core.services;
 
 import brainfuck.Instructions;
-import brainfuck.ProgramStructure;
 import brainfuck.exceptions.SyntaxErrorException;
 
 /**
@@ -17,7 +16,7 @@ import brainfuck.exceptions.SyntaxErrorException;
  * @version 2.1
  */
 public class Checker {
-private ProgramStructure prog;
+private String prog;
 private int nbOfParenthese;
 private boolean isWellFormed;
 	
@@ -26,7 +25,7 @@ private boolean isWellFormed;
  	* 
  	* @param p
  	*/
-    public Checker(ProgramStructure p){
+    public Checker(String p){
         nbOfParenthese = 0;
         prog = p;
         isWellFormed = true;
@@ -36,11 +35,11 @@ private boolean isWellFormed;
 	* Effectue la vérification des parenthèses
 	 */
     public void verify() {
-    	for(int i = 0; i < prog.getProgram().length(); i++){
-    		if(prog.getProgram().charAt(i) == Instructions.JUMP.getShortSyntax()){
+    	for(int i = 0; i < prog.length(); i++){
+    		if(prog.charAt(i) == Instructions.JUMP.getShortSyntax()){
     			nbOfParenthese++;
     		}
-    		if(prog.getProgram().charAt(i) == Instructions.BACK.getShortSyntax()){
+    		if(prog.charAt(i) == Instructions.BACK.getShortSyntax()){
     			nbOfParenthese--;
     			if(nbOfParenthese < 0){
     				isWellFormed = false;
@@ -49,10 +48,6 @@ private boolean isWellFormed;
     		if(isWellFormed == false){
     			break;
     		}
-    	}
-    	
-    	for(Procedure p : prog.getProcedures()){
-    		
     	}
     	
     	if(nbOfParenthese != 0){

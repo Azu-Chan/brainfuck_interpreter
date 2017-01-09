@@ -27,7 +27,7 @@ public class Procedure {
 	 * 
 	 * @param name, contents, parameters
 	 */
-	public Procedure(String name, String contents,List<Integer> parameters){
+	public Procedure(String name, String contents, List<Integer> parameters){
 		this.name = name;
 		this.contents=contents;
 		this.parameters = new ArrayList<Integer>();
