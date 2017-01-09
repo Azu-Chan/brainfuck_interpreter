@@ -79,12 +79,37 @@ Macros DEFINE :
 * DEFINE \[P1\] \[P2\] -> à partir du moment de sa déclaration, à chaque fois que la séquence de caractères P1 sera rencontrée dans la SUITE du fichier (où qu'elle se trouve), cette séquence sera remplacée par P2. DEFINE est interprétée en priorité des autres macros, les DEFINE sont aussi exécutés dans leur ordre de déclaration. (doit être utilisée SANS autres instructions, macros et commentaires sur la même ligne)
 
 
-V. OPTIONS 
+V. FONCTIONS ET PROCEDURES
+--------------------------
+
+ATTENTION, partie non testée, suceptible de comporter de NOMBREUX BUGS, même de ne pas fonctionner.
+
+Il est désormais possible d'utiliser des fonctions et des procédures dans le programme brainfuck. Celles-ci utilisent une mémoire vierge pour effectuer leurs instructions, il est possible de poser des initialisations dans la grille vierge à l'aide des paramètres.
+
+La déclaration se fait AVANT l'écriture du programme principal brainfuck de cette manière, en une ligne :
+@nom_fonction(param1; param2){
+@ est un tag d'indication. Le nom ne doit comportes que des caractères alphanumériques et le caractère _. les paramètres sont des entiers séparés par des ;. { indique le début du corps.
+
+Une fois dans le corps de la procédure, on ne peux pas déclarer d'autres procédures mais on peut en appeler (voir plus bas). Le corps peut aussi contenir des instructions brainfuck. Il existe un caractère spécial $ qui equivaut à un return dans les autres langages. Si ce caractère est rencontré, le contenu de la case actuellement pointée dans la mémoire de la procédure est copié dans la case actuellement pointé de la procédure appelante ou du programme principal, ce caractère doit être seul sur sa ligne et fait quitter la procédure actuelle.
+
+Pour clore une déclaration, la ligne suivante doit être saisie :
+}
+
+Une fois dans le programme principal ou dans une procédure, on effectue l'appel de cette manière, en une seule ligne :
+@nom_fonction(param1; param2)
+Les paramètres saisis prennent les valeurs des cases indiquées, ces valeurs sont placées dans la novelle mémoire issue de la procédure aux cases indiquées lors de la déclaration en respectant l'ordre.
+
+
+VI. OPTIONS 
 -----------
 
 --check
    
-Cette option permet d'indiquer sur la sorte standard si le programme brainfuck passé à l'aide de -p est valide syntaxiquement du point de vue des instructions JUMP et BACK (ou [ et ]), c'està dire cohérence, nombre de JUMP égal au nombre de BACK, pas de croisements de blocs, etc. Si cette option est appelée, le programme brainfuck passé en paramètre ne sera pas exécuté.
+Cette option permet d'indiquer sur la sorte standard si le programme brainfuck passé à l'aide de -p est valide syntaxiquement du point de vue des instructions JUMP et BACK (ou \[ et \]), c'està dire cohérence, nombre de JUMP égal au nombre de BACK, pas de croisements de blocs, etc. Si cette option est appelée, le programme brainfuck passé en paramètre ne sera pas exécuté.
+
+--convert
+
+Cette option permet de traduire le code du programme brainfuck passé en paramètre en code source d'un autre langage (C ou PHP, demandé explicitement à l'utilisateur le moment venu), le code généré peut ensuite être compilé puis exécuté avec les prgrammes de votre choix. Attention, cette option ne fonctionnera pas sur un fichier comportant des procédures et/ou des fonctions.
 
 -i	
 
@@ -107,8 +132,8 @@ Cette option permet de renvoyer sur la sorte standard le programme brainfuck pas
 Cette options permet de transformer le programme brainfuck passé en paramètre en une représentation image au format bmp de celui-ci. Le fichier de sortie est crée dans le répertoire courant et se nomme 'translated_nomFichier.bmp'.
 
 
-VI. EXCEPTIONS
--------------
+VII. EXCEPTIONS
+---------------
 
 Arrêt du programme si une des erreures suivantes est déclanchée :
 * ERREUR (1) : Une case mémoire contient une valeur en dehors de \[0;255\] (pour l'utilisateur).
@@ -120,13 +145,15 @@ Arrêt du programme si une des erreures suivantes est déclanchée :
 * ERREUR (7) : Une des options au lancement n'a pas le bon nombre d'argument.
 * ERREUR (8) : L'image passée en paramètre (avec '-p') n'est pas interprétable.
 * ERREUR (9) : L'instruction lue n'est pas une instruction brainfuck.
+* ERREUR (10) : La fonction/procédure saisie n'a pas été déclarée.
+* ERREUR (11) : La fonction/procédure saisie a mal été déclarée.
 
 * ERREUR (X) : Fichier introuvable, buffer saturé, etc.
 
 * AVERTISEMENT si : Un argument est mal placé (lié à aucune option), mais pas d'arrêt du programme.
 
 
-VII. DIVERS
+VIII. DIVERS
 ----------
 
 Ce programme est un projet réalisé dans le cadre du SI3 de Polytech Nice Sophia-Antipolis, année 2016 par l'équipe Triplot, composée de Yijie Wang, Mohd Najib et Dylan Ritrovato. Il y a une possibilité que des bugs non détectés soient présents, si tel est le cas, vous pouvez les signaler par mail à dylan.xanto@gmail.com. Merci de votre compréhension.
