@@ -151,12 +151,12 @@ public class ProgramStarter implements OptionInclude {
 		            }while (word == null || (!word.equals(languageC) && !word.equals(languagePHP) && !word.equals(annul)));
 		            
 		            if(word.equals(languageC)){
-		            	c = new CConverter(leProgramme, p.getOption(nomOptP).getArgument());
+		            	c = new CConverter(leProgramme.getProgram(), p.getOption(nomOptP).getArgument());
 		            	c.launchProcedure();
 		            	System.out.println("Fichier converti généré (C) : " + f.getProgFile().getName() + ".c");
 		            }
 		            if(word.equals(languagePHP)){
-		            	c = new PHPConverter(leProgramme, p.getOption(nomOptP).getArgument());
+		            	c = new PHPConverter(leProgramme.getProgram(), p.getOption(nomOptP).getArgument());
 		            	c.launchProcedure();
 		            	System.out.println("Fichier converti généré (PHP) : " + f.getProgFile().getName() + ".php");
 		            }

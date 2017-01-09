@@ -37,6 +37,14 @@ public class DataCompute {
 			grille[i] = Byte.MIN_VALUE;
 		}
 	}
+	
+	public byte getValue(int pos){
+		return grille[pos];
+	}
+	
+	public void setValue(int pos, byte val){
+		grille[pos] = val;
+	}
 
 	/**
 	 * getter de la grille en mémoire

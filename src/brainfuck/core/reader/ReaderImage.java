@@ -113,6 +113,7 @@ public class ReaderImage extends ReaderBF implements ImageInclude{
 		for(Instructions i : Instructions.values()){
 			if(rgb == i.getRGB()){
 				memProg.addInstruction(""+i.getShortSyntax());
+				memProg.incrementProgramLenght();
 				return ;
 			}
 		}

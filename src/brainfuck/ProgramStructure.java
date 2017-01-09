@@ -25,6 +25,10 @@ public class ProgramStructure {
 		return programLenght;
 	}
 	
+	public void incrementProgramLenght(){
+		programLenght++;
+	}
+	
 	public void addInstruction(String instr){
 		mainInstructions += instr;
 		programLenght++;

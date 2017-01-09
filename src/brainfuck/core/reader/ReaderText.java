@@ -91,6 +91,7 @@ public class ReaderText extends ReaderBF{
 				if(currentProc == null){
 					inTheMain = true;
 					memProg.addInstruction(instr);
+					memProg.incrementProgramLenght(); //UPDATE METRIC
 				}
 				else{
 					currentProcContent += instr;
@@ -121,6 +122,7 @@ public class ReaderText extends ReaderBF{
 					if(currentProc == null){
 						inTheMain = true;
 						memProg.addInstruction(""+i.getShortSyntax());
+						memProg.incrementProgramLenght(); //UPDATE METRIC
 					}
 					else{
 						currentProcContent += instr;
@@ -197,6 +199,7 @@ public class ReaderText extends ReaderBF{
 				}
 				else{
 					memProg.addInstruction(tmpDeclar);
+					memProg.incrementProgramLenght(); //UPDATE METRIC
 					inTheMain = true;
 				}
 			}

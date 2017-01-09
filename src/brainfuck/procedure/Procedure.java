@@ -66,7 +66,7 @@ public class Procedure {
 	 * 
 	 * @return le paramètre
 	 */
-	public Integer getNbParameter(Integer nb) {
+	public Integer getNbParameter() {
 		return parameters.size();
 	}
 	

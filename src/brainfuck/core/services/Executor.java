@@ -5,16 +5,19 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Stack;
 
 import brainfuck.Instructions;
 import brainfuck.Metrics;
-
+import brainfuck.ProgramStructure;
 import brainfuck.exceptions.InputMissingFileException;
 import brainfuck.exceptions.IsNotBrainfuckInstructionException;
 import brainfuck.exceptions.OutOfMemoryException;
 import brainfuck.exceptions.OverflowException;
+import brainfuck.exceptions.UnknowProcedureException;
+import brainfuck.exceptions.WrongProcedureDeclarationException;
 
 @SuppressWarnings("unused")
 
@@ -30,7 +33,7 @@ import brainfuck.exceptions.OverflowException;
  */
 public class Executor{
 	private DataCompute memory;
-	private String prog;
+	private ProgramStructure prog;
 	private FileInputStream in = null;
 	private FileOutputStream out = null;
 	
@@ -51,7 +54,7 @@ public class Executor{
      * @throws InputMissingFileException 
      * @throws FileNotFoundException 
 	 */
-	public Executor(String p, File streamIn, File streamOut) throws InputMissingFileException, FileNotFoundException{
+	public Executor(ProgramStructure p, File streamIn, File streamOut) throws InputMissingFileException, FileNotFoundException{
 		prog = p;
 		if(streamIn != null){
 			try {
@@ -80,7 +83,7 @@ public class Executor{
      * @throws InputMissingFileException 
      * @throws FileNotFoundException 
 	 */
-	public Executor(String p, File streamIn, File streamOut, TraceLog traceLog) throws InputMissingFileException, FileNotFoundException{
+	public Executor(ProgramStructure p, File streamIn, File streamOut, TraceLog traceLog) throws InputMissingFileException, FileNotFoundException{
 		this(p, streamIn, streamOut);
 		this.traceLog = traceLog;
 	}
@@ -93,8 +96,10 @@ public class Executor{
 	 * @throws OutOfMemoryException 
 	 * @throws OverflowException 
 	 * @throws IsNotBrainfuckInstructionException 
+	 * @throws UnknowProcedureException 
+	 * @throws WrongProcedureDeclarationException 
 	 */
-	public void executeProg() throws IOException, OverflowException, OutOfMemoryException, IsNotBrainfuckInstructionException{
+	public void executeProg() throws IOException, OverflowException, OutOfMemoryException, IsNotBrainfuckInstructionException, UnknowProcedureException, WrongProcedureDeclarationException{
 		fillJumpTable();
 		
 		if(traceLog != null){
@@ -103,10 +108,10 @@ public class Executor{
 		
 		Metrics.setExecTimeDeb(); // UPDATE METRIC
 		
-		for(execPointer = 0; execPointer < prog.length(); execPointer++){
+		for(execPointer = 0; execPointer < prog.getProgram().length(); execPointer++){
 			Metrics.incrementExecMove(); // UPDATE METRIC
 			
-    		executeInstruction(prog.charAt(execPointer));
+    		executeInstruction(prog.getProgram().charAt(execPointer));
     		
     		if(traceLog != null){
     			traceLog.writeLineTableLog(execPointer, memory.getPointerPos(), (byte)(memory.getPointedValue()+128));
@@ -132,9 +137,11 @@ public class Executor{
 	 * @throws OverflowException 
 	 * @throws OutOfMemoryException 
 	 * @throws IsNotBrainfuckInstructionException 
+	 * @throws UnknowProcedureException 
+	 * @throws WrongProcedureDeclarationException 
 	 */
 
-	private void executeInstruction(char instr) throws IOException, OverflowException, OutOfMemoryException, IsNotBrainfuckInstructionException {
+	private void executeInstruction(char instr) throws IOException, OverflowException, OutOfMemoryException, IsNotBrainfuckInstructionException, UnknowProcedureException, WrongProcedureDeclarationException {
 		if(instr == Instructions.INCR.getShortSyntax()){
 			Metrics.incrementDataWrite(); // UPDATE METRIC
 			memory.increment();
@@ -175,9 +182,146 @@ public class Executor{
 			bound(']');
 			return ;
 		}
+		if(instr == '@'){
+			executeFonction();
+		}
 		throw new IsNotBrainfuckInstructionException(""+instr);
 	}
 	
+	private void executeFonction() throws UnknowProcedureException, WrongProcedureDeclarationException, IOException, OverflowException, OutOfMemoryException, IsNotBrainfuckInstructionException {
+		class ExecutorFunctions{
+			DataCompute mem;
+			String functionCorpse;
+			int pointer;
+			Object container;
+			
+			ExecutorFunctions(String instructions, Object container){
+				memory = new DataCompute();
+				functionCorpse = instructions;
+				pointer = 0;
+				this.container = container;
+			}
+			
+			void executeFonc() throws IOException, OverflowException, OutOfMemoryException, IsNotBrainfuckInstructionException, UnknowProcedureException, WrongProcedureDeclarationException{
+				for(pointer = 0; pointer < functionCorpse.length(); pointer++){
+					executeInstruction(functionCorpse.charAt(pointer));
+				}
+			}
+			
+			void executeInstruction(char instr) throws IOException, OverflowException, OutOfMemoryException, IsNotBrainfuckInstructionException, UnknowProcedureException, WrongProcedureDeclarationException {
+				if(instr == Instructions.INCR.getShortSyntax()){
+					mem.increment();
+					return ;
+				}
+				if(instr == Instructions.DECR.getShortSyntax()){
+					mem.decrement();
+					return ;
+				}
+				if(instr == Instructions.LEFT.getShortSyntax()){
+					mem.pointerLeft();
+					return ;
+				}
+				if(instr == Instructions.RIGHT.getShortSyntax()){
+					mem.pointerRight();
+					return ;
+				}
+				if(instr == Instructions.OUT.getShortSyntax()){
+					mem.output(out);
+					return ;
+				}
+				if(instr == Instructions.IN.getShortSyntax()){
+					mem.input(in);
+					return ;
+				}
+				if(instr == Instructions.JUMP.getShortSyntax()){
+					jump(mem, functionCorpse, pointer);
+					return ;
+				}
+				if(instr == Instructions.BACK.getShortSyntax()){
+					back(mem, functionCorpse, pointer);
+					return ;
+				}
+				if(instr == '@'){
+					String nameF = "";
+					ArrayList<Integer> paramsF = new ArrayList<Integer>();
+					pointer++;
+					while(functionCorpse.charAt(execPointer) != '('){
+						nameF += functionCorpse.charAt(execPointer);
+						pointer++;
+					}
+					String tmp = "";
+					while(functionCorpse.charAt(pointer) != ')'){
+						if(functionCorpse.charAt(pointer) == ';'){
+							paramsF.add(Integer.valueOf(tmp));
+							tmp = "";
+						}
+						else{
+							tmp += functionCorpse.charAt(pointer);
+						}
+						pointer++;
+					}
+					paramsF.add(Integer.valueOf(tmp));
+					tmp = "";
+					
+					if(paramsF.size() == prog.getSpecificProcedure(nameF).getNbParameter()){
+						ExecutorFunctions ex = new ExecutorFunctions(prog.getSpecificProcedure(nameF).getContents(), this);
+						for(int k = 0; k < paramsF.size(); k++){
+							ex.mem.setValue(prog.getSpecificProcedure(nameF).getParameter(k), this.mem.getValue(paramsF.get(k)));
+						}
+						ex.executeFonc();
+					}
+					else{
+						throw new WrongProcedureDeclarationException(nameF);
+					}
+				}
+				if(instr == '$'){
+					if(container.getClass().equals(ExecutorFunctions.class)){
+						((ExecutorFunctions)container).mem.setValue(((ExecutorFunctions)container).pointer, mem.getPointedValue());
+						pointer = functionCorpse.length()-1;
+					}
+					else{
+						((Executor)container).memory.setValue(((Executor)container).execPointer, mem.getPointedValue());
+						pointer = functionCorpse.length()-1;
+					}
+				}
+				throw new IsNotBrainfuckInstructionException(""+instr);
+			}
+			
+		}
+		
+		String nameF = "";
+		ArrayList<Integer> paramsF = new ArrayList<Integer>();
+		execPointer++;
+		while(prog.getProgram().charAt(execPointer) != '('){
+			nameF += prog.getProgram().charAt(execPointer);
+			execPointer++;
+		}
+		String tmp = "";
+		while(prog.getProgram().charAt(execPointer) != ')'){
+			if(prog.getProgram().charAt(execPointer) == ';'){
+				paramsF.add(Integer.valueOf(tmp));
+				tmp = "";
+			}
+			else{
+				tmp += prog.getProgram().charAt(execPointer);
+			}
+			execPointer++;
+		}
+		paramsF.add(Integer.valueOf(tmp));
+		tmp = "";
+		
+		if(paramsF.size() == prog.getSpecificProcedure(nameF).getNbParameter()){
+			ExecutorFunctions ex = new ExecutorFunctions(prog.getSpecificProcedure(nameF).getContents(), this);
+			for(int k = 0; k < paramsF.size(); k++){
+				ex.mem.setValue(prog.getSpecificProcedure(nameF).getParameter(k), this.memory.getValue(paramsF.get(k)));
+			}
+			ex.executeFonc();
+		}
+		else{
+			throw new WrongProcedureDeclarationException(nameF);
+		}
+	}
+
 	/**
 	 * Pour lancer la procédure de remplissage de la jumpTable
 	 * PASSAGE en complexité N au lieu de N^n
@@ -185,11 +329,11 @@ public class Executor{
 	private void fillJumpTable(){
 		Stack<Integer> stockageTemp = new Stack<Integer>();
 		
-		for(execPointer = 0; execPointer < prog.length(); execPointer++){
-			if(prog.charAt(execPointer) == '['){
+		for(execPointer = 0; execPointer < prog.getProgram().length(); execPointer++){
+			if(prog.getProgram().charAt(execPointer) == '['){
 				stockageTemp.push(new Integer(execPointer));
 			}
-			if(prog.charAt(execPointer) == ']'){
+			if(prog.getProgram().charAt(execPointer) == ']'){
 				jumpTable.createBridge(stockageTemp.pop(), execPointer);
 			}
 		}
@@ -200,18 +344,18 @@ public class Executor{
 	 * 
 	 * @deprecated
 	 */
-	private void jump(){
-		if(memory.getPointedValue() == Byte.MIN_VALUE){
+	private void jump(DataCompute me, String pr, int ptr){
+		if(me.getPointedValue() == Byte.MIN_VALUE){
 			int parentheseCount = 0;
-			while(execPointer < prog.length()){
-				execPointer++;
-				if(prog.charAt(execPointer) == '['){
+			while(ptr < pr.length()){
+				ptr++;
+				if(pr.charAt(ptr) == '['){
 					parentheseCount++;
 				}
-				if(prog.charAt(execPointer) == ']' && (parentheseCount == 0)){
+				if(pr.charAt(ptr) == ']' && (parentheseCount == 0)){
 					return ;
 				}
-				if(prog.charAt(execPointer) == ']' && (parentheseCount != 0)){
+				if(pr.charAt(ptr) == ']' && (parentheseCount != 0)){
 					parentheseCount--;
 				}
 			}
@@ -223,18 +367,18 @@ public class Executor{
 	 * 
 	 * @deprecated
 	 */
-	private void back(){
-		if(memory.getPointedValue() != Byte.MIN_VALUE){
+	private void back(DataCompute me, String pr, int ptr){
+		if(me.getPointedValue() != Byte.MIN_VALUE){
 			int parentheseCount = 0;
-			while(execPointer >= 0){
-				execPointer--;
-				if(prog.charAt(execPointer) == ']'){
+			while(ptr >= pr.length()){
+				ptr--;
+				if(pr.charAt(ptr) == ']'){
 					parentheseCount++;
 				}
-				if(prog.charAt(execPointer) == '[' && (parentheseCount == 0)){
+				if(pr.charAt(ptr) == '[' && (parentheseCount == 0)){
 					return ;
 				}
-				if(prog.charAt(execPointer) == '[' && (parentheseCount != 0)){
+				if(pr.charAt(ptr) == '[' && (parentheseCount != 0)){
 					parentheseCount--;
 				}
 			}
