@@ -11,21 +11,17 @@ bfck......................Script bash d'exécution du JAR brainfuck.jar
 
 brainfuck.jar.........Dernière version fonctionnelle du projet
 
-creation\_du\_jar..... Etapes en images expliquant comment créer l'ARchive Java à l'aide des fichiers ici présents
-
-creation\_du\_script... Etapes en images expliquant comment créer le script de lancement à l'aide des fichiers ici présents
-
 demos..................Démos disponibles pour tester le programme
 
 README.md.......Ce fichier
 
 src/brainfuck........Répertoire contenant les fichiers source du projet
 
-src/test...........Répertoire contenant les fichiers de test du projet
+src/test...........Répertoire contenant les fichiers de test du projet (à venir...)
 
 
 II. Utilisation 
----------------
+---------------g
 
 ./bfck \[--option(s)\] \[-p\] \[fichier\] \[-option(s)\] \[argument(s)\]
 
@@ -85,6 +81,10 @@ V. OPTIONS
 --check
    
 Cette option permet d'indiquer sur la sorte standard si le programme brainfuck passé à l'aide de -p est valide syntaxiquement du point de vue des instructions JUMP et BACK (ou [ et ]), c'està dire cohérence, nombre de JUMP égal au nombre de BACK, pas de croisements de blocs, etc. Si cette option est appelée, le programme brainfuck passé en paramètre ne sera pas exécuté.
+
+--convert
+
+Cette option permet de traduire le code du programme brainfuck passé en paramètre en code source d'un autre langage (C ou PHP, demandé explicitement à l'utilisateur le moment venu), le code généré peut ensuite être compilé puis exécuté avec les prgrammes de votre choix (par exemple gcc).
 
 -i	
 
