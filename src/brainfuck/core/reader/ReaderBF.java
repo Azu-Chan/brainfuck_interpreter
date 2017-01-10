@@ -6,7 +6,7 @@ import brainfuck.exceptions.ImageInterpretationErrorException;
 import brainfuck.exceptions.IsNotBrainfuckInstructionException;
 
 /**
- * ReaderBF est la superclasse nécessaire à ReaderImage et ReaderText
+ * ReaderBF est la superclasse nÃ©cessaire Ã  ReaderImage et ReaderText
  * 
  * @author Dylan Ritrovato
  * @author Yijie Wang
@@ -25,17 +25,17 @@ public abstract class ReaderBF{
 	}
 	
 	/**
-	 * Simple getteur de la chaine de caractères contanant la syntaxe courte.
+	 * Simple getteur de la chaine de caractÃ¨res contanant la syntaxe courte.
 	 * 
-	 * @return Une chaine de caractères étant la forme raccourcie du programme
-	 * brainfuck écrit dans le fichier passé en paramètre.
+	 * @return Une chaine de caractÃ¨res Ã©tant la forme raccourcie du programme
+	 * brainfuck Ã©crit dans le fichier passÃ© en paramÃ¨tre.
 	 */
 	public String getShortSyntax(){
 		return shortSyntax;
 	}
 	
 	/**
-	 * cette methode va recopier le raccourci dans la chaîne finale
+	 * cette methode va recopier le raccourci dans la chaÃ®ne finale
 	 * 
 	 * @param instr
 	 */

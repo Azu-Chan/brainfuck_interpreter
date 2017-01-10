@@ -38,8 +38,6 @@ public abstract class Converter {
 	 */
 	protected abstract void writeEntete() throws IOException;
 	
-	//protected abstract void writeFunct();
-	
 	/**
 	 * Prototype de l'écriture du corps du fichier
 	 */

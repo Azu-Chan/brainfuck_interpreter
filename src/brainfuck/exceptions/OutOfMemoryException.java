@@ -1,8 +1,8 @@
 package brainfuck.exceptions;
 
 /**
- * Exception personnalisée, le pointer de la 
- * mémoire brainfuck est sortie de sa plage de valeurs
+ * Exception personnalisÃ©e, le pointer de la 
+ * mÃ©moire brainfuck est sortie de sa plage de valeurs
  * 
  * @author Dylan Ritrovato
  * @author Yijie Wang
@@ -19,7 +19,7 @@ public class OutOfMemoryException extends Exception implements ExitException {
      * @param pointer
      */
 	public OutOfMemoryException(int pointer){
-		super("ERREUR (2) : Le pointeur est en dehors de la plage mémoire définie (" + pointer + ").");
+		super("ERREUR (2) : Le pointeur est en dehors de la plage mÃ©moire dÃ©finie (" + pointer + ").");
 	}
 	
 	/**

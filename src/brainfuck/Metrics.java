@@ -1,7 +1,7 @@
 package brainfuck;
 
 /**
- * Classe qui stocke les métriques...
+ * Classe qui stocke les mÃ©triques...
  * 
  * @author Dylan Ritrovato
  * @author Yijie Wang
@@ -40,30 +40,30 @@ public abstract class Metrics{
     }
     
     /**
- 	* Setter pour le début du temps d'exécution du programme brainfuck (calculé au lancement de la méthode)
+ 	* Setter pour le dÃ©but du temps d'exÃ©cution du programme brainfuck (calculÃ© au lancement de la mÃ©thode)
  	*/
     public static void setExecTimeDeb(){
     	TEMPS_EXEC_DEB = System.nanoTime();
     }
     
     /**
- 	* Setter pour le temps d'exécution du programme brainfuck (calculé au lancement de la méthode)
+ 	* Setter pour le temps d'exÃ©cution du programme brainfuck (calculÃ© au lancement de la mÃ©thode)
  	*/
     public static void setExecTime(){
     	EXEC_TIME = System.nanoTime() - TEMPS_EXEC_DEB;
     }
    
     /**
- 	* Getter pour le temps d'exécution du programme brainfuck
+ 	* Getter pour le temps d'exÃ©cution du programme brainfuck
  	* 
- 	* @return temps d'exécution du programme
+ 	* @return temps d'exÃ©cution du programme
  	*/
     public static long getExecTime(){
     	return EXEC_TIME;
     }
     
     /**
- 	* Incrémente l'exec move de 1
+ 	* IncrÃ©mente l'exec move de 1
  	*/
     public static void incrementExecMove(){
     	EXEC_MOVE++;
@@ -79,7 +79,7 @@ public abstract class Metrics{
     }
     
     /**
- 	* Incrémente le data move de 1
+ 	* IncrÃ©mente le data move de 1
  	*/
     public static void incrementDataMove(){
     	DATA_MOVE++;
@@ -95,7 +95,7 @@ public abstract class Metrics{
     }
     
     /**
- 	* Incrémente le data write de 1
+ 	* IncrÃ©mente le data write de 1
  	*/
     public static void incrementDataWrite(){
     	DATA_WRITE++;
@@ -111,7 +111,7 @@ public abstract class Metrics{
     }
     
     /**
- 	* Incrémente le data read de 1
+ 	* IncrÃ©mente le data read de 1
  	*/
     public static void incrementDataRead(){
     	DATA_READ++;

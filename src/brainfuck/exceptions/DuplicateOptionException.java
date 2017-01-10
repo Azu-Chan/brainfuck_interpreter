@@ -1,7 +1,7 @@
 package brainfuck.exceptions;
 
 /**
- * Exception personnalisée, une option de la ligne de commande est présente plusieurs fois
+ * Exception personnalisÃ©e, une option de la ligne de commande est prÃ©sente plusieurs fois
  * 
  * @author Dylan Ritrovato
  * @author Yijie Wang
@@ -18,7 +18,7 @@ public class DuplicateOptionException extends Exception implements ExitException
      * @param option
      */
 	public DuplicateOptionException(String option){
-		super("ERREUR (5) : l'option " + option + " est présente plus d'une fois.");
+		super("ERREUR (5) : l'option " + option + " est prÃ©sente plus d'une fois.");
 	}
 	
 	/**

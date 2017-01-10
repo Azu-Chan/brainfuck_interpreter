@@ -1,7 +1,7 @@
 package brainfuck.exceptions;
 
 /**
- * Exception personnalisée, l'ardument de l'option -i ne peut pas ouvrir de fichier...
+ * Exception personnalisÃ©e, l'ardument de l'option -i ne peut pas ouvrir de fichier...
  * 
  * @author Dylan Ritrovato
  * @author Yijie Wang
@@ -18,7 +18,7 @@ public class InputMissingFileException extends Exception implements ExitExceptio
      * @param nameFile
      */
 	public InputMissingFileException(String nameFile){
-		super("ERREUR (3) : le fichier d'entrée " + nameFile + " ne peut pas être ouvert ou n'existe pas.");
+		super("ERREUR (3) : le fichier d'entrÃ©e " + nameFile + " ne peut pas Ãªtre ouvert ou n'existe pas.");
 	}
 	
 	/**

@@ -1,8 +1,8 @@
 package brainfuck.exceptions;
 
 /**
- * Exception personnalisée, l'image ne correcpond pas
- * à un fichier brainfuck valide.
+ * Exception personnalisÃ©e, l'image ne correcpond pas
+ * Ã  un fichier brainfuck valide.
  * 
  * @author Dylan Ritrovato
  * @author Yijie Wang
@@ -17,7 +17,7 @@ public class ImageInterpretationErrorException extends Exception implements Exit
      * Constructeur.
      */
 	public ImageInterpretationErrorException(){
-		super("ERREUR (8) : L'image ne peut pas être interprétée comme un programme brainfuck.");
+		super("ERREUR (8) : L'image ne peut pas Ãªtre interprÃ©tÃ©e comme un programme brainfuck.");
 	}
 	
 	

@@ -1,7 +1,7 @@
 package brainfuck.exceptions;
 
 /**
- * Exception personnalisée, une case de la mémoire brainfuck 
+ * Exception personnalisÃ©e, une case de la mÃ©moire brainfuck 
  * contient une valeur interdite
  * 
  * @author Dylan Ritrovato
@@ -20,7 +20,7 @@ public class OverflowException extends Exception implements ExitException {
      * @param value
      */
 	public OverflowException(int pointer, int value){
-		super("ERREUR (1) : Overflow sur la case mémoire " + pointer + " (" + value + ").");
+		super("ERREUR (1) : Overflow sur la case mÃ©moire " + pointer + " (" + value + ").");
 	}
 	
 	/**

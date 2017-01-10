@@ -5,7 +5,7 @@ import java.util.concurrent.TimeUnit;
 import brainfuck.Metrics;
 
 /**
- * Printer est la classe nécessaire pour afficher l'êtat de la grille
+ * Printer est la classe nÃ©cessaire pour afficher l'Ã©tat de la grille
  * sur la sortie standard selon plusieurs modes de vue.
  * 
  * @author Dylan Ritrovato
@@ -26,8 +26,8 @@ public class Printer {
 	}
 	
 	/**
-	 * Affiche côte a côte toutes les valeurs
-	 * (de 0 à 255) de la grille séparées par
+	 * Affiche cÃ´te a cÃ´te toutes les valeurs
+	 * (de 0 Ã  255) de la grille sÃ©parÃ©es par
 	 * des espaces.
 	 * exemple :
 	 * 0 0 0 0 0 ...
@@ -42,8 +42,8 @@ public class Printer {
 	}
 	
 	/**
-	 * Affiche les valeurs non nulles (de 1 à 255)
-	 * converties en char de la grille côte à côte.
+	 * Affiche les valeurs non nulles (de 1 Ã  255)
+	 * converties en char de la grille cÃ´te Ã  cÃ´te.
 	 * exemple :
 	 * Hello, World !
 	 * 
@@ -59,7 +59,7 @@ public class Printer {
 	}
 	
 	/**
-	 * Affiche les valeurs non nulles (de 1 à 255)
+	 * Affiche les valeurs non nulles (de 1 Ã  255)
 	 * sur la sortie standart
 	 * de la grille de cette forme par exemple :
 	 * c0 : 1
@@ -79,7 +79,7 @@ public class Printer {
 	/**
 	 * Rend un joli String pour les metrics
 	 * 
-	 * @return les metrics formatées
+	 * @return les metrics formatÃ©es
 	 */
 	public String getMetricsFormated(){	
 		return "\n\nPROGRAM METRICS ARE: \n" +

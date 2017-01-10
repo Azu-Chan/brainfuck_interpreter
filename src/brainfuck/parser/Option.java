@@ -1,10 +1,10 @@
 package brainfuck.parser;
 
 /**
- * OptionArg est la classe servant à stocker chaque option de la
- * ligne de commande dans un objet suivi de son paramètre s'il
+ * OptionArg est la classe servant Ã  stocker chaque option de la
+ * ligne de commande dans un objet suivi de son paramÃ¨tre s'il
  * existe.
- * Classe interne pour chaque option, contient les propriétés
+ * Classe interne pour chaque option, contient les propriÃ©tÃ©s
  * de chacune
  * 
  * @author Dylan Ritrovato
@@ -72,15 +72,13 @@ public class Option {
 	
 	/**
 	 * setter de l'argument de l'option,
-	 * 
-	 * @return argument de l'option
 	 */
 	public void setArgument(String arg){
 		argument = arg;
 	}
 	
 	/**
-	 * getter si l'option a été saisie ou non
+	 * getter si l'option a Ã©tÃ© saisie ou non
 	 * 
 	 * @return boolean
 	 */
@@ -89,17 +87,15 @@ public class Option {
 	}
 	
 	/**
-	 * setter si l'option a été saisi au démarrage
-	 * 
-	 * @return argument de l'option
+	 * setter si l'option a Ã©tÃ© saisi au dÃ©marrage
 	 */
 	public void optionIsHere(){
 		present = true;
 	}
 	
 	/**
-	 * indique si la chaine de caractère passée en 
-	 * paramètre est égale au nom de l'option
+	 * indique si la chaine de caractÃ¨re passÃ©e en 
+	 * paramÃ¨tre est Ã©gale au nom de l'option
 	 * 
 	 * @param chaine
 	 * 

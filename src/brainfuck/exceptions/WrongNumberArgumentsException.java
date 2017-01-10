@@ -1,7 +1,7 @@
 package brainfuck.exceptions;
 
 /**
- * Exception personnalisée, une option de la ligne de commande est présente plusieurs fois
+ * Exception personnalisÃ©e, une option de la ligne de commande est prÃ©sente plusieurs fois
  * 
  * @author Dylan Ritrovato
  * @author Yijie Wang

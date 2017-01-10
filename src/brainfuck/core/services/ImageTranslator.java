@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import brainfuck.ImageInclude;
+import static brainfuck.GlobalConstantes.*;
 import brainfuck.Instructions;
 
 /**
@@ -19,11 +19,11 @@ import brainfuck.Instructions;
  * 
  * @version 1.4
  */
-public class ImageTranslator implements ImageInclude{	
+public class ImageTranslator {	
 	private String prog;
 	private BufferedImage img;
 	
-	// dimension de l'image (dim * dim) car carrée
+	// dimension de l'image (dim * dim) car carrÃ©e
 	private int dim;
 	
 	/**
@@ -43,8 +43,8 @@ public class ImageTranslator implements ImageInclude{
 	}
 	
 	/**
-	 * cette methode va lire la chaîne de caractères contenant
-	 * le programme brainfuck et créer en mémoire l'image
+	 * cette methode va lire la chaÃ®ne de caractÃ¨res contenant
+	 * le programme brainfuck et crÃ©er en mÃ©moire l'image
 	 * de ce programme
 	 */
 	public void createImageProg(){
@@ -69,10 +69,10 @@ public class ImageTranslator implements ImageInclude{
 					img.setRGB(xDeb + j, yDeb + k, currentColor);
 				}
 			}
-			// on passe à la colonne suivante
+			// on passe Ã  la colonne suivante
 			xDeb += PIXEL_LENGTH;
 			
-			// si la ligne est complète, on passe à la ligne suivante et on revient à la première colonne
+			// si la ligne est complÃ¨te, on passe Ã  la ligne suivante et on revient Ã  la premiÃ¨re colonne
 			if(xDeb >= dim * PIXEL_LENGTH){
 				xDeb = 0;
 				yDeb += PIXEL_LENGTH;
@@ -81,7 +81,7 @@ public class ImageTranslator implements ImageInclude{
 	}
 	
 	/**
-	 * Getter le l'image créée
+	 * Getter le l'image crÃ©Ã©e
 	 * 
 	 * @return l'image
 	 */
@@ -90,7 +90,7 @@ public class ImageTranslator implements ImageInclude{
 	}
 	
 	/**
-	 * Renvoie un code RGB interprétable par {@link ImageTranslator#createImageProg()}
+	 * Renvoie un code RGB interprÃ©table par {@link ImageTranslator#createImageProg()}
 	 * pour pouvoir invoquer {@link BufferedImage#setRGB(int, int, int)}
 	 * 
 	 * @param instr
@@ -107,8 +107,8 @@ public class ImageTranslator implements ImageInclude{
 	}
 	
 	/**
-	 * Créer un fichier .bmp dans le répertoire courant à partir de l'image
-	 * en mémoire
+	 * CrÃ©er un fichier .bmp dans le rÃ©pertoire courant Ã  partir de l'image
+	 * en mÃ©moire
 	 * 
 	 * @param name
 	 * 
@@ -117,7 +117,7 @@ public class ImageTranslator implements ImageInclude{
 	public void createImage(String name) throws IOException{
 		// on veux un fichier .bmp
 		File outputFile = new File(name + ".bmp");
-		// java peut créer des images png, du coup conversion implicite en .bmp
+		// java peut crÃ©er des images png, du coup conversion implicite en .bmp
 		ImageIO.write(img, "png", outputFile);
 	}
 }

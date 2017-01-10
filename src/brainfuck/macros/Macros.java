@@ -1,7 +1,7 @@
 package brainfuck.macros;
 
 /**
- * Interface commune à toutes les macros
+ * Interface commune Ã  toutes les macros
  * 
  * @author Dylan Ritrovato
  * @author Yijie Wang
@@ -19,7 +19,7 @@ public interface Macros {
 	public String getName();
 	
 	/**
-	 * Prototype de l'effet désiré
+	 * Prototype de l'effet dÃ©sirÃ©
 	 * 
 	 * @return l'effet
 	 */

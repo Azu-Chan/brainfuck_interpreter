@@ -3,7 +3,7 @@ package brainfuck;
 import java.awt.Color;
 
 /**
- * Enumération pour les trois représentations des instructions.
+ * EnumÃ©ration pour les trois reprÃ©sentations des instructions.
  * 
  * @author Dylan Ritrovato
  * @author Yijie Wang
@@ -53,9 +53,9 @@ public enum Instructions {
 	}
 	
 	/**
-	 * Getter pour le RGB correspondant à l'instruction
+	 * Getter pour le RGB correspondant Ã  l'instruction
 	 * 
-	 * @return RGB correspondant à l'instruction
+	 * @return RGB correspondant Ã  l'instruction
 	 */
 	public int getRGB(){
 		return rgb;

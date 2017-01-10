@@ -3,7 +3,7 @@ package brainfuck.macros;
 import brainfuck.Instructions;
 
 /**
- * Enumération pour les macros avec paramètre
+ * EnumÃ©ration pour les macros avec paramÃ¨tre
  * 
  * @author Dylan Ritrovato
  * @author Yijie Wang
@@ -31,7 +31,7 @@ public enum MacrosParam implements Macros {
 	}
 	
 	/**
-	 * Prise du paramètre...
+	 * Prise du paramÃ¨tre...
 	 * 
 	 * @param p
 	 */
@@ -40,9 +40,9 @@ public enum MacrosParam implements Macros {
 	}
 
 	/**
-	 * Getter sur le paramètre
+	 * Getter sur le paramÃ¨tre
 	 * 
-	 * @return le paramètre
+	 * @return le paramÃ¨tre
 	 */
 	public String getParam() {
 		return param;

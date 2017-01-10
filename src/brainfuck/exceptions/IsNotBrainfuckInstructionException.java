@@ -1,7 +1,7 @@
 package brainfuck.exceptions;
 
 /**
- * Exception personnalisée, l'instruction lue n'est
+ * Exception personnalisÃ©e, l'instruction lue n'est
  * pas une instruction brainfuck.
  * 
  * @author Dylan Ritrovato

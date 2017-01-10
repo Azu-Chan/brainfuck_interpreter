@@ -26,7 +26,7 @@ public class GestionnaireExceptions {
 	
 	/**
      * Affiche le message d'une exception. Si l'exception 
-     * est associée à un code d'erreur, quitte le programme
+     * est associÃ©e Ã  un code d'erreur, quitte le programme
      * avec ce code
      */
 	public void traiterException(){

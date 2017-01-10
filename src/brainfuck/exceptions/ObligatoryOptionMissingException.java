@@ -1,8 +1,8 @@
 package brainfuck.exceptions;
 
 /**
- * Exception personnalisée, une option obligatoire de la ligne de commande 
- * n'est pas présente
+ * Exception personnalisÃ©e, une option obligatoire de la ligne de commande 
+ * n'est pas prÃ©sente
  * 
  * @author Dylan Ritrovato
  * @author Yijie Wang
@@ -19,7 +19,7 @@ public class ObligatoryOptionMissingException extends Exception implements ExitE
      * @param option
      */
 	public ObligatoryOptionMissingException(String option){
-		super("ERREUR (6) : l'option obligatoire " + option + " n'est pas présente.");
+		super("ERREUR (6) : l'option obligatoire " + option + " n'est pas prÃ©sente.");
 	}
 	
 	/**

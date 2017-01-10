@@ -2,7 +2,7 @@ package brainfuck.launcher;
 
 import brainfuck.core.services.*;
 import brainfuck.exceptions.GestionnaireExceptions;
-import brainfuck.OptionInclude;
+import static brainfuck.GlobalConstantes.*;
 import brainfuck.core.reader.*;
 import brainfuck.files.FileCreator;
 import brainfuck.parser.Parser;
@@ -12,7 +12,7 @@ import java.util.Scanner;
 import brainfuck.Metrics;
 
 /**
- * Classe dont le but est de faire se d�rouler le programme
+ * Classe dont le but est de faire se dérouler le programme
  * 
  * @author Dylan Ritrovato
  * @author Yijie Wang
@@ -20,7 +20,7 @@ import brainfuck.Metrics;
  * 
  * @version 1.0
  */
-public class ProgramStarter implements OptionInclude {
+public class ProgramStarter {
 	private String[] argsMain;
 	
 	/**
@@ -33,7 +33,7 @@ public class ProgramStarter implements OptionInclude {
 	}
 	
 	/**
-	 * Lance l'ex�cution du prtogramme principal
+	 * Lance l'exécution du prtogramme principal
 	 */
 	public void start(){
 		try{
@@ -65,9 +65,9 @@ public class ProgramStarter implements OptionInclude {
 	}
 	
 	/**
-	 * Ex�cute les diff�rents services en fonction des arguments
-	 * la shortSyntax pass�e en argument est FORCEMENT correcte
-	 * suite � sa v�rification plus t�t (readFile)
+	 * Exécute les différents services en fonction des arguments
+	 * la shortSyntax passée en argument est FORCEMENT correcte
+	 * suite à sa vérification plus tôt (readFile)
 	 * 
 	 * @param p
 	 * @param f
