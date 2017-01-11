@@ -17,7 +17,7 @@ public abstract class GlobalConstantes {
 	public static final int PIXEL_LENGTH = 3;
 			
 	// RGB de la couleur manquante (noire) pour le traitement d'images (programmes)
-	public static final int COLOR_MISSING = new Color(0, 0, 0).getRGB();	
+	public static final int COLOR_MISSING = new Color(0, 0, 0).getRGB();
 	
 	// Options courtes
 	public static final String nomOptP = "-p";
