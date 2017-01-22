@@ -54,11 +54,7 @@ public class Executor{
 	public Executor(String p, File streamIn, File streamOut) throws InputMissingFileException, FileNotFoundException{
 		prog = p;
 		if(streamIn != null){
-			try {
-				in = new FileInputStream(streamIn); // null si entrée standart
-			} catch (FileNotFoundException e) {
-				throw new InputMissingFileException(streamIn.getName());
-			} 
+			in = new FileInputStream(streamIn); // null si entrée standart
 		}
 		if(streamOut != null){
 			out = new FileOutputStream(streamOut); // null si sortie standart
