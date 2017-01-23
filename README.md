@@ -21,7 +21,7 @@ src/test...........Répertoire contenant les fichiers de test du projet (à veni
 
 
 II. Utilisation 
----------------g
+---------------
 
 ./bfck \[--option(s)\] \[-p\] \[fichier\] \[-option(s)\] \[argument(s)\]
 
