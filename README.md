@@ -5,23 +5,27 @@
 I. Liste de fichiers et répertoires
 -----------------------------------
 
-.gitignore..............\[_\]
+.gitignore..............Pour ignorer les fichiers nécessaires
 
 bfck......................Script bash d'exécution du JAR brainfuck.jar
 
-brainfuck.jar.........Dernière version fonctionnelle du projet
-
 demos..................Démos disponibles pour tester le programme
+
+pom.xml...............Fichier de configuration Maven3
 
 README.md.......Ce fichier
 
-src/brainfuck........Répertoire contenant les fichiers source du projet
-
-src/test...........Répertoire contenant les fichiers de test du projet (à venir...)
+src.......................Répertoire contenant les fichiers source et les tests du projet
 
 
 II. Utilisation 
 ---------------
+
+Compilation (avoir Maven3 d'installé sur sa machine) :
+
+mvn package
+
+Exécution (bash) :
 
 ./bfck \[--option(s)\] \[-p\] \[fichier\] \[-option(s)\] \[argument(s)\]
 
@@ -31,7 +35,7 @@ L'ordre des options n'est pas important mais celles-cis indiquant la prise en ch
 III. DESCRIPTION
 ----------------
 
-Brainfuck est un langage de programmation exotique, inventé par Urban Müller en 1993. Il tire son nom de l’union de deux mots anglais, brain (« cerveau ») et fuck (« baiser »), et joue sur les mots, puisque ce langage est volontairement simpliste, et parce que l'expression Brain Fuck évoque, en argot, ce qui met le cerveau dans un état de confusion par sa complexité apparente. Ce vocabulaire peu flatteur lui a d'ailleurs valu d'être écrit sous d'autres orthographes plus prudes, telles que Brainf*ck, Brainf*** ou encore BF.
+Brainfuck est un langage de programmation exotique, inventé par Urban Müller en 1993. Il tire son nom de l’union de deux mots anglais, brain (« cerveau ») et fuck (« baiser »), et joue sur les mots, puisque ce langage est volontairement simpliste, et parce que l'expression Brain Fuck évoque, en argot, ce qui met le cerveau dans un état de confusion par sa complexité apparente. Ce vocabulaire peu flatteur lui a d'ailleurs valu d'être écrit sous d'autres orthographes plus prudes, telles que Brainf*ck ou BF.
 
 Pour plus d'informations sur le fonctionnement du brainfuck et les instructions disponibles : https://fr.wikipedia.org/wiki/Brainfuck
 
@@ -129,4 +133,5 @@ Arrêt du programme si une des erreures suivantes est déclanchée :
 VII. DIVERS
 ----------
 
-Ce programme est un projet réalisé dans le cadre du SI3 de Polytech Nice Sophia-Antipolis, année 2016 par l'équipe Triplot, composée de Yijie Wang, Mohd Najib et Dylan Ritrovato. Il y a une possibilité que des bugs non détectés soient présents, si tel est le cas, vous pouvez les signaler par mail à dylan.xanto@gmail.com. Merci de votre compréhension.
+Ce programme est un projet réalisé dans le cadre du SI3 de Polytech Nice Sophia-Antipolis, année 2016 par Triplot. Il y a une possibilité que des bugs non détectés soient présents, si tel est le cas, vous pouvez me les signaler. Merci de votre compréhension.
+Le projet est toujours maintenu.

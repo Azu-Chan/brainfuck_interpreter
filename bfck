@@ -1,4 +1,3 @@
 #!/bin/bash
-# Script "launcherBrainfuck"
+# Script "Lancement de l'interpréteur brainfuck", le jar doit être dans le répertoire courant
 java -cp brainfuck-1.0-SNAPSHOT.jar Azu_Chan.brainfuck.launcher.Launcher $@
-
