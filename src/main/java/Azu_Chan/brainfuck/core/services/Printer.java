@@ -9,8 +9,6 @@ import Azu_Chan.brainfuck.Metrics;
  * sur la sortie standard selon plusieurs modes de vue.
  * 
  * @author Dylan Ritrovato
- * @author Yijie Wang
- * @author Mohd Nijab
  * 
  * @version 1.3
  */

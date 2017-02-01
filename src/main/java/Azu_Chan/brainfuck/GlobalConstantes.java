@@ -7,8 +7,6 @@ import java.awt.Color;
  * utiles pour la gestion des options
  * 
  * @author Dylan Ritrovato
- * @author Yijie Wang
- * @author Mohd Nijab
  * 
  * @version 2.0
  */
@@ -16,7 +14,7 @@ public abstract class GlobalConstantes {
 	// taille en pixel du côté d'un carré pour représenter une instruction brainfuck 
 	public static final int PIXEL_LENGTH = 3;
 			
-	// RGB de la couleur manquante (noire) pour le traitement d'images (programmes)
+	// RGB de la couleur manquante (noire) pour le traitement d'images (programmes brainfuck .bmp)
 	public static final int COLOR_MISSING = new Color(0, 0, 0).getRGB();
 	
 	// Options courtes
@@ -31,7 +29,7 @@ public abstract class GlobalConstantes {
 	public static final String nomOptTrace = "--trace";
 	public static final String nomOptConvert = "--convert";
 	
-	// Constantes pour l'UI
+	// Constantes pour l'UI du --convert
 	public static final String languageC = "C";
 	public static final String languagePHP = "PHP";
 	public static final String annul = "ANNULER";

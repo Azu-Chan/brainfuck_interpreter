@@ -6,8 +6,6 @@ import java.awt.Color;
  * Enumération pour les trois représentations des instructions.
  * 
  * @author Dylan Ritrovato
- * @author Yijie Wang
- * @author Mohd Nijab
  * 
  * @version 1.0
  */

@@ -4,8 +4,6 @@ package Azu_Chan.brainfuck.macros;
  * Classe pour la macro spéciale DEFINE
  * 
  * @author Dylan Ritrovato
- * @author Yijie Wang
- * @author Mohd Nijab
  * 
  * @version 1.0
  */

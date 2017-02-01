@@ -9,8 +9,6 @@ import Azu_Chan.brainfuck.exceptions.IsNotBrainfuckInstructionException;
  * Transforme du code brainfuck en PHP
  * 
  * @author Dylan Ritrovato
- * @author Yijie Wang
- * @author Mohd Nijab
  * 
  * @version 1.0
  */
@@ -73,6 +71,7 @@ public class PHPConverter extends Converter {
 		char oldChar = '\0';
 		int countFact = 1;
 		
+		// Concaténation d'instructions élémentaires
 		while(iterator < mainProgram.length()){
 			if((oldChar == Instructions.INCR.getShortSyntax() || oldChar == Instructions.DECR.getShortSyntax() || 
 					oldChar == Instructions.LEFT.getShortSyntax() || oldChar == Instructions.RIGHT.getShortSyntax()) &&

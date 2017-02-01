@@ -4,8 +4,6 @@ package Azu_Chan.brainfuck;
  * Classe qui stocke les métriques...
  * 
  * @author Dylan Ritrovato
- * @author Yijie Wang
- * @author Mohd Nijab
  * 
  * @version 1.0
  */
@@ -19,6 +17,7 @@ public abstract class Metrics{
     
     private static long TEMPS_EXEC_DEB = 0;
     
+    // Si l'option --trace saisie
     public static boolean HAS_LOG_FILE = false;
 
     /**

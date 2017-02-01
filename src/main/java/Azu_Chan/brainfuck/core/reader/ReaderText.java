@@ -13,10 +13,8 @@ import Azu_Chan.brainfuck.exceptions.*;;
  * cet interpréteur de brainfuck.
  * 
  * @author Dylan Ritrovato
- * @author Yijie Wang
- * @author Mohd Nijab
  * 
- * @version 2.3
+ * @version 2.4
  */
 public class ReaderText extends ReaderBF{
 	private FileInputStream prog;
@@ -95,7 +93,7 @@ public class ReaderText extends ReaderBF{
 		if(isInstruction(instr)){
 			for(Instructions i : Instructions.values()){
 				if(i.getLongSyntax().equals(instr)){
-					constructionWithShortcut(""+i.getShortSyntax());
+					constructionWithShortcut(String.valueOf(i.getShortSyntax()));
 				}
 			}
 		}

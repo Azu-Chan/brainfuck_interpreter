@@ -5,8 +5,6 @@ package Azu_Chan.brainfuck.exceptions;
  * pas une instruction brainfuck.
  * 
  * @author Dylan Ritrovato
- * @author Yijie Wang
- * @author Mohd Nijab
  * 
  * @version 1.1
  */

@@ -8,8 +8,6 @@ import Azu_Chan.brainfuck.exceptions.*;
  * ReaderBF est la superclasse nécessaire à ReaderImage et ReaderText
  * 
  * @author Dylan Ritrovato
- * @author Yijie Wang
- * @author Mohd Nijab
  * 
  * @version 1.1
  */

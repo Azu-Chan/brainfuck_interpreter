@@ -19,8 +19,6 @@ import Azu_Chan.brainfuck.exceptions.*;
  * cet interpréteur de brainfuck.
  * 
  * @author Dylan Ritrovato
- * @author Yijie Wang
- * @author Mohd Nijab
  * 
  * @version 1.4
  */

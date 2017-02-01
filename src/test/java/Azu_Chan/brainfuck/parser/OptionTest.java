@@ -8,8 +8,6 @@ import org.junit.Test;
  * Tests pour la classe Option
  * 
  * @author Dylan Ritrovato
- * @author Yijie Wang
- * @author Mohd Nijab
  * 
  * @version 1.0
  */

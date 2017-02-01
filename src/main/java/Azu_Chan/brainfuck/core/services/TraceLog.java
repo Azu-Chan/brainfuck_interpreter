@@ -7,8 +7,6 @@ import java.util.Calendar;
  * Classe permettant la génération d'un fichier log
  * 
  * @author Dylan Ritrovato
- * @author Yijie Wang
- * @author Mohd Nijab
  * 
  * @version 2.1
  */

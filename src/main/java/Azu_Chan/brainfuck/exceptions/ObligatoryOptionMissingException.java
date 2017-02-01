@@ -5,8 +5,6 @@ package Azu_Chan.brainfuck.exceptions;
  * n'est pas présente
  * 
  * @author Dylan Ritrovato
- * @author Yijie Wang
- * @author Mohd Nijab
  * 
  * @version 1.1
  */

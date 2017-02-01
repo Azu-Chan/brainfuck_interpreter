@@ -14,8 +14,6 @@ import Azu_Chan.brainfuck.macros.*;
  * Un fichier temporaire assaini est créé à la fin du traitement. Ce fichier sera ensuite utilisé par le readerText.
  * 
  * @author Dylan Ritrovato
- * @author Yijie Wang
- * @author Mohd Nijab
  * 
  * @version 1.0
  */

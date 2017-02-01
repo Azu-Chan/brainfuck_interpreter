@@ -6,8 +6,6 @@ import Azu_Chan.brainfuck.Instructions;
  * Enumération pour les macros avec paramètre
  * 
  * @author Dylan Ritrovato
- * @author Yijie Wang
- * @author Mohd Nijab
  * 
  * @version 1.0
  */

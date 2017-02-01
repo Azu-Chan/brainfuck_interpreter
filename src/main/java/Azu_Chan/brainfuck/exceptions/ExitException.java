@@ -4,8 +4,6 @@ package Azu_Chan.brainfuck.exceptions;
  * Interface pour les exceptions devant quitter le programme
  * 
  * @author Dylan Ritrovato
- * @author Yijie Wang
- * @author Mohd Nijab
  * 
  * @version 1.0
  */

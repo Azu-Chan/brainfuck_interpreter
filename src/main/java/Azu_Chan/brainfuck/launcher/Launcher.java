@@ -4,8 +4,6 @@ package Azu_Chan.brainfuck.launcher;
  * Launcher contenant la méthode main
  * 
  * @author Dylan Ritrovato
- * @author Yijie Wang
- * @author Mohd Nijab
  * 
  * @version 5.0
  */

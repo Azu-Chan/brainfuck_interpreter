@@ -9,17 +9,13 @@ import Azu_Chan.brainfuck.Metrics;
 
 import Azu_Chan.brainfuck.exceptions.*;
 
-@SuppressWarnings("unused")
-
 /**
  * Classe qui va interpréter et exécuter le programme brainfuck
  * déjà traduit en syntaxe courte.
  * 
  * @author Dylan Ritrovato
- * @author Yijie Wang
- * @author Mohd Nijab
  * 
- * @version 4.1
+ * @version 4.2
  */
 public class Executor{
 	private DataCompute memory;
@@ -164,7 +160,7 @@ public class Executor{
 			bound(']');
 			return ;
 		}
-		throw new IsNotBrainfuckInstructionException(""+instr);
+		throw new IsNotBrainfuckInstructionException(String.valueOf(instr));
 	}
 	
 	/**
@@ -180,52 +176,6 @@ public class Executor{
 			}
 			if(prog.charAt(execPointer) == ']'){
 				jumpTable.createBridge(stockageTemp.pop(), execPointer);
-			}
-		}
-	}
-	
-	/**
-	 * Permet d'effectuer un jump
-	 * 
-	 * @deprecated
-	 */
-	private void jump(){
-		if(memory.getPointedValue() == Byte.MIN_VALUE){
-			int parentheseCount = 0;
-			while(execPointer < prog.length()){
-				execPointer++;
-				if(prog.charAt(execPointer) == '['){
-					parentheseCount++;
-				}
-				if(prog.charAt(execPointer) == ']' && (parentheseCount == 0)){
-					return ;
-				}
-				if(prog.charAt(execPointer) == ']' && (parentheseCount != 0)){
-					parentheseCount--;
-				}
-			}
-		}
-	}
-	
-	/**
-	 * Permet d'effectuer un back
-	 * 
-	 * @deprecated
-	 */
-	private void back(){
-		if(memory.getPointedValue() != Byte.MIN_VALUE){
-			int parentheseCount = 0;
-			while(execPointer >= 0){
-				execPointer--;
-				if(prog.charAt(execPointer) == ']'){
-					parentheseCount++;
-				}
-				if(prog.charAt(execPointer) == '[' && (parentheseCount == 0)){
-					return ;
-				}
-				if(prog.charAt(execPointer) == '[' && (parentheseCount != 0)){
-					parentheseCount--;
-				}
 			}
 		}
 	}
@@ -257,8 +207,6 @@ public class Executor{
 	 * effectués via les JUMP et les BACK
 	 * 
 	 * @author Dylan Ritrovato
-	 * @author Yijie Wang
-	 * @author Mohd Nijab
 	 * 
 	 * @version 1.0
 	 */
@@ -292,17 +240,6 @@ public class Executor{
 		 */
 		private int getNewExecPointerValue(int currentPos){
 			return bridgeAgregat.get(currentPos);
-		}
-		
-		/**
-		 * Affiche tous les Bridge
-		 * 
-		 * POUR DES FINS DE DEBUG
-		 */
-		private void affich(){
-			bridgeAgregat.forEach((k,v)-> 
-				System.out.println(k+" , "+v+"\n")
-			);
 		}
 	}
 }

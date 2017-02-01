@@ -10,10 +10,8 @@ import Azu_Chan.brainfuck.exceptions.SyntaxErrorException;
  * d'un programme sont valides syntaxiquement.
  * 
  * @author Dylan Ritrovato
- * @author Yijie Wang
- * @author Mohd Nijab
  * 
- * @version 2.1
+ * @version 2.2
  */
 public class Checker {
 private String prog;
@@ -43,10 +41,8 @@ private boolean isWellFormed;
     			nbOfParenthese--;
     			if(nbOfParenthese < 0){
     				isWellFormed = false;
+    				break;
     			}
-    		}
-    		if(isWellFormed == false){
-    			break;
     		}
     	}
     	

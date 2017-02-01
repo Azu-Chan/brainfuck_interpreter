@@ -5,11 +5,10 @@ import java.io.IOException;
 import Azu_Chan.brainfuck.exceptions.IsNotBrainfuckInstructionException;
 
 /**
- * Superclasse pour transformer du code brainfuck en un autre langage de programmation
+ * Superclasse pour transformer du code brainfuck 
+ * en un autre langage de programmation
  * 
  * @author Dylan Ritrovato
- * @author Yijie Wang
- * @author Mohd Nijab
  * 
  * @version 1.0
  */

@@ -9,10 +9,8 @@ import Azu_Chan.brainfuck.exceptions.IsNotBrainfuckInstructionException;
  * Transforme du code brainfuck en C
  * 
  * @author Dylan Ritrovato
- * @author Yijie Wang
- * @author Mohd Nijab
  * 
- * @version 1.0
+ * @version 1.1
  */
 public class CConverter extends Converter {
 	private File CFile;
@@ -72,6 +70,7 @@ public class CConverter extends Converter {
 		char oldChar = '\0';
 		int countFact = 1;
 		
+		// Concaténation d'instructions élémentaires
 		while(iterator < mainProgram.length()){
 			if((oldChar == Instructions.INCR.getShortSyntax() || oldChar == Instructions.DECR.getShortSyntax() || 
 					oldChar == Instructions.LEFT.getShortSyntax() || oldChar == Instructions.RIGHT.getShortSyntax()) &&

@@ -15,8 +15,6 @@ import Azu_Chan.brainfuck.Metrics;
  * Classe dont le but est de faire se dérouler le programme
  * 
  * @author Dylan Ritrovato
- * @author Yijie Wang
- * @author Mohd Nijab
  * 
  * @version 1.0
  */

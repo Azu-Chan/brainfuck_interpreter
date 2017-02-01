@@ -10,8 +10,6 @@ import org.junit.Test;
  * Tests pour la classe Metrics
  * 
  * @author Dylan Ritrovato
- * @author Yijie Wang
- * @author Mohd Nijab
  * 
  * @version 1.0
  */

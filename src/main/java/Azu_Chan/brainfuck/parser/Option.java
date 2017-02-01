@@ -8,8 +8,6 @@ package Azu_Chan.brainfuck.parser;
  * de chacune
  * 
  * @author Dylan Ritrovato
- * @author Yijie Wang
- * @author Mohd Nijab
  * 
  * @version 1.0
  */

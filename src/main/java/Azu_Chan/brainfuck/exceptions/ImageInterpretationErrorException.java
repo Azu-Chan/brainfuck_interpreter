@@ -5,8 +5,6 @@ package Azu_Chan.brainfuck.exceptions;
  * à un fichier brainfuck valide.
  * 
  * @author Dylan Ritrovato
- * @author Yijie Wang
- * @author Mohd Nijab
  * 
  * @version 1.1
  */

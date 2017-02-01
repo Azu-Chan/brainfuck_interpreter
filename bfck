@@ -1,3 +1,4 @@
 #!/bin/bash
 # Script "launcherBrainfuck"
-java -cp brainfuck.jar brainfuck.launcher.Launcher $@
+java -cp brainfuck-1.0-SNAPSHOT.jar Azu_Chan.brainfuck.launcher.Launcher $@
+

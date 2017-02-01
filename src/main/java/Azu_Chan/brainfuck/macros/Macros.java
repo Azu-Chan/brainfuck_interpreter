@@ -4,8 +4,6 @@ package Azu_Chan.brainfuck.macros;
  * Interface commune à toutes les macros
  * 
  * @author Dylan Ritrovato
- * @author Yijie Wang
- * @author Mohd Nijab
  * 
  * @version 1.0
  */

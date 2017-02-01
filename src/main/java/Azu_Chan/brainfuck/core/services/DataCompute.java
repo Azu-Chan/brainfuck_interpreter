@@ -10,8 +10,6 @@ import Azu_Chan.brainfuck.exceptions.*;
  * d'un programme brainfuck (grille + pointeur) 
  * 
  * @author Dylan Ritrovato
- * @author Yijie Wang
- * @author Mohd Nijab
  * 
  * @version 1.6
  */

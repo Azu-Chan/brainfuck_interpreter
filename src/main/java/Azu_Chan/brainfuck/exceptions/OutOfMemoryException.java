@@ -5,8 +5,6 @@ package Azu_Chan.brainfuck.exceptions;
  * mémoire brainfuck est sortie de sa plage de valeurs
  * 
  * @author Dylan Ritrovato
- * @author Yijie Wang
- * @author Mohd Nijab
  * 
  * @version 1.1
  */

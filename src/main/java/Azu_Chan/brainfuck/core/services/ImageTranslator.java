@@ -14,8 +14,6 @@ import Azu_Chan.brainfuck.Instructions;
  * en une version image...
  * 
  * @author Dylan Ritrovato
- * @author Yijie Wang
- * @author Mohd Nijab
  * 
  * @version 1.4
  */

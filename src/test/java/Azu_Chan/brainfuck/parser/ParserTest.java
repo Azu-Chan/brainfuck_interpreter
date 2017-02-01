@@ -10,8 +10,6 @@ import Azu_Chan.brainfuck.exceptions.*;
  * Tests pour la classe Parser
  * 
  * @author Dylan Ritrovato
- * @author Yijie Wang
- * @author Mohd Nijab
  * 
  * @version 1.0
  */

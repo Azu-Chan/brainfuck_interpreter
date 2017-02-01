@@ -4,8 +4,6 @@ package Azu_Chan.brainfuck.exceptions;
  * Exception personnalisée, l'ardument de l'option -i ne peut pas ouvrir de fichier...
  * 
  * @author Dylan Ritrovato
- * @author Yijie Wang
- * @author Mohd Nijab
  * 
  * @version 1.0
  */

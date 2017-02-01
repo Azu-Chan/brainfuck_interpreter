@@ -7,8 +7,6 @@ import java.util.List;
  * Classe de gestion des exceptions
  * 
  * @author Dylan Ritrovato
- * @author Yijie Wang
- * @author Mohd Nijab
  * 
  * @version 1.0
  */

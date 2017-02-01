@@ -12,8 +12,6 @@ import Azu_Chan.brainfuck.exceptions.*;
  * sont ajoutées au constructeur au fur et à mesure de l'avancée du projet.
  * 
  * @author Dylan Ritrovato
- * @author Yijie Wang
- * @author Mohd Nijab
  * 
  * @version 2.1
  */

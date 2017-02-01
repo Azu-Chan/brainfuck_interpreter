@@ -10,8 +10,6 @@ import Azu_Chan.brainfuck.parser.Parser;
  * vers les différents fichiers qui seront utilisés
  * 
  * @author Dylan Ritrovato
- * @author Yijie Wang
- * @author Mohd Nijab
  * 
  * @version 1.0
  */
