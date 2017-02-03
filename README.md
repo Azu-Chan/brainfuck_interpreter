@@ -100,7 +100,7 @@ Cette option indique que le paramètre suivant sera le fichier qui recevra les a
 
 -p	
 
-Cette option OBLIGATIORE indique que le paramètre suivant sera le fichier contenant le programme brainfuck à interpréter puis à exécuter. Ce fichier doit obligatoirement exister. A la fin de l'exécution, chaque cellule dont le contenu est différent de zero est affichée de la façon suivante "cn = X". Si le programme nécessite une entrée/sortie les standardssont utilisés (un appel utilisateur explicite demandera l'entrée au bon moment).
+Cette option OBLIGATOIRE indique que le paramètre suivant sera le fichier contenant le programme brainfuck à interpréter puis à exécuter. Ce fichier doit obligatoirement exister. A la fin de l'exécution, chaque cellule dont le contenu est différent de zero est affichée de la façon suivante "cn = X". Si le programme nécessite une entrée/sortie les standardssont utilisés (un appel utilisateur explicite demandera l'entrée au bon moment).
 
 --rewrite
 
