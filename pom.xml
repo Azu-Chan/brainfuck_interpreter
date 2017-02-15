@@ -20,7 +20,7 @@
           <archive>
             <manifest>
               <addClasspath>true</addClasspath>
-              <mainClass>Azu_Chan.brainfuck.launcher.Launcher</mainClass>
+              <mainClass>azuchan.brainfuck.launcher.Launcher</mainClass>
             </manifest>
           </archive>
         </configuration>
@@ -31,7 +31,7 @@
         <artifactId>exec-maven-plugin</artifactId>
         <version>1.3</version>
         <configuration>
-          <mainClass>Azu_Chan.brainfuck.launcher.Launcher</mainClass>
+          <mainClass>azuchan.brainfuck.launcher.Launcher</mainClass>
         </configuration>
       </plugin>
   -->
