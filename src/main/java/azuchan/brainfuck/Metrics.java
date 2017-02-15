@@ -8,14 +8,14 @@ package azuchan.brainfuck;
  * @version 1.0
  */
 public abstract class Metrics{
-    private static long PROG_SIZE = 0;
-    private static long EXEC_TIME = 0;
-    private static long EXEC_MOVE = 0;
-    private static long DATA_MOVE = 0;
-    private static long DATA_WRITE = 0;
-    private static long DATA_READ = 0;
+    private static long progSize = 0;
+    private static long execTime = 0;
+    private static long execMove = 0;
+    private static long dataMove = 0;
+    private static long dataWrite = 0;
+    private static long dataRead = 0;
     
-    private static long TEMPS_EXEC_DEB = 0;
+    private static long debExecTime = 0;
 
 	/**
  	* Privé pour cacher la visibilité
@@ -30,7 +30,7 @@ public abstract class Metrics{
  	* @param progSize
  	*/
     public static void setProgSize(long progSize){
-    	PROG_SIZE = progSize;
+    	Metrics.progSize = progSize;
     }
     
     /**
@@ -39,21 +39,21 @@ public abstract class Metrics{
  	* @return taille du programme
  	*/
     public static long getProgSize(){
-    	return PROG_SIZE;
+    	return progSize;
     }
     
     /**
  	* Setter pour le début du temps d'exécution du programme brainfuck (calculé au lancement de la méthode)
  	*/
     public static void setExecTimeDeb(){
-    	TEMPS_EXEC_DEB = System.nanoTime();
+    	debExecTime = System.nanoTime();
     }
     
     /**
  	* Setter pour le temps d'exécution du programme brainfuck (calculé au lancement de la méthode)
  	*/
     public static void setExecTime(){
-    	EXEC_TIME = System.nanoTime() - TEMPS_EXEC_DEB;
+    	execTime = System.nanoTime() - debExecTime;
     }
    
     /**
@@ -62,14 +62,14 @@ public abstract class Metrics{
  	* @return temps d'exécution du programme
  	*/
     public static long getExecTime(){
-    	return EXEC_TIME;
+    	return execTime;
     }
     
     /**
  	* Incrémente l'exec move de 1
  	*/
     public static void incrementExecMove(){
-    	EXEC_MOVE++;
+    	execMove++;
     }
     
     /**
@@ -78,14 +78,14 @@ public abstract class Metrics{
  	* @return taille du programme
  	*/
     public static long getExecMove(){
-    	return EXEC_MOVE;
+    	return execMove;
     }
     
     /**
  	* Incrémente le data move de 1
  	*/
     public static void incrementDataMove(){
-    	DATA_MOVE++;
+    	dataMove++;
     }
     
     /**
@@ -94,14 +94,14 @@ public abstract class Metrics{
  	* @return taille du programme
  	*/
     public static long getDataMove(){
-    	return DATA_MOVE;
+    	return dataMove;
     }
     
     /**
  	* Incrémente le data write de 1
  	*/
     public static void incrementDataWrite(){
-    	DATA_WRITE++;
+    	dataWrite++;
     }
     
     /**
@@ -110,14 +110,14 @@ public abstract class Metrics{
  	* @return taille du programme
  	*/
     public static long getDataWrite(){
-    	return DATA_WRITE;
+    	return dataWrite;
     }
     
     /**
  	* Incrémente le data read de 1
  	*/
     public static void incrementDataRead(){
-    	DATA_READ++;
+    	dataRead++;
     }
     
     /**
@@ -126,6 +126,6 @@ public abstract class Metrics{
  	* @return taille du programme
  	*/
     public static long getDataRead(){
-    	return DATA_READ;
+    	return dataRead;
     }
 }

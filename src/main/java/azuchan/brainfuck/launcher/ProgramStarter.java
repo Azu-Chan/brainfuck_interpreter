@@ -73,14 +73,14 @@ public class ProgramStarter {
 	 */
 	public void executeServices(Parser p, FileCreator f, String shortSyntax){
 		try{
-			if(!p.getOption(nomOptRewrite).getPresent() && !p.getOption(nomOptCheck).getPresent() && 
-					!p.getOption(nomOptTranslate).getPresent() && !p.getOption(nomOptConvert).getPresent()){
+			if(!p.getOption(NOM_OPT_REWRITE).getPresent() && !p.getOption(NOM_OPT_CHECK).getPresent() && 
+					!p.getOption(NOM_OPT_TRANSLATE).getPresent() && !p.getOption(NOM_OPT_CONVERT).getPresent()){
 				Checker c = new Checker(shortSyntax);
 				c.verify();
 				if(c.isWellFormed()){
 					Executor ex;
 					TraceLog t = null;
-					if(p.getOption(nomOptTrace).getPresent()){
+					if(p.getOption(NOM_OPT_TRACE).getPresent()){
 						t = new TraceLog(f.getLogFile());
 						t.initializeLogFile();
 						ex = new Executor(shortSyntax, f.getInFile(), f.getOutFile(), t);
@@ -104,7 +104,7 @@ public class ProgramStarter {
 				}
 			}
 			else{
-				if(p.getOption(nomOptCheck).getPresent()){
+				if(p.getOption(NOM_OPT_CHECK).getPresent()){
 					Checker c = new Checker(shortSyntax);
 					c.verify();
 					
@@ -112,36 +112,36 @@ public class ProgramStarter {
 						System.out.println("Programme correct syntaxiquement.");
 					}
 				}
-				if(p.getOption(nomOptRewrite).getPresent()){
+				if(p.getOption(NOM_OPT_REWRITE).getPresent()){
 					System.out.println(shortSyntax.toString());
 				}
-				if(p.getOption(nomOptTranslate).getPresent()){
+				if(p.getOption(NOM_OPT_TRANSLATE).getPresent()){
 					ImageTranslator i = new ImageTranslator(shortSyntax);
 					i.createImageProg();
 					
 					i.createImage(f.getProgFile().getName());
 					System.out.println("Fichier d'image programme généré : " + f.getProgFile().getName() + ".bmp");
 				}
-				if(p.getOption(nomOptConvert).getPresent()){
+				if(p.getOption(NOM_OPT_CONVERT).getPresent()){
 					Converter c;
 					
 					@SuppressWarnings("resource")
 					Scanner scan = new Scanner(System.in);
 					// Invite de saisie
-		            System.out.print("\nSaisir le langage voulu (" + languageC + " " + languagePHP + ") ou " + annul + " pour annuler\n> ");
+		            System.out.print("\nSaisir le langage voulu (" + LANGAGE_C + " " + LANGAGE_PHP + ") ou " + ANNUL + " pour ANNULer\n> ");
 		            String word;
 		            do{
 		            	word = scan.next();
 		            	scan.nextLine();
-		            }while (word == null || (!word.equals(languageC) && !word.equals(languagePHP) && !word.equals(annul)));
+		            }while (word == null || (!word.equals(LANGAGE_C) && !word.equals(LANGAGE_PHP) && !word.equals(ANNUL)));
 		            
-		            if(word.equals(languageC)){
-		            	c = new CConverter(shortSyntax, p.getOption(nomOptP).getArgument());
+		            if(word.equals(LANGAGE_C)){
+		            	c = new CConverter(shortSyntax, p.getOption(NOM_OPT_P).getArgument());
 		            	c.launchProcedure();
 		            	System.out.println("Fichier converti généré (C) : " + f.getProgFile().getName() + ".c");
 		            }
-		            if(word.equals(languagePHP)){
-		            	c = new PHPConverter(shortSyntax, p.getOption(nomOptP).getArgument());
+		            if(word.equals(LANGAGE_PHP)){
+		            	c = new PHPConverter(shortSyntax, p.getOption(NOM_OPT_P).getArgument());
 		            	c.launchProcedure();
 		            	System.out.println("Fichier converti généré (PHP) : " + f.getProgFile().getName() + ".php");
 		            }

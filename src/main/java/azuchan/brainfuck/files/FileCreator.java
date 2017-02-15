@@ -44,15 +44,15 @@ public class FileCreator {
 	 * Ouvre le fichier programme brainfuck
 	 */
 	private void openProgFile(){
-		prog = new File(parser.getOption(nomOptP).getArgument());
+		prog = new File(parser.getOption(NOM_OPT_P).getArgument());
 	}
 	
 	/**
 	 * Ouvre le fichier d'entrée si indiqué
 	 */
 	private void openInFile(){
-		if(parser.getOption(nomOptI).getPresent()){
-			in = new File(parser.getOption(nomOptI).getArgument());
+		if(parser.getOption(NOM_OPT_I).getPresent()){
+			in = new File(parser.getOption(NOM_OPT_I).getArgument());
 		}
 	}
 	
@@ -60,8 +60,8 @@ public class FileCreator {
 	 * Ouvre le fichier de sortie si indiqué
 	 */
 	private void openOutFile(){
-		if(parser.getOption(nomOptO).getPresent()){
-			out = new File(parser.getOption(nomOptO).getArgument());
+		if(parser.getOption(NOM_OPT_O).getPresent()){
+			out = new File(parser.getOption(NOM_OPT_O).getArgument());
 		}
 	}
 	
@@ -69,7 +69,7 @@ public class FileCreator {
 	 * Ouvre le fichier log si indiqué
 	 */
 	private void openLogFile(){
-		if(parser.getOption(nomOptTrace).getPresent()){
+		if(parser.getOption(NOM_OPT_TRACE).getPresent()){
 			log = new File(parser.getOption("-p").getArgument() + ".log");
 		}
 	}

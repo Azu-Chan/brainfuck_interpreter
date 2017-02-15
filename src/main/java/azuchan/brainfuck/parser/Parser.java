@@ -28,14 +28,14 @@ public class Parser {
 	public Parser(String[] args){
 		argsMain = Arrays.asList(args);
 		
-		options.add(new Option(nomOptP, true, true));
-		options.add(new Option(nomOptI, false, true));
-		options.add(new Option(nomOptO, false, true));
-		options.add(new Option(nomOptRewrite, false, false));
-		options.add(new Option(nomOptCheck, false, false));
-		options.add(new Option(nomOptTranslate, false, false));
-		options.add(new Option(nomOptTrace, false, false));
-		options.add(new Option(nomOptConvert, false, false));
+		options.add(new Option(NOM_OPT_P, true, true));
+		options.add(new Option(NOM_OPT_I, false, true));
+		options.add(new Option(NOM_OPT_O, false, true));
+		options.add(new Option(NOM_OPT_REWRITE, false, false));
+		options.add(new Option(NOM_OPT_CHECK, false, false));
+		options.add(new Option(NOM_OPT_TRANSLATE, false, false));
+		options.add(new Option(NOM_OPT_TRACE, false, false));
+		options.add(new Option(NOM_OPT_CONVERT, false, false));
 	}
 	
 	/**

@@ -15,7 +15,7 @@ import org.junit.Test;
  */
 public class MetricsTest {
 
-	// Tests pour PROG_SIZE
+	// Tests pour progSize
 	@Test
 	public void testProgSize() {
 		Metrics.setProgSize(66);
@@ -28,7 +28,7 @@ public class MetricsTest {
 		assertEquals(5, Metrics.getProgSize());
 	}
 	
-	// Tests pour EXEC_TIME
+	// Tests pour execTime
 	@Test
 	public void testExecTime() throws InterruptedException {
 		Metrics.setExecTimeDeb();
@@ -37,7 +37,7 @@ public class MetricsTest {
 		assertTrue(TimeUnit.MILLISECONDS.convert(Metrics.getExecTime(), TimeUnit.NANOSECONDS) >= 1000);
 	}
 	
-	// Tests pour EXEC_MOVE
+	// Tests pour execMove
 	@Test
 	public void testExecMove() {
 		assertEquals(0, Metrics.getExecMove());
@@ -50,7 +50,7 @@ public class MetricsTest {
 		assertEquals(4, Metrics.getExecMove());
 	}
 	
-	// Tests pour DATA_MOVE
+	// Tests pour dataMove
 	@Test
 	public void testDataMove() {
 		assertEquals(0, Metrics.getDataMove());
@@ -63,7 +63,7 @@ public class MetricsTest {
 		assertEquals(4, Metrics.getDataMove());
 	}
 	
-	// Tests pour DATA_WRITE
+	// Tests pour dataWrite
 	@Test
 	public void testDataWrite() {
 		assertEquals(0, Metrics.getDataWrite());
@@ -76,7 +76,7 @@ public class MetricsTest {
 		assertEquals(4, Metrics.getDataWrite());
 	}
 	
-	// Tests pour DATA_READ
+	// Tests pour dataRead
 	@Test
 	public void testDataRead() {
 		assertEquals(0, Metrics.getDataRead());

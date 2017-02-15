@@ -30,8 +30,9 @@ public class Printer {
 	 * exemple :
 	 * 0 0 0 0 0 ...
 	 * 
-	 * @deprecated
+	 * @deprecated (Old)
 	 */
+	@Deprecated
 	public void consolePrintByte(){
 		System.out.println();
 		for (int i = 0; i < grille.length; i++) {
@@ -45,8 +46,9 @@ public class Printer {
 	 * exemple :
 	 * Hello, World !
 	 * 
-	 * @deprecated
+	 * @deprecated (old)
 	 */
+	@Deprecated
 	public void consolePrintChar(){
 		System.out.println();
 		for (int i = 0; i < grille.length; i++) {
@@ -81,12 +83,12 @@ public class Printer {
 	 */
 	public String getMetricsFormated(){	
 		return "\n\nPROGRAM METRICS ARE: \n" +
-				"PROG_SIZE  = " + Metrics.getProgSize() + "\n" +
-				"EXEC_TIME  = " + TimeUnit.MILLISECONDS.convert(Metrics.getExecTime(), TimeUnit.NANOSECONDS) + " milliseconds\n" +
-				"EXEC_MOVE  = " + Metrics.getExecMove() + "\n" +
-				"DATA_MOVE  = " + Metrics.getDataMove() + "\n" +
-				"DATA_WRITE = " + Metrics.getDataWrite() + "\n" +
-				"DATA_READ  = " + Metrics.getDataRead() + "\n";
+				"progSize  = " + Metrics.getProgSize() + "\n" +
+				"execTime  = " + TimeUnit.MILLISECONDS.convert(Metrics.getExecTime(), TimeUnit.NANOSECONDS) + " milliseconds\n" +
+				"execMove  = " + Metrics.getExecMove() + "\n" +
+				"dataMove  = " + Metrics.getDataMove() + "\n" +
+				"dataWrite = " + Metrics.getDataWrite() + "\n" +
+				"dataRead  = " + Metrics.getDataRead() + "\n";
 	}
 	
 	/**
