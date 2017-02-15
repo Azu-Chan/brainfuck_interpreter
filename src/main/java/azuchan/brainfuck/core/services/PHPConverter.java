@@ -92,42 +92,6 @@ public class PHPConverter extends Converter {
 		line = getLine(oldChar, countFact);
 		PHPBuff.write(line);
 	}
-	
-	/**
-	 * transformation de l'instruction brainfuck en PHP
-	 * 
-	 * @param currentInstr
-	 * @param nbOcc
-	 * 
-	 * @return ligne de PHP à écrire dans le fichier
-	 */
-	private String getLine(char currentInstr, int nbOcc) throws IsNotBrainfuckInstructionException{
-		if(currentInstr == Instructions.INCR.getShortSyntax()){
-			return "\t$mem[$pointer] += " + nbOcc + "; \r\n";
-		}
-		if(currentInstr == Instructions.DECR.getShortSyntax()){
-			return "\t$mem[$pointer] -= " + nbOcc + "; \r\n";
-		}
-		if(currentInstr == Instructions.LEFT.getShortSyntax()){
-			return "\t$pointer -= " + nbOcc + "; \r\n";
-		}
-		if(currentInstr == Instructions.RIGHT.getShortSyntax()){
-			return "\t$pointer += " + nbOcc + "; \r\n";
-		}
-		if(currentInstr == Instructions.OUT.getShortSyntax()){
-			return "\techo chr($mem[$pointer]); \r\n";
-		}
-		if(currentInstr == Instructions.IN.getShortSyntax()){
-			return "\t$mem[$pointer] = substr(fgets($STDIN), $pointer, 1); \r\n";
-		}
-		if(currentInstr == Instructions.JUMP.getShortSyntax()){
-			return "\twhile($mem[$pointer] != 0){ \r\n";
-		}
-		if(currentInstr == Instructions.BACK.getShortSyntax()){
-			return "\t} \r\n";
-		}
-		throw new IsNotBrainfuckInstructionException(""+currentInstr);
-	}
 
 	/**
 	 * Ecriture de la fin du fichier PHP

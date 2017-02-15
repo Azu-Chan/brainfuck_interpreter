@@ -8,7 +8,6 @@ package azuchan.brainfuck.macros;
  * @version 1.0
  */
 public class MacroDefine implements Macros {
-	private String name;
 	private String param1; // valeur à remplacer
 	private String param2; // nouvelle valeur
 	
@@ -21,7 +20,6 @@ public class MacroDefine implements Macros {
 	 * @param param2
 	 */
 	public MacroDefine(String param1, String param2){
-		this.name = NAME_MACRO;
 		this.param1 = param1;
 		this.param2 = param2;
 	}
@@ -33,16 +31,6 @@ public class MacroDefine implements Macros {
 	 */
 	public String getParam(){
 		return param1;
-	}
-
-	/**
-	 * Getter sur le nom
-	 * 
-	 * @return le nom
-	 */
-	@Override
-	public String getName() {
-		return name;
 	}
 
 	/**

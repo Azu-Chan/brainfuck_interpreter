@@ -15,7 +15,7 @@ public class MacroParamTest {
 
 	@Test
 	public void testMultiIncr() {
-		assertEquals("MULTI_INCR", MacrosParam.MULTI_INCR.getName());
+		assertEquals("MULTI_INCR", MacrosParam.MULTI_INCR.name());
 		
 		String param1 = "0";
 		String param2 = "-1";
@@ -35,7 +35,7 @@ public class MacroParamTest {
 	
 	@Test
 	public void testMultiDecr() {
-		assertEquals("MULTI_DECR", MacrosParam.MULTI_DECR.getName());
+		assertEquals("MULTI_DECR", MacrosParam.MULTI_DECR.name());
 		
 		String param1 = "0";
 		String param2 = "-1";
@@ -55,7 +55,7 @@ public class MacroParamTest {
 	
 	@Test
 	public void testMultiLeft() {
-		assertEquals("MULTI_LEFT", MacrosParam.MULTI_LEFT.getName());
+		assertEquals("MULTI_LEFT", MacrosParam.MULTI_LEFT.name());
 		
 		String param1 = "0";
 		String param2 = "-1";
@@ -75,7 +75,7 @@ public class MacroParamTest {
 	
 	@Test
 	public void testMultiRight() {
-		assertEquals("MULTI_RIGHT", MacrosParam.MULTI_RIGHT.getName());
+		assertEquals("MULTI_RIGHT", MacrosParam.MULTI_RIGHT.name());
 		
 		String param1 = "0";
 		String param2 = "-1";

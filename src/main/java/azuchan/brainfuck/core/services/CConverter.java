@@ -91,42 +91,6 @@ public class CConverter extends Converter {
 		line = getLine(oldChar, countFact);
 		CBuff.write(line);
 	}
-	
-	/**
-	 * transformation de l'instruction brainfuck en C
-	 * 
-	 * @param currentInstr
-	 * @param nbOcc
-	 * 
-	 * @return ligne de C à écrire dans le fichier
-	 */
-	private String getLine(char currentInstr, int nbOcc) throws IsNotBrainfuckInstructionException{
-		if(currentInstr == Instructions.INCR.getShortSyntax()){
-			return "\tmem[pointer] += " + nbOcc + "; \r\n";
-		}
-		if(currentInstr == Instructions.DECR.getShortSyntax()){
-			return "\tmem[pointer] -= " + nbOcc + "; \r\n";
-		}
-		if(currentInstr == Instructions.LEFT.getShortSyntax()){
-			return "\tpointer -= " + nbOcc + "; \r\n";
-		}
-		if(currentInstr == Instructions.RIGHT.getShortSyntax()){
-			return "\tpointer += " + nbOcc + "; \r\n";
-		}
-		if(currentInstr == Instructions.OUT.getShortSyntax()){
-			return "\tputchar(mem[pointer]); \r\n";
-		}
-		if(currentInstr == Instructions.IN.getShortSyntax()){
-			return "\tmem[pointer] = getchar(); \r\n";
-		}
-		if(currentInstr == Instructions.JUMP.getShortSyntax()){
-			return "\twhile(mem[pointer] != 0){ \r\n";
-		}
-		if(currentInstr == Instructions.BACK.getShortSyntax()){
-			return "\t} \r\n";
-		}
-		throw new IsNotBrainfuckInstructionException(""+currentInstr);
-	}
 
 	/**
 	 * Ecriture de la fin du fichier C

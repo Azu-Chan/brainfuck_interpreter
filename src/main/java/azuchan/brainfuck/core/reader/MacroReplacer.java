@@ -4,7 +4,9 @@ import java.io.*;
 import java.util.ArrayList;
 
 import azuchan.brainfuck.exceptions.*;
-import azuchan.brainfuck.macros.*;
+import azuchan.brainfuck.macros.MacroDefine;
+import azuchan.brainfuck.macros.MacrosParam;
+import azuchan.brainfuck.macros.MacrosSimple;
 
 
 /**
@@ -96,14 +98,14 @@ public class MacroReplacer extends ReaderBF {
 		
 		// traitement macros sans param
 		for(MacrosSimple m : MacrosSimple.values()){
-			if(explodeLigne.length == 1 && explodeLigne[0].equals(m.getName())){
+			if(explodeLigne.length == 1 && explodeLigne[0].equals(m.name())){
 				ligne = ligne.replace(explodeLigne[0], m.getEffect());
 			}
 		}
 		
 		// traitement macro avec param
 		for(MacrosParam m : MacrosParam.values()){
-			if(explodeLigne.length == 2 && explodeLigne[0].equals(m.getName())){
+			if(explodeLigne.length == 2 && explodeLigne[0].equals(m.name())){
 				ligne = ligne.replace(explodeLigne[1], "");
 				ligne = ligne.replace(explodeLigne[0], m.getEffect(explodeLigne[1]));
 			}

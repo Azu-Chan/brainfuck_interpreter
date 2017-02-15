@@ -15,7 +15,7 @@ public class MacrosSimpleTest {
 
 	@Test
 	public void testToDigit() {
-		assertEquals("TO_DIGIT", MacrosSimple.TO_DIGIT.getName());
+		assertEquals("TO_DIGIT", MacrosSimple.TO_DIGIT.name());
 		
 		String s = "";
 		for(int i=0; i<48; i++){
@@ -27,7 +27,7 @@ public class MacrosSimpleTest {
 	
 	@Test
 	public void testFromDigit() {
-		assertEquals("FROM_DIGIT", MacrosSimple.FROM_DIGIT.getName());
+		assertEquals("FROM_DIGIT", MacrosSimple.FROM_DIGIT.name());
 		
 		String s = "";
 		for(int i=0; i<48; i++){
@@ -39,7 +39,7 @@ public class MacrosSimpleTest {
 	
 	@Test
 	public void testToAplha() {
-		assertEquals("TO_ALPHA", MacrosSimple.TO_ALPHA.getName());
+		assertEquals("TO_ALPHA", MacrosSimple.TO_ALPHA.name());
 		
 		String s = "";
 		for(int i=0; i<96; i++){
@@ -51,7 +51,7 @@ public class MacrosSimpleTest {
 	
 	@Test
 	public void testFromAlpha() {
-		assertEquals("FROM_ALPHA", MacrosSimple.FROM_ALPHA.getName());
+		assertEquals("FROM_ALPHA", MacrosSimple.FROM_ALPHA.name());
 		
 		String s = "";
 		for(int i=0; i<96; i++){
@@ -63,7 +63,7 @@ public class MacrosSimpleTest {
 	
 	@Test
 	public void testToAplhaCap() {
-		assertEquals("TO_ALPHA_CAP", MacrosSimple.TO_ALPHA_CAP.getName());
+		assertEquals("TO_ALPHA_CAP", MacrosSimple.TO_ALPHA_CAP.name());
 		
 		String s = "";
 		for(int i=0; i<64; i++){
@@ -75,7 +75,7 @@ public class MacrosSimpleTest {
 	
 	@Test
 	public void testFromAlphaCap() {
-		assertEquals("FROM_ALPHA_CAP", MacrosSimple.FROM_ALPHA_CAP.getName());
+		assertEquals("FROM_ALPHA_CAP", MacrosSimple.FROM_ALPHA_CAP.name());
 		
 		String s = "";
 		for(int i=0; i<64; i++){

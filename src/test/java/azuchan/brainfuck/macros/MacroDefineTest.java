@@ -18,8 +18,8 @@ public class MacroDefineTest {
 		MacroDefine macro1 = new MacroDefine("aa", "vvv");
 		MacroDefine macro2 = new MacroDefine("7hvjhvjggdxfY", "vvvmnbhkvjcdtdf");
 		
-		assertEquals("DEFINE", macro1.getName());
-		assertEquals("DEFINE", macro2.getName());
+		assertEquals("DEFINE", MacroDefine.NAME_MACRO);
+		assertEquals("DEFINE", MacroDefine.NAME_MACRO);
 		assertEquals("aa", macro1.getParam());
 		assertEquals("7hvjhvjggdxfY", macro2.getParam());
 		assertEquals("vvv", macro1.getEffect());

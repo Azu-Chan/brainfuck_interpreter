@@ -10,32 +10,16 @@ import azuchan.brainfuck.Instructions;
  * @version 1.0
  */
 public enum MacrosParam implements Macros {
-	MULTI_INCR("MULTI_INCR"), // multi incrementation
-	MULTI_DECR("MULTI_DECR"), // multi decrementation
-	MULTI_LEFT("MULTI_LEFT"), // multi left
-	MULTI_RIGHT("MULTI_RIGHT"), // multi right
+	MULTI_INCR(), // multi incrementation
+	MULTI_DECR(), // multi decrementation
+	MULTI_LEFT(), // multi left
+	MULTI_RIGHT(), // multi right
 	;
-	
-	private String name;
 	
 	/**
 	 * Constructeur...
-	 * 
-	 * @param name
 	 */
-	MacrosParam(String name){
-		this.name = name;
-	}
-	
-	/**
-	 * Getter sur le nom
-	 * 
-	 * @return le nom
-	 */
-	@Override
-	public String getName() {
-		return name;
-	}
+	MacrosParam() {}
 
 	/**
 	 * Calcule et renvoie l'effet de la macro
@@ -50,7 +34,7 @@ public enum MacrosParam implements Macros {
 		int  n;
 		try {
 		    n = Integer.parseInt(param);
-			switch(name){
+			switch(name()){
 				case "MULTI_INCR" :
 					for(int i = 0; i < n; i++){
 						response += Instructions.INCR.getLongSyntax() + "\r\n";

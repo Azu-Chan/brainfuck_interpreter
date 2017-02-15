@@ -2,6 +2,7 @@ package azuchan.brainfuck.core.services;
 
 import java.io.IOException;
 
+import azuchan.brainfuck.Instructions;
 import azuchan.brainfuck.exceptions.IsNotBrainfuckInstructionException;
 
 /**
@@ -41,6 +42,58 @@ public abstract class Converter {
 	 * Prototype de l'écriture du corps du fichier
 	 */
 	protected abstract void writeCorpse() throws IOException, IsNotBrainfuckInstructionException;
+	
+	/**
+	 * transformation de l'instruction brainfuck un
+	 * autre langage
+	 * 
+	 * @param currentInstr
+	 * @param nbOcc
+	 * 
+	 * @return ligne de code à écrire dans le fichier
+	 */
+	protected String getLine(char currentInstr, int nbOcc) throws IsNotBrainfuckInstructionException{
+		Instructions instr = null;
+		String s = "";
+		
+		for(Instructions i : Instructions.values()){
+			if(i.getShortSyntax() == currentInstr){
+				instr = i;
+				break;
+			}
+		}
+		
+		if(instr == null){
+			throw new IsNotBrainfuckInstructionException(Character.toString(currentInstr));
+		}
+		
+		s += wrtLine(instr, nbOcc);
+		
+		return s;
+	}
+	
+	private String wrtLine(Instructions instr, int nbOcc){
+		String s = "";
+		if(this.getClass().equals(CConverter.class)){
+			s += instr.getCEquivalent();
+		}
+		else{
+			s += instr.getPhpEquivalent();
+		}
+		
+		if(instr == Instructions.INCR || instr == Instructions.DECR || instr == Instructions.LEFT ||
+				instr == Instructions.RIGHT){
+			s += Integer.toString(nbOcc);
+		}
+		
+		if(instr != Instructions.JUMP && instr != Instructions.BACK){
+			s += ";";
+		}
+		
+		s += " \r\n";
+		
+		return s;
+	}
 	
 	/**
 	 * Prototype de l'écriture de la fin du fichier

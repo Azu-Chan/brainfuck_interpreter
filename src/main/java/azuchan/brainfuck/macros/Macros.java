@@ -9,11 +9,4 @@ package azuchan.brainfuck.macros;
  */
 public interface Macros {
 	
-	/**
-	 * Prototype du getter sur ne nom
-	 * 
-	 * @return le nom
-	 */
-	public String getName();
-	
 }
