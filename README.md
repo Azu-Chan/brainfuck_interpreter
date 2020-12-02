@@ -133,5 +133,4 @@ Arrêt du programme si une des erreures suivantes est déclanchée :
 VII. DIVERS
 ----------
 
-Ce programme est un projet réalisé dans le cadre du SI3 de Polytech Nice Sophia-Antipolis, année 2016 par Triplot. Il y a une possibilité que des bugs non détectés soient présents, si tel est le cas, vous pouvez me les signaler. Merci de votre compréhension.
-Le projet est toujours maintenu.
+Ce programme est un projet réalisé dans le cadre du SI3 de Polytech Nice Sophia-Antipolis, année 2016 par Triplot. Il y a une possibilité que des bugs non prévus soient présents. Projet plus maintenu pour le moment...
